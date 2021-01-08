@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
 import { BrowserRouter , Route } from 'react-router-dom'
+import { Link, NavLink} from 'react-router-dom';
 import './Profile.css';
 import profileImage from "./hd.jpg";
 
@@ -58,8 +59,9 @@ class Profile extends Component {
                 <br></br>
                 <br></br>
 
+                <a href={ 'mailto:' + this.state.email }>
                 <button type="button" class="btn btn-outline-dark">Send Email</button>
-
+                </a>
                 <br></br>
                 <br></br>
 
@@ -75,9 +77,10 @@ class Profile extends Component {
 
             <div className='Under' >
 
-            <a href="/updateprofile" >
+            <NavLink activeClassName='UpdateProfile' to ='updateprofile'>
             <button type="button" class="btn btn-primary">Update Profile</button>
-            </a>
+            </NavLink>
+
             </div>
             
             </div>

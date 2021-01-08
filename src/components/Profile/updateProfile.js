@@ -1,5 +1,7 @@
 import React , { Component } from 'react';
 import { BrowserRouter , Route } from 'react-router-dom'
+import { Link, NavLink} from 'react-router-dom';
+
 import './Profile.css';
 
 
