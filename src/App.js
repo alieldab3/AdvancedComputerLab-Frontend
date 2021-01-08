@@ -6,10 +6,6 @@ import Header from './components/Header/Header'
 import Sidebar from './components/Sidebar/Sidebar'
 import Homepage from './components/Homepage/homepage';
 import Login from './components/login/login2';
-import Profile from './components/Profile/Profile';
-import updateProfile from './components/Profile/updateProfile';
-
-
 
 
 ///////////////////////// import 'HR Member' Components Here /////////////////////////
@@ -106,9 +102,6 @@ class App extends Component {
                       {/* <Route exact path='/login' > {this.setState({loggedIn:true})} </Route>
                       <Route exact path='/logout' > {this.setState({loggedIn:false})} </Route> */}
                       <Route exact path='/' component={Homepage} />
-                      <Route exact path='/profile' component={Profile} />
-                      <Route exact path='/updateprofile' component={updateProfile} />
-
 
 
                       {/* ///////////////////////// insert 'HR Member' Components Routes Here ///////////////////////// */}
