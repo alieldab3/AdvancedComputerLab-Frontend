@@ -6,6 +6,23 @@
 
 }
 
+
+/* .containerS {
+    height: 200px;
+    position: relative;
+  }
+  
+  .centerS {
+    margin: 0;
+    position: absolute;
+    
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  } */
+
+
+
 .tex{
     text-align: center;
 }
