@@ -7,6 +7,8 @@ import Sidebar from './components/Sidebar/Sidebar'
 import Homepage from './components/Homepage/homepage';
 import Login from './components/login/login2';
 import Profile from './components/Profile/Profile';
+import updateProfile from './components/Profile/updateProfile';
+
 
 
 
@@ -105,6 +107,8 @@ class App extends Component {
                       <Route exact path='/logout' > {this.setState({loggedIn:false})} </Route> */}
                       <Route exact path='/' component={Homepage} />
                       <Route exact path='/profile' component={Profile} />
+                      <Route exact path='/updateprofile' component={updateProfile} />
+
 
 
                       {/* ///////////////////////// insert 'HR Member' Components Routes Here ///////////////////////// */}
