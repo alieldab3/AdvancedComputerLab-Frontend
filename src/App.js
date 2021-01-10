@@ -69,7 +69,12 @@ import viewcoursestaff from './components/Common Features/viewcoursestaff/viewco
 import viewcoursecoverage from './components/Common Features/viewcoursecoverage/viewcoursecoverage';
 
 //All Staff Components//
-
+import signin from './components/Common Features/signin/signin';
+import signout from './components/Common Features/signout/signout';
+import resetpassword from './components/Common Features/resetpassword/resetpassword';
+import viewmyattendance from './components/Common Features/viewmyattendance/viewmyattendance';
+import viewmymissingdays from './components/Common Features/viewmymissingdays/viewmymissingdays';
+import viewmyhours from './components/Common Features/viewmyhours/viewmyhours';
 
 //All Academic Members Components//
 
@@ -166,9 +171,12 @@ class App extends Component {
                           <Route exact path='/viewcoursestaff' component={viewcoursestaff} />
                           <Route exact path='/viewcoursecoverage' component={viewcoursecoverage} />
                           {/* All Staff Components */}
-
-
-
+                          <Route exact path='/signin' component={signin} />
+                          <Route exact path='/signout' component={signout} />
+                          <Route exact path='/resetpassword' component={resetpassword} />
+                          <Route exact path='/viewmyattendance' component={viewmyattendance} />
+                          <Route exact path='/viewmymissingdays' component={viewmymissingdays} />
+                          <Route exact path='/viewmyhours' component={viewmyhours} />
                           {/* All Academic Members Components */}
 
                           
