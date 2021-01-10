@@ -112,6 +112,7 @@ class Sidebar extends Component {
                 <SubMenu defaultOpen='true' title="Dashboard" >
                  
                 <MenuItem active='true'><NavLink activeClassName='Homepage' exact to ="/" > Home Page</NavLink></MenuItem>
+                {commonStaffFeatures}
                 </SubMenu>
                 
                         <SubMenu defaultOpen='true' title="Control Instructors" >
@@ -146,7 +147,12 @@ class Sidebar extends Component {
             
             <Menu iconShape="round" >
 
-                        <SubMenu SubMenu defaultOpen='true' title="Control Academic Members" >
+                        <SubMenu defaultOpen='true' title="Dashboard" >
+                        <MenuItem active='true'><NavLink activeClassName='Homepage' exact to ="/" > Home Page</NavLink></MenuItem>
+                        {commonStaffFeatures}
+                        </SubMenu>
+
+                        <SubMenu defaultOpen='true' title="Control Academic Members" >
                         <MenuItem><NavLink activeClassName='assignslots' to ="assignslots" > Assign Slots</NavLink></MenuItem>
                         <MenuItem><NavLink activeClassName='updateassignment' to ="updateassignment" > Update Assignment</NavLink></MenuItem>             
                         <MenuItem><NavLink activeClassName='deleteassignment' to ="deleteassignment" > Delete Assignment</NavLink></MenuItem>
@@ -180,6 +186,7 @@ class Sidebar extends Component {
                 <SubMenu defaultOpen='true' title="Dashboard" >
                  
                 <MenuItem active='true'><NavLink activeClassName='Homepage' exact to ="/" > Home Page</NavLink></MenuItem>
+                {commonStaffFeatures}
                 </SubMenu>
                 
                     <SubMenu defaultOpen='true' title="Slot linking Requests" >
