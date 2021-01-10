@@ -1,9 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
+  font-size: 13px;
+  
   width: 360px;
   padding: 8% 0 0;
   margin: auto;
+}
+.formal{
+  color: #FFFFFF;
+  font-size: 25px;
+  
 }
 .form {
   position: relative;
