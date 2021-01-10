@@ -12,7 +12,7 @@ import { DownOutlined } from '@ant-design/icons';
 
 const success = () => {
     
-  message.success('Course created successfully and added to specific department');
+  message.success('staff member added successfully to the system');
 };
 
 const warning = () => {
@@ -22,7 +22,7 @@ const warning = () => {
   
 
 const error1 = () => {
-  message.error('Cannot create Course already exists or Department doesnot exist');
+  message.error('Cannot create member either some data donot exist or name is duplicate');
 };
   
 class addstaffmember extends Component{
@@ -41,8 +41,7 @@ class addstaffmember extends Component{
       let g=document.getElementById("uniqueID6").value;
       let h=document.getElementById("uniqueID7").value;
       
-      console.log(a+" "+b+" "+" "+c+" "+d+" "+e+" "+f+" "+g+" "+h);
-      if(a&&b&&c&&d&&e&&f&&g){
+      if(a&&b&&c&&d&&e&&f&&g&&h){
     axios.post('http://localhost:5000/registerMem', {
          gender:f,name:a,email:h,salary:b,
         officeLocation:{name:c},role:g,dayoff:e,department:d
