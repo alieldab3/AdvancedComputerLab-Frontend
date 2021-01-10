@@ -60,7 +60,8 @@ fieldset {
 #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea {
 	width:100%;
 	border:1px solid #CCC;
-	background:#FFF;
+	background:rgb(22, 12, 12);
+	
 	margin:0 0 5px;
 	padding:10px;
 }
