@@ -26,7 +26,7 @@ class updateProfile extends Component {
     componentDidMount() {
         axios.get('http://localhost:5000/viewProfile')
           .then(res => {
-            const person = res.data;
+            const person = res.data[0];
             this.setState({ person });
           })
       }
@@ -35,17 +35,18 @@ class updateProfile extends Component {
         let newGender = document.getElementById("FormControlGender").value;
         let newEmail = document.getElementById("FormControlEmail").value;
         let newOfficeLocation = document.getElementById("FormControlOffice").value;
-        let newSalary = document.getElementById("FormControlSalary").value;
+        // let newSalary = document.getElementById("FormControlSalary").value;
         // let newRole = document.getElementById("FormControlRole").value;
-        // let newDayOff = document.getElementById("FormControlDayOff").value;
+         let newDayOff = document.getElementById("FormControlDayOff").value;
 
-        console.log(newGender+" "+newEmail+" "+newOfficeLocation+" "+newSalary)
+        console.log(newGender+" "+newEmail+" "+newOfficeLocation+" "+newDayOff)
         axios.put('http://localhost:5000/updateProfile',
         {
             email : newEmail,
             gender : newGender,
             officeLocation : newOfficeLocation,
-            salary : parseInt(newSalary)
+            dayoff : newDayOff
+            // salary : parseInt(newSalary)
         },{withCredentials:true})
         .then((response)=>{
           this.setState({SaveState : true})
@@ -163,8 +164,8 @@ class updateProfile extends Component {
         <div class="col">
 
         <div class="mb-3">
-        <label for="FormControlSalary" class="form-label">Salary</label>
-        <input type="text" class="form-control" id="FormControlSalary" placeholder="2000" defaultValue={this.state.person.salary}></input>
+        <label for="FormControlDayOff" class="form-label">Day off</label>
+        <input type="text" class="form-control" id="FormControlDayOff" placeholder="Friday" defaultValue={this.state.person.dayoff}></input>
         </div>
         </div>
         </div>

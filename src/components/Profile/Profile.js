@@ -28,7 +28,8 @@ class Profile extends Component {
     componentDidMount() {
         axios.get('http://localhost:5000/viewProfile')
           .then(res => {
-            const person = res.data;
+            const person = res.data[0];
+            console.log(person)
             this.setState({ person });
           })
       }

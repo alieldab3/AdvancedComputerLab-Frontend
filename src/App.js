@@ -11,7 +11,6 @@ import updateProfile from './components/Profile/updateProfile';
 
 
 
-
 ///////////////////////// import 'HR Member' Components Here /////////////////////////
 import addlocation from './components/HR/addlocation/addlocation';
 import updatelocation from './components/HR/updatelocation/updatelocation';
