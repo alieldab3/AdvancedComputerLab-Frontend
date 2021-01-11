@@ -2,9 +2,8 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './deletelocation.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space,spin} from 'antd';
+import { message} from 'antd';
 
 
 
@@ -25,7 +24,7 @@ class deletelocation extends Component{
       
         let a=document.getElementById("uniqueID").value;
       if(a){
-        {e.preventDefault()};
+        e.preventDefault();
     
         axios.delete('http://localhost:5000/delLocation', {
        params:{
@@ -35,12 +34,12 @@ class deletelocation extends Component{
         },{withCredentials:true})
           .then(function (response) {
      
-            {success()}
+            success()
           
         })
        
           .catch(function (error){
-        {error1()}
+        error1()
             console.log("no")
       
             console.log(error);
@@ -59,15 +58,14 @@ class deletelocation extends Component{
 render() {
     return(
         
-<div className="login-page">
-<h2 className="formal"  >  Delete location</h2>
+<div className="login">
+<h1  >  Delete location</h1>
     
   <div className="form">
-    <form className="login-form">
-      <input type="text"  id="uniqueID"  placeholder="the location you wish to delete"required="required" />
+  <form method="form">
+   <input type="text"  id="uniqueID" className="hi" placeholder="the location you wish to delete"required="required" />
       
-
-      <button type="submit"  onClick={this.handleClick}  >delete location</button>
+      <button type="submit"  className="btn btn-primary btn-block btn-large" onClick={this.handleClick}  >delete location</button>
        
     </form>
      
@@ -78,18 +76,5 @@ render() {
 )
     }
 }
-// class viewschedule extends Component {
-//   render () {
-//     return (
-//       <BrowserRouter>
-//       <Sidebar />
-//       {/* <Route exact path='/' component={Index} />
-//       <Route path='/contact' component={Contact} /> */}
-//     </BrowserRouter>
-
-//    );
-//   }
-// }
-
 
 export default deletelocation;

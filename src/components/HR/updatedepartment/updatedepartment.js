@@ -2,9 +2,8 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './updatedepartment.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space} from 'antd';
+import { message} from 'antd';
 
 
 
@@ -25,7 +24,7 @@ class updatedepartment extends Component{
         let a=document.getElementById("uniqueID").value;
         let b=document.getElementById("uniqueID1").value;
          if(a&&b){
-      {e.preventDefault()};
+      e.preventDefault();
       console.log("fuck u 1")
              
       axios.get('http://localhost:5000/updateDepart', {
@@ -36,14 +35,14 @@ class updatedepartment extends Component{
             },{withCredentials:true})
             .then(function (response) {
              console.log("fuck u ")
-                {success()}
+                success()
              
              console.log(response);
             
           })
          
             .catch(function (error){
-          {error1()}
+          error1()
               console.log("no")
         
               console.log(error);
@@ -73,7 +72,7 @@ render() {
 	<h1>Update Department</h1>
     <form method="form">
     	<input type="text" id="uniqueID" className="hi" name="u" placeholder="Department Old Name" required="required" />
-        <input type="text" id="uniqueID1" className="hi1" name="u1" placeholder="Department New Name" required="required" />
+        <input type="text" id="uniqueID1" className="hi" name="u1" placeholder="Department New Name" required="required" />
        
        <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Update Department</button>
      

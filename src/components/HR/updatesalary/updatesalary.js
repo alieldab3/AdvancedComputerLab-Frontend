@@ -83,6 +83,7 @@ render() {
     
     return(
 
+      <div className="big">
    
 
 
@@ -117,7 +118,7 @@ render() {
   
 
   </form>
-login
+</div>
 </div>
 
     )
@@ -125,18 +126,5 @@ login
 
 
 }
-// class viewschedule extends Component {
-//   render () {
-//     return (
-//       <BrowserRouter>
-//       <Sidebar />
-//       {/* <Route exact path='/' component={Index} />
-//       <Route path='/contact' component={Contact} /> */}
-//     </BrowserRouter>
-
-//    );
-//   }
-// }
-
 
 export default updatesalary;

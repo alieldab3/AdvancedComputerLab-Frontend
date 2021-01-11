@@ -2,10 +2,29 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './viewstaffattendance.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space} from 'antd';
+import { message} from 'antd';
 import "antd/dist/antd.css";
+import {useState,useEffect} from "react";
+import { Table, Tag, Space } from 'antd';
+const columns = [
+  {
+    title: 'id',
+    dataIndex: 'id',
+    key: 'id',
+  },
+  {
+    title: 'time',
+    dataIndex: 'time',
+    key: 'time',
+  },
+  {
+    title: 'signin',
+    dataIndex: 'signin',
+    key: 'signin',
+  },
+]
+let data1 = [];
 
 const success = () => {
     
@@ -21,14 +40,28 @@ const warning = () => {
     message.error('Member doesnot exist');
   };
     
-  
-class viewstaffattendance extends Component{
-  
-   
     
+    class viewstaffattendance extends React.Component{
+      constructor(props) {
+        super(props)
 
+        this.state = {
+            arr: []
+        }
+    }
+
+change =(e)=>{
+
+this.setState({
+  arr:data1
+})
+e.preventDefault();
+
+}
 
     callAPI() {
+      data1=[];
+      console.log(data1)
       let a=document.getElementById("uniqueID").value;
       if(a){
     axios.get('http://localhost:5000/viewattandence', {
@@ -37,26 +70,39 @@ class viewstaffattendance extends Component{
         }
     },{withCredentials:true})
           .then(function (response) {
-           {success()}
+           success()
            console.log("plz")
+
+           
       
-           console.log(response);
-          
+  response.data.forEach(element =>{
+    console.log(element.signIn)
+    if(element.signIn)
+    element.signIn="Sign In";
+    else
+    element.signIn="Sign Out";
+    
+   data1.push({id:a,time:element.time,signin:element.signIn});
+   });
         })
        
           .catch(function (error){
-        {error1()}
+        error1()
             console.log("no")
       
             console.log(error);
           
       //      message.error(error.response.data);
           });
+   console.log("idiot")
+   console.log(this.state.arr)
+   
    
         }
         else{
-            {warning()};
+            warning();
         }  
+        
     }
 
     componentDidMount() {
@@ -68,40 +114,40 @@ e.preventDefault();
      this.callAPI(e);
    
     }
-    
 
 render() {
     return(
-        <div class="login-box">
-  <h2>view attendance</h2>
-  <form>
-  <div class="user-box">
-      <input type= "text" name="" required=""id="uniqueID"placeholder="plz enter id number"  />
-      <label>ID</label>
+      <div className="edu">
+      
+      <div className="login">
+       <form method="form">
+          
+      <input type= "text"  className="hi" required=""id="uniqueID"placeholder="plz enter id number" required="required" />
+  <div>
+  <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.change} >view his attendance</button>
+  
+      </div>
+      <div className="plz">
+      <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Submit member</button>
+    
+      </div>
+  
+      <div className="haha">
+<Table columns={columns} dataSource={this.state.arr} />);
+</div>
+ 
+
+    </form>
     </div>
  
  
-    
-  
-  
-  <a href="#">
-  
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >view attendance</button>
-   
-    </a>
+</div>
  
     
-  
 
-  </form>
 
-</div>
 
-    )
+  )
 }
 
 

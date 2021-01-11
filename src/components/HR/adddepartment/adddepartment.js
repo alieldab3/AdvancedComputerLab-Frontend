@@ -2,9 +2,8 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './adddepartment.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space} from 'antd';
+import { message} from 'antd';
 
 
 
@@ -28,7 +27,7 @@ class adddepartment extends Component{
       let b=document.getElementById("uniqueID1").value;
    
       if(a&&b){
-      {e.preventDefault()};
+      e.preventDefault();
       console.log(a+" "+b);
     axios.post('http://localhost:5000/addDepart', {
           facname:a,
@@ -36,13 +35,13 @@ class adddepartment extends Component{
            
           },{withCredentials:true})
           .then(function (response) {
-           {success()}
+           success()
            console.log(response);
           
         })
        
           .catch(function (error){
-        {error1()}
+        error1()
             console.log("no")
       
             console.log(error);
@@ -70,7 +69,7 @@ render() {
     	<input type="text" id="uniqueID" className="hi" name="u" placeholder="Faculty Name" required="required" />
         <input type="text" id="uniqueID1" className="hi" name="u" placeholder="Department Name" required="required" />
         
-       <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Create Department Under faculty</button>
+       <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Create Department </button>
      
     </form>
 </div>

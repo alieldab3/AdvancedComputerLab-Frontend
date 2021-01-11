@@ -2,10 +2,8 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './addsignrecord.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space} from 'antd';
-import { Menu, Dropdown } from 'antd';
+import { message} from 'antd';
 
 
 
@@ -47,13 +45,13 @@ class addsignrecord extends Component{
     
     },{withCredentials:true})
           .then(function (response) {
-           {success()}
+           success()
            console.log(response);
           
         })
        
           .catch(function (error){
-        {error1()}
+        error1()
             console.log("no")
       
             console.log(error);
@@ -63,7 +61,7 @@ class addsignrecord extends Component{
    
         }
         else{
-            {warning()};
+            warning();
         }  
     }
 
@@ -80,6 +78,8 @@ e.preventDefault();
 
 render() {
     return(
+      <div className="big">
+   
         <div class="login-box">
   <h2>add missing record </h2>
   <form>
@@ -120,6 +120,7 @@ render() {
 
   </form>
 
+</div>
 </div>
 
     )

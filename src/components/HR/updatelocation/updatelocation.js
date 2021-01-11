@@ -2,18 +2,19 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './updatelocation.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space} from 'antd';
+import { message} from 'antd';
 
 
-const info = () => {
-  message.info('This is a normal message');
-};
+
 const success = () => {
   message.success('Location updated successfully');
 };
 
+const warning = () => {
+    
+  message.warning('Plz fill all the required information');
+};
 const error1 = () => {
   message.error('Sorry cannot update this location either some info is missed or it location doesnot exist ');
 };
@@ -30,7 +31,7 @@ class updatelocation extends Component{
      let d=document.getElementById("uniqueID3").value;
     console.log(a+" "+b+" "+c+" "+d);
     if(a&&b&&c&&d){
-        {e.preventDefault()};
+        e.preventDefault();
     
         axios.get('http://localhost:5000/updateLocation', {
    params:{
@@ -41,13 +42,14 @@ class updatelocation extends Component{
    }  
         },{withCredentials:true})
           .then(function (response) {
-            {success()}
-    
-          
+            success()
+         console.log(response)
+     
+        
         })
        
           .catch(function (error){
-        {error1()}
+        error1()
             console.log("no")
       
             console.log(error);
@@ -55,9 +57,12 @@ class updatelocation extends Component{
       //      message.error(error.response.data);
           });
           
+
     }
+    else{
+      warning()
+        
     }
-    componentDidMount() {
     }
     
     handleClick= (e) => {
@@ -68,21 +73,28 @@ class updatelocation extends Component{
 render() {
     return(
         
-<div className="login-page">
-<h2 className="formal"  >  Update location</h2>
+<div className="login">
+<h1>  Update location</h1>
     
   <div className="form">
-    <form className="login-form">
-      <input type="text"  id="uniqueID"  placeholder="the location you want to update"required="required"/>
-      <input type="text" id="uniqueID1" placeholder="new Capacity"required="required"/>
-      <input type="text" id="uniqueID2" placeholder="new type"required="required"/>
-      <input type="text" id="uniqueID3" placeholder="new occupation"required="required"/>
-
-
-      <button onClick={this.handleClick}  >update location</button>
-       
-    </form>
+      <div>
+      <input type="text"  id="uniqueID" className="hi"  placeholder="the location you want to update"required="required"/>
+      </div>
+      <div>
+      <input type="text" id="uniqueID1"className="hi" placeholder="new Capacity"required="required"/>
+      </div>
+      <div>
+      <input type="text" id="uniqueID2" className="hi" placeholder="new type"required="required"/>
+      </div>
+      <div> 
+      <input type="text" id="uniqueID3" className="hi" placeholder="new occupation"required="required"/>
+      </div>
      
+      <div className="lol1">
+      <button onClick={this.handleClick}  className="btn btn-primary btn-block btn-large" >update location</button>
+      </div>
+  
+    
   </div>
     
 </div>
@@ -90,18 +102,6 @@ render() {
 )
     }
 }
-// class viewschedule extends Component {
-//   render () {
-//     return (
-//       <BrowserRouter>
-//       <Sidebar />
-//       {/* <Route exact path='/' component={Index} />
-//       <Route path='/contact' component={Contact} /> */}
-//     </BrowserRouter>
-
-//    );
-//   }
-// }
 
 
 export default updatelocation;

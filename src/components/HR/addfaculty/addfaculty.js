@@ -2,9 +2,8 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './addfaculty.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space} from 'antd';
+import { message} from 'antd';
 
 
 
@@ -16,9 +15,7 @@ const success = () => {
 const error1 = () => {
   message.error('Cannot create faculty already exists' );
 };
-const warning = () => {
-    message.warning('Plz fill all required info');
-  };
+
   
 class addfaculty extends Component{
   
@@ -31,7 +28,7 @@ class addfaculty extends Component{
     if(!a){
     }
    else{
-    {e.preventDefault()};
+    e.preventDefault();
 
     axios.post('http://localhost:5000/addFaculty', {
           nam:a,
@@ -39,13 +36,13 @@ class addfaculty extends Component{
            
           },{withCredentials:true})
           .then(function (response) {
-           {success()}
+           success()
            console.log(response);
           
         })
        
           .catch(function (error){
-        {error1()}
+        error1()
             console.log("no")
       
             console.log(error);
@@ -70,7 +67,8 @@ render() {
 <div className="login">
 	<h1>Add new Faculty</h1>
     <form method="form">
-    	<input type="text" id="uniqueID" className="hi" name="u" placeholder="Faculty Name" required="required" />
+    	
+      <input type="text" id="uniqueID" className="hi" name="u" placeholder="Faculty Name" required="required" />
        <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Create faculty</button>
      
     </form>
@@ -80,18 +78,5 @@ render() {
 
 
 }
-// class viewschedule extends Component {
-//   render () {
-//     return (
-//       <BrowserRouter>
-//       <Sidebar />
-//       {/* <Route exact path='/' component={Index} />
-//       <Route path='/contact' component={Contact} /> */}
-//     </BrowserRouter>
-
-//    );
-//   }
-// }
-
 
 export default addfaculty;

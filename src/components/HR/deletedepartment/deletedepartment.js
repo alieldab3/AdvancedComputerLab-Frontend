@@ -2,9 +2,8 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './deletedepartment.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space} from 'antd';
+import { message} from 'antd';
 
 
 
@@ -28,7 +27,7 @@ class deletedepartment extends Component{
    
       if(a){
            console.log(a);
-    {e.preventDefault()};
+  e.preventDefault();
 
     axios.delete('http://localhost:5000/delDepart', {
         params:{
@@ -36,13 +35,13 @@ class deletedepartment extends Component{
         }        
         },{withCredentials:true})
           .then(function (response) {
-           {success()}
+           success()
            console.log(response);
           
         })
        
           .catch(function (error){
-        {error1()}
+        error1()
             console.log("no")
       
             console.log(error);
