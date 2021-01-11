@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
 import { Link, NavLink} from 'react-router-dom';
@@ -25,6 +25,25 @@ class Sidebar extends Component {
     // }
 
     handleType =(e) =>{
+
+        let commonStaffFeatures = (
+            <Fragment>
+            <MenuItem><NavLink activeClassName='resetpassword' to ="resetpassword" > Reset Password</NavLink></MenuItem>
+            <SubMenu title="Sign" > 
+                <MenuItem><NavLink activeClassName='signin' to ="signin" > Sign in</NavLink></MenuItem>             
+                <MenuItem><NavLink activeClassName='signout' to ="signout" > Sign out</NavLink></MenuItem>
+            </SubMenu>
+            <SubMenu title="My Records" > 
+            <MenuItem><NavLink activeClassName='viewmyattendance' to ="viewmyattendance" > View My Attendance</NavLink></MenuItem>
+            <MenuItem><NavLink activeClassName='viewmymissingdays' to ="viewmymissingdays" > View My Miss Days</NavLink></MenuItem>             
+            <MenuItem><NavLink activeClassName='viewmyhours' to ="viewmyhours" > View My Hours</NavLink></MenuItem>
+            </SubMenu>
+            </Fragment>
+        )
+
+
+
+
         if(this.state.type =='HR Member'){
             return (
                 <SidebarContent >{
@@ -33,6 +52,7 @@ class Sidebar extends Component {
 
                     <SubMenu defaultOpen='true' title="Dashboard" >
                     <MenuItem active='true'><NavLink activeClassName='Homepage' exact to ="/" > Home Page</NavLink></MenuItem>
+                    {commonStaffFeatures}
                     </SubMenu>
                     
                     <SubMenu defaultOpen='true' title="Locations & Faculties" >
@@ -92,6 +112,7 @@ class Sidebar extends Component {
                 <SubMenu defaultOpen='true' title="Dashboard" >
                  
                 <MenuItem active='true'><NavLink activeClassName='Homepage' exact to ="/" > Home Page</NavLink></MenuItem>
+                {commonStaffFeatures}
                 </SubMenu>
                 
                         <SubMenu defaultOpen='true' title="Control Instructors" >
@@ -126,7 +147,12 @@ class Sidebar extends Component {
             
             <Menu iconShape="round" >
 
-                        <SubMenu SubMenu defaultOpen='true' title="Control Academic Members" >
+                        <SubMenu defaultOpen='true' title="Dashboard" >
+                        <MenuItem active='true'><NavLink activeClassName='Homepage' exact to ="/" > Home Page</NavLink></MenuItem>
+                        {commonStaffFeatures}
+                        </SubMenu>
+
+                        <SubMenu defaultOpen='true' title="Control Academic Members" >
                         <MenuItem><NavLink activeClassName='assignslots' to ="assignslots" > Assign Slots</NavLink></MenuItem>
                         <MenuItem><NavLink activeClassName='updateassignment' to ="updateassignment" > Update Assignment</NavLink></MenuItem>             
                         <MenuItem><NavLink activeClassName='deleteassignment' to ="deleteassignment" > Delete Assignment</NavLink></MenuItem>
@@ -160,6 +186,7 @@ class Sidebar extends Component {
                 <SubMenu defaultOpen='true' title="Dashboard" >
                  
                 <MenuItem active='true'><NavLink activeClassName='Homepage' exact to ="/" > Home Page</NavLink></MenuItem>
+                {commonStaffFeatures}
                 </SubMenu>
                 
                     <SubMenu defaultOpen='true' title="Slot linking Requests" >
