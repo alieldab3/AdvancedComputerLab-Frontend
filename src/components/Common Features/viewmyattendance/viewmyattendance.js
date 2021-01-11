@@ -37,24 +37,30 @@ class viewmyattendance extends Component{
         <div className = 'cardupdate'>
         <form className="form-floating">
 
+        <div class="row">
+            <div class="col">
+                <select class="form-select" aria-label="Default select example">
+                <option selected>Select Month</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                </select>
+            </div>
+
+            <div class="col">
+                <div className='Under' >
+                <button type="button" class="btn btn-primary">View Month Records</button>
+                </div>
+            </div>
+        </div>
+ 
+
+        <br></br>
 
         <div>
-        <select class="form-select" aria-label="Default select example">
-        <option selected>Select Month</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        </select>
-        </div>
-
-        <div className='Under' >
-
-        <NavLink activeClassName='UpdateProfile' to ='updateprofile'>
-        <button type="button" class="btn btn-primary">Update Profile</button>
-        </NavLink>
-        </div>
-
         {RecordDiv}
+
+        </div>
 
         {/* <div className="mb-3">
         <label for="FormControlName" class="form-label">Name</label>
