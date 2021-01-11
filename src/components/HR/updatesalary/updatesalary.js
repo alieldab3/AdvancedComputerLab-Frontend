@@ -72,10 +72,20 @@ e.preventDefault();
      this.callAPI(e);
    
     }
-    
+ 
 
+
+
+
+
+    
 render() {
+    
     return(
+
+   
+
+
         <div class="login-box">
   <h2>update staff member salary </h2>
   <form>
@@ -107,7 +117,7 @@ render() {
   
 
   </form>
-
+login
 </div>
 
     )

@@ -81,7 +81,7 @@ e.preventDefault();
 
 render() {
     return(
-        <div class="login-box">
+        <div className="login-box">
   <h2>Add StaffMember </h2>
   <form>
   <div class="user-box">
