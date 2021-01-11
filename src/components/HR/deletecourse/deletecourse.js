@@ -2,9 +2,8 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './deletecourse.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space} from 'antd';
+import { message} from 'antd';
 
 
 
@@ -27,7 +26,7 @@ class deletecourse extends Component{
       let a=document.getElementById("uniqueID").value;
       
       if(a){
-      {e.preventDefault()};
+      e.preventDefault();
     axios.delete('http://localhost:5000/delCourse', {
     params:{
         id:a,
@@ -35,13 +34,13 @@ class deletecourse extends Component{
        }
        },{withCredentials:true})
           .then(function (response) {
-           {success()}
+           success()
            console.log(response);
           
         })
        
           .catch(function (error){
-        {error1()}
+        error1()
             console.log("no")
       
             console.log(error);
@@ -62,16 +61,16 @@ class deletecourse extends Component{
     }
 render() {
     return(
-<div class="container">  
-  <form id="contact" action="" method="post">
-  <h3>Delete course</h3>
-    <h4>Delete the course u want using already existing course!</h4>
+<div class="login">  
+   
+    <h1>Delete the course using already existing course!</h1>
     <form method="form">
+    <div>
     <input type="text" id="uniqueID" className="hi" name="u" placeholder="Course code" required="required" />      
+    </div>
     <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Delete Course</button>
     </form>
      
-  </form>
  
   
 </div>

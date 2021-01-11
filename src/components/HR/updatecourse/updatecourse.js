@@ -2,9 +2,8 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './updatecourse.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space} from 'antd';
+import { message} from 'antd';
 
 
 
@@ -29,7 +28,7 @@ class updatecourse extends Component{
       let c=document.getElementById("uniqueID2").value;
    
       if(a&&b&&c){
-      {e.preventDefault()};
+      e.preventDefault();
     axios.get('http://localhost:5000/updateCourse', {
     params:{
         oldid:a,
@@ -39,13 +38,13 @@ class updatecourse extends Component{
        }
        },{withCredentials:true})
           .then(function (response) {
-           {success()}
+           success()
            console.log(response);
           
         })
        
           .catch(function (error){
-        {error1()}
+        error1()
             console.log("no")
       
             console.log(error);
@@ -66,22 +65,31 @@ class updatecourse extends Component{
     }
 render() {
     return(
-<div class="container">  
-  <form id="contact" action="" method="post">
-  <h3>Update course</h3>
-    <h4>Update the course u want using already existing course!</h4>
+<div>
+<div className="login">  
+   <h1>Update the course using already existing course!</h1>
     <form method="form">
+    <div>
     <input type="text" id="uniqueID" className="hi" name="u" placeholder="Course code" required="required" />      
+    </div>
+    
+         <div>
          <input type="text" id="uniqueID1" className="hi" name="u" placeholder="Course new code" required="required" />
+         </div>
+    
+         <div>  
         <input type="text" id="uniqueID2" className="hi" name="u" placeholder="Course new name" required="required" />
+        </div>
+        <div className="lol">    
     <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Update Course</button>
-    </form>
+    </div>
+        
      
   </form>
  
   
 </div>
-
+</div>
     )
 }
 

@@ -73,6 +73,8 @@ e.preventDefault();
 
 render() {
     return(
+      <div className="big">
+   
         <div class="login-box">
   <h2>delete staff member </h2>
   <form>
@@ -102,24 +104,13 @@ render() {
   </form>
 
 </div>
+</div>
 
     )
 }
 
 
 }
-// class viewschedule extends Component {
-//   render () {
-//     return (
-//       <BrowserRouter>
-//       <Sidebar />
-//       {/* <Route exact path='/' component={Index} />
-//       <Route path='/contact' component={Contact} /> */}
-//     </BrowserRouter>
-
-//    );
-//   }
-// }
 
 
 export default deletestaffmember;

@@ -12,7 +12,7 @@ import { DownOutlined } from '@ant-design/icons';
 
 const success = () => {
     
-    message.success('staff member deleted successfully from the system');
+    message.success('staff member salary updated successfully');
   };
 
 const warning = () => {
@@ -72,10 +72,21 @@ e.preventDefault();
      this.callAPI(e);
    
     }
-    
+ 
 
+
+
+
+
+    
 render() {
+    
     return(
+
+      <div className="big">
+   
+
+
         <div class="login-box">
   <h2>update staff member salary </h2>
   <form>
@@ -85,7 +96,7 @@ render() {
     </div>
  
     <div class="user-box">
-      <input type= "text" name="" required=""id="uniqueID"placeholder="plz enter new salary"  />
+      <input type= "text" name="" required=""id="uniqueID1"placeholder="plz enter new salary"  />
       <label>Salary</label>
     </div>
  
@@ -107,7 +118,7 @@ render() {
   
 
   </form>
-
+</div>
 </div>
 
     )
@@ -115,18 +126,5 @@ render() {
 
 
 }
-// class viewschedule extends Component {
-//   render () {
-//     return (
-//       <BrowserRouter>
-//       <Sidebar />
-//       {/* <Route exact path='/' component={Index} />
-//       <Route path='/contact' component={Contact} /> */}
-//     </BrowserRouter>
-
-//    );
-//   }
-// }
-
 
 export default updatesalary;

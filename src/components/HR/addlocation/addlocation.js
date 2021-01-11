@@ -2,14 +2,11 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './addlocation.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space} from 'antd';
+import { message} from 'antd';
 
 
-const info = () => {
-  message.info('This is a normal message');
-};
+
 const success = () => {
   message.success('Location added successfully');
 };
@@ -30,7 +27,7 @@ class addlocation extends Component{
      let d=document.getElementById("uniqueID3").value;
     console.log(a+" "+b+" "+c+" "+d);
     if(a&&b&&c&&d){ 
-      {e.preventDefault()};
+      e.preventDefault();
     
      
       axios.post('http://localhost:5000/addLocation', {
@@ -40,12 +37,12 @@ class addlocation extends Component{
            occ:d
           },{withCredentials:true})
           .then(function (response) {
-            {success()}
+            success()
           
         })
        
           .catch(function (error){
-        {error1()}
+        error1()
             console.log("no")
       
             console.log(error);
@@ -66,41 +63,36 @@ class addlocation extends Component{
 render() {
     return(
         
-<div className="login-page">
-<h2 className="formal" >  Add location</h2>
+<div class="login">  
+
+<h1>  Add location</h1>
     
-  <div className="form">
-    <form className="login-form">
-
-      <input type="text"  id="uniqueID"  placeholder="location name" required="required"/>
-      <input type="text" id="uniqueID1" placeholder="Capacity" required="required"/>
-      <input type="text" id="uniqueID2" placeholder="type"required="required"/>
-      <input type="text" id="uniqueID3" placeholder="occupation"required="required"/>
-
-
-      <button onClick={this.handleClick}  >add location</button>
+    <form method="form">
+    
+     <div>
+      <input type="text" className="hi"  id="uniqueID"  placeholder="location name" required="required"/>
+      </div>
+      <div>
+      <input type="text" className="hi"  id="uniqueID1" placeholder="Capacity" required="required"/>
+      </div>
+      <div>
+      <input type="text" className="hi"  id="uniqueID2" placeholder="type"required="required"/>
+      </div>
+      <div>
+      <input type="text" className="hi"  id="uniqueID3" placeholder="occupation"required="required"/>
+      </div>
+      
+      <div className="lol1">  
+      <button className="btn btn-primary btn-block btn-large" onClick={this.handleClick}  >add location</button>
+      </div>
        
     </form>
      
-  </div>
     
 </div>
 
 )
     }
 }
-// class viewschedule extends Component {
-//   render () {
-//     return (
-//       <BrowserRouter>
-//       <Sidebar />
-//       {/* <Route exact path='/' component={Index} />
-//       <Route path='/contact' component={Contact} /> */}
-//     </BrowserRouter>
-
-//    );
-//   }
-// }
-
 
 export default addlocation;

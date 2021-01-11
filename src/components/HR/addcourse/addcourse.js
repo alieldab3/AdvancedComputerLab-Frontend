@@ -2,9 +2,8 @@ import React , { Component } from 'react';
 import axios from 'axios'
 import './addcourse.css';
 import 'antd/dist/antd.css';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { message, Button ,space} from 'antd';
+import { message} from 'antd';
 
 
 
@@ -29,7 +28,7 @@ class addcourse extends Component{
       let c=document.getElementById("uniqueID2").value;
    
       if(a&&b&&c){
-      {e.preventDefault()};
+      e.preventDefault();
       console.log(a+" "+b);
     axios.post('http://localhost:5000/addCourse', {
         depname:a,
@@ -37,13 +36,13 @@ class addcourse extends Component{
         id:c  
           },{withCredentials:true})
           .then(function (response) {
-           {success()}
+           success()
            console.log(response);
           
         })
        
           .catch(function (error){
-        {error1()}
+        error1()
             console.log("no")
       
             console.log(error);
@@ -64,21 +63,29 @@ class addcourse extends Component{
     }
 render() {
     return(
-<div class="container">  
-  <form id="contact" action="" method="post">
-  <h3>Add course</h3>
-    <h4>Add the course u want using already existed Department!</h4>
+<div class="login">  
+    <h1>Add the course  using already existed Department!</h1>
     <form method="form">
+    
+   
+    <div>  
     	<input type="text" id="uniqueID" className="hi" name="u" placeholder="Department Name" required="required" />
+      </div>
+      <div>  
+   
         <input type="text" id="uniqueID1" className="hi" name="u" placeholder="Course Name" required="required" />
+        </div>
+        <div>  
+   
         <input type="text" id="uniqueID2" className="hi" name="u" placeholder="Course id or code" required="required" />
+        </div>
+        <div className="lol">  
+    <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Create Course </button>
+    </div>
         
        
-    <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Create Department Under faculty</button>
     </form>
      
-  </form>
- 
   
 </div>
 
