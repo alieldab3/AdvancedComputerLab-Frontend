@@ -41,6 +41,20 @@ class Sidebar extends Component {
             </Fragment>
         )
 
+        let commonACFeatures = (
+            <Fragment>
+                <MenuItem><NavLink activeClassName='viewSchedule' to ="viewSchedule" > View My Schedule</NavLink></MenuItem>
+                <MenuItem><NavLink activeClassName='ChangeDayOff' to ="ChangeDayOff" > Change My Day Off</NavLink></MenuItem>
+
+            <SubMenu title="Control Requests" > 
+                <MenuItem><NavLink activeClassName='ViewRequests' to ="ViewRequests" > View Requests</NavLink></MenuItem>
+                <MenuItem><NavLink activeClassName='sendReplacement' to ="sendReplacement" > Replacement Request</NavLink></MenuItem>             
+                <MenuItem><NavLink activeClassName='sendSlotLinking' to ="sendSlotLinking" > Slot Linking Request</NavLink></MenuItem>
+                <MenuItem><NavLink activeClassName='SubmitLeave' to ="SubmitLeave" > Leave Request</NavLink></MenuItem>             
+            </SubMenu>
+            </Fragment>
+        )
+
 
 
 
@@ -54,6 +68,14 @@ class Sidebar extends Component {
                     <MenuItem active='true'><NavLink activeClassName='Homepage' exact to ="/" > Home Page</NavLink></MenuItem>
                     {commonStaffFeatures}
                     </SubMenu>
+
+
+
+                    <SubMenu defaultOpen='true' title="Services" >
+                    {commonACFeatures}
+                    </SubMenu>
+
+        
                     
                     <SubMenu defaultOpen='true' title="Locations & Faculties" >
                         <SubMenu  title="Control Locations" >
@@ -114,6 +136,10 @@ class Sidebar extends Component {
                 <MenuItem active='true'><NavLink activeClassName='Homepage' exact to ="/" > Home Page</NavLink></MenuItem>
                 {commonStaffFeatures}
                 </SubMenu>
+
+                <SubMenu defaultOpen='true' title="Services" >
+                    {commonACFeatures}
+                    </SubMenu>
                 
                         <SubMenu defaultOpen='true' title="Control Instructors" >
                         <MenuItem><NavLink activeClassName='assigninstructor' to ="assigninstructor" > Assign an Instructor</NavLink></MenuItem>
@@ -152,6 +178,10 @@ class Sidebar extends Component {
                         {commonStaffFeatures}
                         </SubMenu>
 
+                        <SubMenu defaultOpen='true' title="Services" >
+                    {commonACFeatures}
+                    </SubMenu>
+
                         <SubMenu defaultOpen='true' title="Control Academic Members" >
                         <MenuItem><NavLink activeClassName='assignslots' to ="assignslots" > Assign Slots</NavLink></MenuItem>
                         <MenuItem><NavLink activeClassName='updateassignment' to ="updateassignment" > Update Assignment</NavLink></MenuItem>             
@@ -188,6 +218,10 @@ class Sidebar extends Component {
                 <MenuItem active='true'><NavLink activeClassName='Homepage' exact to ="/" > Home Page</NavLink></MenuItem>
                 {commonStaffFeatures}
                 </SubMenu>
+
+                <SubMenu defaultOpen='true' title="Services" >
+                    {commonACFeatures}
+                    </SubMenu>
                 
                     <SubMenu defaultOpen='true' title="Slot linking Requests" >
                         <MenuItem><NavLink activeClassName='controlrequests' to ="controlrequests" > Control Requests</NavLink></MenuItem>

@@ -81,7 +81,7 @@ import sendReplacement from './components/Common Features/sendReplacement/sendRe
 import sendSlotLinking from './components/Common Features/sendSlotLinking/sendSlotLinking';
 import ChangeDayOff from './components/Common Features/ChangeDayOff/ChangeDayOff';
 import SubmitLeave from './components/Common Features/SubmitLeave/SubmitLeave';
-import ViewRequests from './components/Common Features/ViewRequests/viewmyhours';
+import ViewRequests from './components/Common Features/ViewRequests/ViewRequests';
 
 
 class App extends Component {
