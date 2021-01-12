@@ -76,8 +76,12 @@ import viewmymissingdays from './components/Common Features/viewmymissingdays/vi
 import viewmyhours from './components/Common Features/viewmyhours/viewmyhours';
 
 //All Academic Members Components//
-
-
+import viewSchedule from './components/Common Features/viewSchedule/viewSchedule';
+import sendReplacement from './components/Common Features/sendReplacement/sendReplacement';
+import sendSlotLinking from './components/Common Features/sendSlotLinking/sendSlotLinking';
+import ChangeDayOff from './components/Common Features/ChangeDayOff/ChangeDayOff';
+import SubmitLeave from './components/Common Features/SubmitLeave/SubmitLeave';
+import ViewRequests from './components/Common Features/ViewRequests/viewmyhours';
 
 
 class App extends Component {
@@ -177,10 +181,13 @@ class App extends Component {
                           <Route exact path='/viewmymissingdays' component={viewmymissingdays} />
                           <Route exact path='/viewmyhours' component={viewmyhours} />
                           {/* All Academic Members Components */}
-
+                          <Route exact path='/viewSchedule' component={viewSchedule} />
+                          <Route exact path='/sendReplacement' component={sendReplacement} />
+                          <Route exact path='/sendSlotLinking' component={sendSlotLinking} />
+                          <Route exact path='/ChangeDayOff' component={ChangeDayOff} />
+                          <Route exact path='/SubmitLeave' component={SubmitLeave} />
+                          <Route exact path='/ViewRequests' component={ViewRequests} />
                           
-
-
                   </Switch>
               </div>
 
