@@ -7,15 +7,16 @@ import headerImage from "./header3.png";
 import headerImage2 from "./GUC.png";
 
 
+
+
+
 const Header =() =>{
+
     return(
+        
         <div >
             <header className="header" >
-           
-                <div className = 'text-block'>                 
-                {/* <h2>Log Out</h2> */}
-                <NavLink activeClassName='logout' to ="/logout" style={{ textDecoration: 'none' }} > Log Out</NavLink>
-                </div>
+                
                 <div className = 'img-block'>                 
                 <img src={headerImage2} className='img'/>
                 </div>
@@ -24,6 +25,12 @@ const Header =() =>{
                 <img src={headerImage} className='img'/>
                 </div>
 
+                <div className = 'text-block'>
+                   <div class="navbarC">
+                   <NavLink activeClassName='logout' to ="/logout" style={{ textDecoration: 'none' }} ><i class="fa fa-sign-out"></i> Log Out</NavLink>
+                   <NavLink activeClassName='profile' to ="/profile" style={{ textDecoration: 'none' }} ><i class="fa fa-user-o"></i> Profile</NavLink>
+                   </div>
+                </div>
 
             </header>
         </div>

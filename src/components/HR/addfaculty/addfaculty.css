@@ -1,3 +1,64 @@
-.main{
-    padding-top: 50px;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+* { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; box-sizing:border-box; }
+
+html { width: 100%; height:100%; overflow:hidden; }
+
+body{ 
 }
+.login { 
+
+	top: 100%;
+	left: 100%;
+	margin: -50px 250 0 -50px;
+	min-width:2000px;
+	min-height:1000px;
+	transform: translate(-20%, 5%);
+    
+	overflow: auto;
+	background: linear-gradient(#141e30, #243b55);
+  
+}
+.login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center;font-size: 50px;
+}
+
+.login .hi { 
+	width: 20%; 
+	max-width:330px;
+	transform: translate(240%, 80%);
+    margin: 25px;
+	background: rgba(0,0,0,0.3);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 20px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+	-webkit-transition: box-shadow .5s ease;
+	-moz-transition: box-shadow .5s ease;
+	-o-transition: box-shadow .5s ease;
+	-ms-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
+}
+.login .btn-primary{
+position: absolute;
+top: 22%;
+width: 20%; 
+max-width:250px;
+min-width:250px;
+transform: translate(318%, -40%);
+margin: 25px;
+margin-top: 25px;
+	
+font-size: 20px;
+	
+}
+input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+
+.login button:hover,.login button:active,.login button:focus {
+  background: #5aa109;
+}
+

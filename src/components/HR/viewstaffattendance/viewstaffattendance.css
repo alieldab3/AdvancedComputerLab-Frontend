@@ -1,3 +1,27 @@
-.main{
-    padding-top: 50px;
+.edu  {
+
+    transform: translate(20%, 0%);
+  
+}
+.edu .btn-primary  {
+
+    transform: translate(0%, -100%);
+  
+}
+
+.edu .plz{
+    transform: translate(0%, 55%);
+  
+}
+.edu .hi  {
+
+    transform: translate(0%, 0%);
+  
+}
+.edu .haha {
+    transform: translate(60%, -10%);
+    top: 5%;
+    width: 30%; 
+    padding-left: 25px;
+    overflow-y: scroll;
 }

@@ -1,16 +1,85 @@
 import React , { Component } from 'react';
-import { BrowserRouter , Route } from 'react-router-dom'
+import axios from 'axios'
 import './deletecourse.css';
+import 'antd/dist/antd.css';
+import 'antd/dist/antd.css';
+import { message} from 'antd';
 
-const deletecourse =() =>{
+
+
+const success = () => {
+    
+  message.success('Course deletd successfully ');
+};
+
+const error1 = () => {
+  message.error('Cannot delete Course deosnot exist ');
+};
+  
+class deletecourse extends Component{
+  
+   
+    
+
+
+    callAPI(e) {
+      let a=document.getElementById("uniqueID").value;
+      
+      if(a){
+      e.preventDefault();
+    axios.delete('http://localhost:5000/delCourse', {
+    params:{
+        id:a,
+        
+       }
+       },{withCredentials:true})
+          .then(function (response) {
+           success()
+           console.log(response);
+          
+        })
+       
+          .catch(function (error){
+        error1()
+            console.log("no")
+      
+            console.log(error);
+          
+      //      message.error(error.response.data);
+          });
+   }  
+    }
+
+    componentDidMount() {
+    
+    }
+    
+    handleClick= (e) => {
+
+     this.callAPI(e);
+   
+    }
+render() {
     return(
-        <div className="main">
-            <h2>deletecourse</h2>
-            <p>This is deletecourse</p>
-        </div>
+<div class="login">  
+   
+    <h1>Delete the course using already existing course!</h1>
+    <form method="form">
+    <div>
+    <input type="text" id="uniqueID" className="hi" name="u" placeholder="Course code" required="required" />      
+    </div>
+    <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Delete Course</button>
+    </form>
+     
+ 
+  
+</div>
+
     )
 }
 
+
+}
 // class viewschedule extends Component {
 //   render () {
 //     return (

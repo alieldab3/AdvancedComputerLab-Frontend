@@ -1,3 +1,32 @@
-.main{
-    padding-top: 50px;
+html {
+  height: 100%;
+}
+body {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+}
+.big{
+  background: linear-gradient(#141e30, #243b55);
+  min-width:2000px;
+    min-height:1000px;
+   transform: translate(-20%, 5%);
+     
+}
+.big .login-box {
+ 
+  top: 50%;
+  left: 50%;
+  padding: 40px;
+  transform: translate(-50%, -80%);
+  background: rgba(0,0,0,.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.big .login-box .btn-primary  {
+  background: transparent;
+  border:transparent
+   
 }
