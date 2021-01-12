@@ -5,7 +5,7 @@ import './App.css';
 import Header from './components/Header/Header'
 import Sidebar from './components/Sidebar/Sidebar'
 import Homepage from './components/Homepage/homepage';
-import Login from './components/login/login2';
+import Login from './components/login/login3';
 import Profile from './components/Profile/Profile';
 import updateProfile from './components/Profile/updateProfile';
 

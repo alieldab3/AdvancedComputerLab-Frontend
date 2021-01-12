@@ -1,0 +1,42 @@
+.card4{
+    /* position: fixed;
+    background: white;
+    text-align: center;
+    width: 30%;
+    height: 100%; */
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background: whitesmoke;
+    opacity: 0.9;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    margin-left: 510px;
+    width: 30%;
+    max-height: 100%;
+}
+
+.left{
+    padding-left: 20px;
+    float: left;
+}
+
+
+
+.card8{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    max-width: 99%;
+    max-height: 99%;
+
+    opacity: 0.7;
+
+}
+
