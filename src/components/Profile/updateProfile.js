@@ -9,6 +9,8 @@ class updateProfile extends Component {
 
     state ={
         person : [],
+        officeLocation : null,
+
         // name : 'Ali El Dabaa',
         // member_id : '123',
         // gender : 'Male',
@@ -27,8 +29,13 @@ class updateProfile extends Component {
         axios.get('http://localhost:5000/viewProfile')
           .then(res => {
             const person = res.data[0];
-            this.setState({ person });
-          })
+            const loc = res.data[1];
+
+            this.setState({ 
+                person : person,
+                officeLocation : loc
+            });
+                  })
       }
 
     handleSave(e){
@@ -157,7 +164,7 @@ class updateProfile extends Component {
             <div class="col">
         <div class="mb-3">
         <label for="FormControlOffice" class="form-label">Office Location</label>
-        <input type="text" class="form-control" id="FormControlOffice" placeholder="C3.123" defaultValue={this.state.person.officeLocation}></input>
+        <input type="text" class="form-control" id="FormControlOffice" placeholder="C3.123" defaultValue={this.state.officeLocation}></input>
         </div>
         </div>
 
