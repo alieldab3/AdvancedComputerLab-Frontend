@@ -85,7 +85,8 @@ class resetpassword extends Component{
         <form class="form-floating">
             {/* class="form-control is-invalid" */}
 
-        <p>Enter the new password, and then type it again to confirm it.
+        <p>
+          Enter the new password, and then type it again to confirm it.
         <br></br>
         <br></br>
 
@@ -97,11 +98,16 @@ class resetpassword extends Component{
         <label for="FormControlEmail" class="form-label">Email address</label>
         <input type="email" class="form-control" id="FormControlEmail" placeholder="name@guc.edu.eg" defaultValue={this.state.person.email} disabled></input>
         </div>
-    
+        <br></br>
+        
+        <ul>
+          <li>Use at least 5 characters.</li>
+          <li>Avoid using the same password for multiple sites.</li>
+        </ul>
 
          <div >
          <label for="NewPassword" class="form-label" >New password </label>
-            <div class="input-group">
+            <div class="input-group mb-3">
             <input type={typeNewPassword} class="form-control" id="NewPassword" placeholder="New Password"></input>
             <button type="button" class="btn btn-outline-secondary" onClick={() => this.showNewPass()}>Show</button>
             </div>

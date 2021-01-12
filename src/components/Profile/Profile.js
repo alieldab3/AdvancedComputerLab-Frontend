@@ -11,7 +11,8 @@ class Profile extends Component {
 
 
     state ={
-        person : []
+        person : [],
+        officeLocation : null
         // name : 'Ali El Dabaa',
         // member_id : '123',
         // gender : 'Male',
@@ -29,8 +30,15 @@ class Profile extends Component {
         axios.get('http://localhost:5000/viewProfile')
           .then(res => {
             const person = res.data[0];
+            const loc = res.data[1];
+
             console.log(person)
-            this.setState({ person });
+            console.log(loc)
+
+            this.setState({ 
+                person : person,
+                officeLocation : loc
+            });
           })
       }
 
@@ -60,7 +68,7 @@ class Profile extends Component {
                 <p class="title">{this.state.person.role}</p>
                 <p>Gender : {this.state.person.gender}</p>
                 <p>Email : {this.state.person.email}</p>
-                <p>Office Location : {this.state.person.officeLocation}</p>
+                <p>Office Location : {this.state.officeLocation}</p>
                 <p>Day Off : {this.state.person.dayoff}</p>
                 
                 {department}
