@@ -34,28 +34,31 @@ class Login3 extends Component {
                                 <br></br>
                             </div>
 
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"></input>
-                                <label for="floatingInput">Email address</label>
+                            <div class='widthed'>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="loginemail" placeholder="name@guc.edu.eg"></input>
+                                    <label for="loginemail">Email address</label>
+                                </div>
+
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" id="loginPassword" placeholder="Password"></input>
+                                    <label for="loginPassword">Password</label>
+                                </div>
                             </div>
 
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password"></input>
-                                <label for="floatingPassword">Password</label>
-                            </div>
                             <br></br>
 
                             <div class="form-check">
                                 <div className='left'>
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input>
-                                    <label class="form-check-label" for="flexCheckDefault">Remember Me</label>
+                                    <input class="form-check-input" type="checkbox" value="" id="RememberMeCheck"></input>
+                                    <label class="form-check-label" for="RememberMeCheck">Remember Me</label>
                                 </div>
                             </div>
 
                             <br></br>
 
                             <div >
-                                <button type="button" class="btn btn-primary" >Log In</button>
+                                <button type="submit" class="btn btn-primary" >Log In</button>
                             </div>
                             <br></br>
                             <br></br>
