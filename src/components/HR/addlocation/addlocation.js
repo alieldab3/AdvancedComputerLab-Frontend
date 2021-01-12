@@ -76,7 +76,14 @@ render() {
       <input type="text" className="hi"  id="uniqueID1" placeholder="Capacity" required="required"/>
       </div>
       <div>
-      <input type="text" className="hi"  id="uniqueID2" placeholder="type"required="required"/>
+      <select className="hi" id="uniqueID2">
+  <option>lab</option>
+  <option>tutorial</option>
+  <option>office</option>
+  <option>hall</option>
+  
+  </select>
+  
       </div>
       <div>
       <input type="text" className="hi"  id="uniqueID3" placeholder="occupation"required="required"/>
