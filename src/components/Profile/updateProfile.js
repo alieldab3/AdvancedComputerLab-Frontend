@@ -10,7 +10,7 @@ class updateProfile extends Component {
     state ={
         person : [],
         officeLocation : null,
-        token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZmIxYWYyZTc3Y2U3MWQ3Y2MyYThiYSIsInN0YWZmSUQiOiJoci0yNiIsImlhdCI6MTYxMDQ4Mzk2OX0.hXqBeRSoSUo3JDIrxULCVGikzXQmfqrcS-ZJWNnc06w",
+        token : this.props.token,
 
         SaveState : null
     }
@@ -47,10 +47,14 @@ class updateProfile extends Component {
             gender : newGender,
             officeLocation : newOfficeLocation,
             dayoff : newDayOff
-            // salary : parseInt(newSalary)
-        },{withCredentials:true})
+        }, {
+            headers: {
+                'auth-token': this.state.token
+            }
+          },{withCredentials:true})
         .then((response)=>{
           this.setState({SaveState : true})
+          console.log(response)
         })
         .catch((error)=>{
             this.setState({SaveState : false})

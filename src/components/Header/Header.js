@@ -27,7 +27,8 @@ const Header =() =>{
 
                 <div className = 'text-block'>
                    <div class="navbarC">
-                   <NavLink activeClassName='logout' to ="/logout" style={{ textDecoration: 'none' }} ><i class="fa fa-sign-out"></i> Log Out</NavLink>
+                   {/* <NavLink activeClassName='logout' to ="/logout" style={{ textDecoration: 'none' }} ><i class="fa fa-sign-out"></i> Log Out</NavLink> */}
+                   <a href ="/logout" style={{ textDecoration: 'none' }} ><i class="fa fa-sign-out"></i> Log Out</a>
                    <NavLink activeClassName='profile' to ="/profile" style={{ textDecoration: 'none' }} ><i class="fa fa-user-o"></i> Profile</NavLink>
                    </div>
                 </div>

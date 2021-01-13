@@ -13,7 +13,7 @@ class Profile extends Component {
     state ={
         person : [],
         officeLocation : null,
-        token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZmIxYWYyZTc3Y2U3MWQ3Y2MyYThiYSIsInN0YWZmSUQiOiJoci0yNiIsImlhdCI6MTYxMDQ4Mzk2OX0.hXqBeRSoSUo3JDIrxULCVGikzXQmfqrcS-ZJWNnc06w"
+        token : this.props.token
     }
 
     componentDidMount() {
@@ -35,6 +35,7 @@ class Profile extends Component {
                 officeLocation : loc
             });
           })
+          console.log(this.state.token)
       }
 
 

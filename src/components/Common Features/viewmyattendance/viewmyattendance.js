@@ -9,12 +9,17 @@ import './viewmyattendance.css';
 class viewmyattendance extends Component{
 
     state ={
+        token : this.props.token,
         attendanceRecords : [],
         viewMonth : null,
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/ViewAttendance/:')
+        axios.get('http://localhost:5000/ViewAttendance/:', {
+            headers: {
+                'auth-token': this.state.token
+            }
+          })
           .then(res => {
             const attendanceRecords = res.data;
             this.setState({ attendanceRecords });
@@ -26,7 +31,11 @@ class viewmyattendance extends Component{
 
         if(recordSelectValue=="All"){
             this.setState({viewMonth : false})
-            axios.get('http://localhost:5000/ViewAttendance/:')
+            axios.get('http://localhost:5000/ViewAttendance/:', {
+                headers: {
+                    'auth-token': this.state.token
+                }
+              })
             .then(res => {
               const attendanceRecords = res.data;
               this.setState({ attendanceRecords });
@@ -35,7 +44,11 @@ class viewmyattendance extends Component{
         else if(recordSelectValue!=null){
             this.setState({viewMonth : true})
 
-            axios.get('http://localhost:5000/ViewAttendance/'+recordSelectValue)
+            axios.get('http://localhost:5000/ViewAttendance/'+recordSelectValue, {
+                headers: {
+                    'auth-token': this.state.token
+                }
+              })
             .then(res => {
               const attendanceRecords = res.data;
               this.setState({ attendanceRecords });
