@@ -5,11 +5,56 @@ import axios from 'axios';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import './login.css';
 import Image from '../Header/header2.jpg';
+import Profile from '../Profile/Profile';
 
 class Login3 extends Component {
 
+    state={
+        isLogged : null,
+        token : null,
+        user:null
+    }
+
+
+    handleloginSub(){
+        let loginemail = document.getElementById("loginemail").value;
+        let loginPassword = document.getElementById("loginPassword").value;
+
+        console.log(loginemail+" "+loginPassword)
+        axios.post('http://localhost:5000/login',
+        {
+            email : loginemail,
+            password : loginPassword,
+        },{withCredentials:true})
+        .then(res=>{
+          this.setState({isLogged : true})
+
+          const token = res.data.token;
+          const user = res.data.user;
+
+
+          this.setState({ 
+            token : token,
+            user : user
+          });
+
+        })
+        .catch((error)=>{
+            this.setState({isLogged : false})
+             console.log(error);
+        });
+
+        console.log("Logging In ....")
+        console.log(this.state.token)
+
+
+    }
+
     render(){
         return(
+            <div>
+            {/* <Profile data={this.state.token}/> */}
+
             <div className="container">
                 <div class="row">
 
@@ -58,7 +103,7 @@ class Login3 extends Component {
                             <br></br>
 
                             <div >
-                                <button type="submit" class="btn btn-primary" >Log In</button>
+                                <button type="submit" class="btn btn-primary" onClick={() => this.handleloginSub()} >Log In</button>
                             </div>
                             <br></br>
                             <br></br>
@@ -77,6 +122,8 @@ class Login3 extends Component {
                     </div>
 
                 </div>
+            </div>
+
             </div>
         )
     }

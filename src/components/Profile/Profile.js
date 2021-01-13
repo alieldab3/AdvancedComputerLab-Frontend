@@ -12,22 +12,17 @@ class Profile extends Component {
 
     state ={
         person : [],
-        officeLocation : null
-        // name : 'Ali El Dabaa',
-        // member_id : '123',
-        // gender : 'Male',
-        // email : 'alihaha@gmail.com',
-        // officeLocation : 'C3.215',
-        // role: 'CEO & Founder, HR Baba',
-        // dayoff : 'Friday',
-        // faculty : null,
-        // department : null
-        // courses
-        // schedule
+        officeLocation : null,
+        token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZmIxYWYyZTc3Y2U3MWQ3Y2MyYThiYSIsInN0YWZmSUQiOiJoci0yNiIsImlhdCI6MTYxMDQ4Mzk2OX0.hXqBeRSoSUo3JDIrxULCVGikzXQmfqrcS-ZJWNnc06w"
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/viewProfile')
+
+        axios.get('http://localhost:5000/viewProfile', {
+            headers: {
+                'auth-token': this.state.token
+            }
+          })
           .then(res => {
             const person = res.data[0];
             const loc = res.data[1];
@@ -65,7 +60,7 @@ class Profile extends Component {
 
                 <div className = 'cardwide'>
                 <h1>{this.state.person.name}</h1>
-                <p class="title">{this.state.person.role}</p>
+                <p className="title">{this.state.person.role}</p>
                 <p>Gender : {this.state.person.gender}</p>
                 <p>Email : {this.state.person.email}</p>
                 <p>Office Location : {this.state.officeLocation}</p>
@@ -82,7 +77,7 @@ class Profile extends Component {
                 <br></br>
 
                 <a href={ 'mailto:' + this.state.person.email }>
-                <button type="button" class="btn btn-outline-dark">Send Email</button>
+                <button type="button" className="btn btn-outline-dark">Send Email</button>
                 </a>
                 <br></br>
                 <br></br>
@@ -100,7 +95,7 @@ class Profile extends Component {
             <div className='Under' >
 
             <NavLink activeClassName='UpdateProfile' to ='updateprofile'>
-            <button type="button" class="btn btn-primary">Update Profile</button>
+            <button type="button" className="btn btn-primary">Update Profile</button>
             </NavLink>
 
             </div>

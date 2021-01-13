@@ -93,13 +93,15 @@ class App extends Component {
   }
 
   isLogged = (e) =>{
-    if ( this.state.loggedIn == false) {
-        return <Login/>
+    // if ( this.state.loggedIn == false) {
+        // return <Login/>
 
-    } else {
+    // } else {
         return (
+          
         <BrowserRouter>
           <div className='App'>
+            
             <Header />
 
               <div className='content'> 
@@ -112,6 +114,8 @@ class App extends Component {
                       <Route exact path='/' component={Homepage} />
                       <Route exact path='/profile' component={Profile} />
                       <Route exact path='/updateprofile' component={updateProfile} />
+                      <Route exact path='/login' component={Login} />
+
 
 
 
@@ -188,7 +192,7 @@ class App extends Component {
         </BrowserRouter>
         )
 
-    }
+    // }
   }
 
 

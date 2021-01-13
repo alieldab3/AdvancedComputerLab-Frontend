@@ -10,23 +10,17 @@ class updateProfile extends Component {
     state ={
         person : [],
         officeLocation : null,
-
-        // name : 'Ali El Dabaa',
-        // member_id : '123',
-        // gender : 'Male',
-        // email : 'alihaha@gmail.com',
-        // officeLocation : 'C3.215',
-        // role: 'CEO & Founder, HR Baba',
-        // // dayoff : 'Friday',
-        // salary : 555,
-        // faculty : null,
-        // department : null,
+        token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZmIxYWYyZTc3Y2U3MWQ3Y2MyYThiYSIsInN0YWZmSUQiOiJoci0yNiIsImlhdCI6MTYxMDQ4Mzk2OX0.hXqBeRSoSUo3JDIrxULCVGikzXQmfqrcS-ZJWNnc06w",
 
         SaveState : null
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/viewProfile')
+        axios.get('http://localhost:5000/viewProfile',{
+            headers: {
+                'auth-token': this.state.token
+            }
+          })
           .then(res => {
             const person = res.data[0];
             const loc = res.data[1];
