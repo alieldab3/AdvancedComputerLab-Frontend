@@ -50,7 +50,9 @@ const warning = () => {
         super(props)
 
         this.state = {
-            arr: []
+            arr: [],
+            token : this.props.token
+   
         }
     }
 
@@ -68,7 +70,9 @@ e.preventDefault();
       let a=document.getElementById("uniqueID").value;
       if(a){
     axios.get('http://localhost:5000/viewAllMissingDays/:month" component={UserPage}', {
-        params:{
+      headers: {'auth-token': this.state.token},
+              
+    params:{
             month:a
         }
        

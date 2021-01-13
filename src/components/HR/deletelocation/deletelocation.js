@@ -16,6 +16,10 @@ const error1 = () => {
 };
 class deletelocation extends Component{
   
+  state ={
+    token : this.props.token
+  }
+  
    
     
 
@@ -27,7 +31,9 @@ class deletelocation extends Component{
         e.preventDefault();
     
         axios.delete('http://localhost:5000/delLocation', {
-       params:{
+          headers: {'auth-token': this.state.token},
+           
+        params:{
         nam:a,
        }
        

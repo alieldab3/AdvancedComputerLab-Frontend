@@ -51,9 +51,12 @@ const error1 = () => {
         super(props)
 
         this.state = {
-            arr: []
+            arr: [],
+            token : this.props.token
+    
         }
     }
+     
 
 change =(e)=>{
 success1();
@@ -70,7 +73,9 @@ e.preventDefault();
       let a=document.getElementById("uniqueID").value;
       if(a){
     axios.get('http://localhost:5000/viewattandence', {
-        params:{
+      headers: {'auth-token': this.state.token},
+               
+    params:{
       id:a
         }
     },{withCredentials:true})

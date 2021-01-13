@@ -18,7 +18,11 @@ const error1 = () => {
 };
 
 class updatefaculty extends Component{
+  state ={
+    token : this.props.token
+  }
   
+   
    
     
 
@@ -30,7 +34,9 @@ class updatefaculty extends Component{
     {e.preventDefault()};
 
     axios.get('http://localhost:5000/updateFaculty', {
-        params:{
+      headers: {'auth-token': this.state.token},
+              
+    params:{
           nam:a,
           newname:b
         }        

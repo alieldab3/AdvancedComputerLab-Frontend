@@ -17,7 +17,9 @@ const error1 = () => {
 class addlocation extends Component{
   
    
-    
+  state ={
+    token : this.props.token
+  }
 
 
     callAPI(e) {
@@ -31,11 +33,16 @@ class addlocation extends Component{
     
      
       axios.post('http://localhost:5000/addLocation', {
+        
+        
           nam:a,
            cap:b,
             typ:c,
            occ:d
-          },{withCredentials:true})
+          },{
+          headers: {'auth-token': this.state.token}
+          }
+          ,{withCredentials:true})
           .then(function (response) {
             success()
           
