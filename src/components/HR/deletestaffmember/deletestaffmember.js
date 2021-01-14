@@ -29,12 +29,18 @@ class deletestaffmember extends Component{
   
    
     
-
+  state ={
+    token : this.props.token
+  }
+  
+   
 
     callAPI() {
       let a=document.getElementById("uniqueID").value;
       if(a){
     axios.delete('http://localhost:5000/delMem', {
+      headers: {'auth-token': this.state.token},
+           
         params:{
       id:a
         }

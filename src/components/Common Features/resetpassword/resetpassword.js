@@ -7,6 +7,7 @@ class resetpassword extends Component{
 
     state ={
         person : [],
+        token : this.props.token,
         PassResetSuccess : null,
         ShowNewPassword : false,
         ShowConfirmPassword : false
@@ -14,7 +15,11 @@ class resetpassword extends Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/viewProfile')
+        axios.get('http://localhost:5000/viewProfile', {
+          headers: {
+              'auth-token': this.state.token
+          }
+        })
           .then(res => {
             const person = res.data[0];
             this.setState({ person });
@@ -39,6 +44,10 @@ class resetpassword extends Component{
         {
             newPassword : InputNewPassword,
             passwordCheck : InputConfirmPassword
+        }, {
+          headers: {
+              'auth-token': this.state.token
+          }
         },{withCredentials:true})
         .then((response)=>{
           this.setState({PassResetSuccess : true})

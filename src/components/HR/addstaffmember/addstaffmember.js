@@ -27,6 +27,10 @@ const error1 = () => {
   
 class addstaffmember extends Component{
   
+  state ={
+    token : this.props.token
+  }
+  
    
     
 
@@ -46,7 +50,9 @@ class addstaffmember extends Component{
          gender:f,name:a,email:h,salary:b,
         officeLocation:{name:c},role:g,dayoff:e,department:d
     
-    },{withCredentials:true})
+    },{
+      headers: {'auth-token': this.state.token}
+      },{withCredentials:true})
           .then(function (response) {
            {success()}
            console.log(response);

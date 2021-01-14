@@ -8,18 +8,19 @@ import 'react-day-picker/lib/style.css';
 class signout extends Component {
 
     state = {
-        person : [],
+        // person : [],
+        token : this.props.token,
         selectedDay: null,
         signedOut : null
     }
 
-    componentDidMount() {
-        axios.get('http://localhost:5000/viewProfile')
-          .then(res => {
-            const person = res.data[0];
-            this.setState({ person });
-          })
-      }
+    // componentDidMount() {
+    //     axios.get('http://localhost:5000/viewProfile')
+    //       .then(res => {
+    //         const person = res.data[0];
+    //         this.setState({ person });
+    //       })
+    //   }
 
       handleDayChange(day) {
         this.setState({ selectedDay: day });
@@ -34,7 +35,11 @@ class signout extends Component {
                 axios.post('http://localhost:5000/signOut',
                 {
                     time : selDay
-                },{withCredentials:true})
+                }, {
+                    headers: {
+                        'auth-token': this.state.token
+                    }
+                  },{withCredentials:true})
                 .then((response)=>{
                     this.setState({signedOut : true})
                 })
