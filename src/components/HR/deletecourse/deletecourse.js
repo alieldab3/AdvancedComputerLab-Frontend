@@ -18,10 +18,6 @@ const error1 = () => {
   
 class deletecourse extends Component{
   
-  state ={
-    token : this.props.token
-  }
-  
    
     
 
@@ -32,8 +28,6 @@ class deletecourse extends Component{
       if(a){
       e.preventDefault();
     axios.delete('http://localhost:5000/delCourse', {
-      headers: {'auth-token': this.state.token},
-           
     params:{
         id:a,
         
@@ -74,7 +68,7 @@ render() {
     <div>
     <input type="text" id="uniqueID" className="hi" name="u" placeholder="Course code" required="required" />      
     </div>
-    <button type="submit"   className="hi"onClick={this.handleClick} >Delete Course</button>
+    <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Delete Course</button>
     </form>
      
  

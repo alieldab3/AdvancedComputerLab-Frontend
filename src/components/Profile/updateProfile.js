@@ -9,27 +9,26 @@ class updateProfile extends Component {
 
     state ={
         person : [],
-        officeLocation : null,
-        token : this.props.token,
+        // name : 'Ali El Dabaa',
+        // member_id : '123',
+        // gender : 'Male',
+        // email : 'alihaha@gmail.com',
+        // officeLocation : 'C3.215',
+        // role: 'CEO & Founder, HR Baba',
+        // // dayoff : 'Friday',
+        // salary : 555,
+        // faculty : null,
+        // department : null,
 
         SaveState : null
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/viewProfile',{
-            headers: {
-                'auth-token': this.state.token
-            }
-          })
+        axios.get('http://localhost:5000/viewProfile')
           .then(res => {
             const person = res.data[0];
-            const loc = res.data[1];
-
-            this.setState({ 
-                person : person,
-                officeLocation : loc
-            });
-                  })
+            this.setState({ person });
+          })
       }
 
     handleSave(e){
@@ -47,14 +46,10 @@ class updateProfile extends Component {
             gender : newGender,
             officeLocation : newOfficeLocation,
             dayoff : newDayOff
-        }, {
-            headers: {
-                'auth-token': this.state.token
-            }
-          },{withCredentials:true})
+            // salary : parseInt(newSalary)
+        },{withCredentials:true})
         .then((response)=>{
           this.setState({SaveState : true})
-          console.log(response)
         })
         .catch((error)=>{
             this.setState({SaveState : false})
@@ -162,7 +157,7 @@ class updateProfile extends Component {
             <div class="col">
         <div class="mb-3">
         <label for="FormControlOffice" class="form-label">Office Location</label>
-        <input type="text" class="form-control" id="FormControlOffice" placeholder="C3.123" defaultValue={this.state.officeLocation}></input>
+        <input type="text" class="form-control" id="FormControlOffice" placeholder="C3.123" defaultValue={this.state.person.officeLocation}></input>
         </div>
         </div>
 

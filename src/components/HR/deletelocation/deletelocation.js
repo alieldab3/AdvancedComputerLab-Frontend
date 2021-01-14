@@ -16,10 +16,6 @@ const error1 = () => {
 };
 class deletelocation extends Component{
   
-  state ={
-    token : this.props.token
-  }
-  
    
     
 
@@ -31,9 +27,7 @@ class deletelocation extends Component{
         e.preventDefault();
     
         axios.delete('http://localhost:5000/delLocation', {
-          headers: {'auth-token': this.state.token},
-           
-        params:{
+       params:{
         nam:a,
        }
        
@@ -70,11 +64,9 @@ render() {
   <div className="form">
   <form method="form">
    <input type="text"  id="uniqueID" className="hi" placeholder="the location you wish to delete"required="required" />
-   <div className="lol2">
-     
+      
       <button type="submit"  className="btn btn-primary btn-block btn-large" onClick={this.handleClick}  >delete location</button>
-      </div>
-    
+       
     </form>
      
   </div>

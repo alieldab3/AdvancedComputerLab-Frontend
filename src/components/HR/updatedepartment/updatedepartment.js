@@ -18,30 +18,24 @@ const success = () => {
   };
 
 class updatedepartment extends Component{
-  state ={
-    token : this.props.token
-  }
   
-   
    
     callAPI(e) {
         let a=document.getElementById("uniqueID").value;
         let b=document.getElementById("uniqueID1").value;
          if(a&&b){
       e.preventDefault();
-            
-      axios.get('http://localhost:5000/updateDepart', {
-        headers: {'auth-token': this.state.token},
+      console.log("fuck u 1")
              
-      params:{
+      axios.get('http://localhost:5000/updateDepart', {
+          params:{
             oldnam:a,
             newnam:b
-          } 
-           
-                
+          }        
             },{withCredentials:true})
             .then(function (response) {
-               success()
+             console.log("fuck u ")
+                success()
              
              console.log(response);
             

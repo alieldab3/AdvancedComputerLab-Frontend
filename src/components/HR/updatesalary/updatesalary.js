@@ -27,10 +27,6 @@ const warning = () => {
   
 class updatesalary extends Component{
   
-  state ={
-    token : this.props.token
-  }
-  
    
     
 
@@ -41,8 +37,6 @@ class updatesalary extends Component{
       
       if(a&&b){
     axios.get('http://localhost:5000/updateSalary', {
-      headers: {'auth-token': this.state.token},
-           
         params:{
       id:a,
       salary1:b

@@ -17,9 +17,7 @@ const error1 = () => {
 class addlocation extends Component{
   
    
-  state ={
-    token : this.props.token
-  }
+    
 
 
     callAPI(e) {
@@ -33,16 +31,11 @@ class addlocation extends Component{
     
      
       axios.post('http://localhost:5000/addLocation', {
-        
-        
           nam:a,
            cap:b,
             typ:c,
            occ:d
-          },{
-          headers: {'auth-token': this.state.token}
-          }
-          ,{withCredentials:true})
+          },{withCredentials:true})
           .then(function (response) {
             success()
           
@@ -83,14 +76,7 @@ render() {
       <input type="text" className="hi"  id="uniqueID1" placeholder="Capacity" required="required"/>
       </div>
       <div>
-      <select className="hi" id="uniqueID2">
-  <option>lab</option>
-  <option>tutorial</option>
-  <option>office</option>
-  <option>hall</option>
-  
-  </select>
-  
+      <input type="text" className="hi"  id="uniqueID2" placeholder="type"required="required"/>
       </div>
       <div>
       <input type="text" className="hi"  id="uniqueID3" placeholder="occupation"required="required"/>

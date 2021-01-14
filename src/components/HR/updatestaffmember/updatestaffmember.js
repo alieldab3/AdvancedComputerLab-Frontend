@@ -24,10 +24,6 @@ const warning = () => {
   
 class updatestaffmember extends Component{
   
-  state ={
-    token : this.props.token
-  }
-  
    
     
 
@@ -41,8 +37,6 @@ class updatestaffmember extends Component{
       console.log(c+" "+e+" "+f+" "+g+" "+h)
       if(c&&e&&f&&g&&h){
     axios.get('http://localhost:5000/updateMem', {
-      headers: {'auth-token': this.state.token},
-           
         params:{
       
     id:f,email:c,

@@ -22,11 +22,7 @@ class updatelocation extends Component{
   
    
     
-  state ={
-    token : this.props.token
-  }
-  
-   
+
 
     callAPI(e) {
       let a=document.getElementById("uniqueID").value;
@@ -38,16 +34,12 @@ class updatelocation extends Component{
         e.preventDefault();
     
         axios.get('http://localhost:5000/updateLocation', {
-          
-            headers: {'auth-token': this.state.token},
-            
    params:{
         nam:a,
            cap:b,
             typ:c,
            occ:d
    }  
-   
         },{withCredentials:true})
           .then(function (response) {
             success()
@@ -92,14 +84,8 @@ render() {
       <input type="text" id="uniqueID1"className="hi" placeholder="new Capacity"required="required"/>
       </div>
       <div>
-      <select className="hi" id="uniqueID2">
-  <option>lab</option>
-  <option>tutorial</option>
-  <option>office</option>
-  <option>hall</option>
-  
-  </select>
-     </div>
+      <input type="text" id="uniqueID2" className="hi" placeholder="new type"required="required"/>
+      </div>
       <div> 
       <input type="text" id="uniqueID3" className="hi" placeholder="new occupation"required="required"/>
       </div>

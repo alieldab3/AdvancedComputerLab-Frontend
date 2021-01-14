@@ -8,19 +8,18 @@ import 'react-day-picker/lib/style.css';
 class signin extends Component {
 
     state = {
-        // person : [],
-        token : this.props.token,
+        person : [],
         selectedDay: null,
         signedIn : null
     }
 
-    // componentDidMount() {
-    //     axios.get('http://localhost:5000/viewProfile')
-    //       .then(res => {
-    //         const person = res.data[0];
-    //         this.setState({ person });
-    //       })
-    //   }
+    componentDidMount() {
+        axios.get('http://localhost:5000/viewProfile')
+          .then(res => {
+            const person = res.data[0];
+            this.setState({ person });
+          })
+      }
 
       handleDayChange(day) {
         this.setState({ selectedDay: day });
@@ -31,16 +30,11 @@ class signin extends Component {
         let selDay ;
         if (stateDay) {
             selDay = stateDay.toISOString();
-            console.log(selDay)
              if (this.state.signedIn!=true) {
                 axios.post('http://localhost:5000/signIn',
                 {
-                    dateIn : selDay
-                }, {
-                    headers: {
-                        'auth-token': this.state.token
-                    }
-                  },{withCredentials:true})
+                    time : selDay
+                },{withCredentials:true})
                 .then((response)=>{
                     this.setState({signedIn : true})
                 })

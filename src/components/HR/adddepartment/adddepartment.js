@@ -17,9 +17,6 @@ const error1 = () => {
 };
   
 class adddepartment extends Component{
-  state ={
-    token : this.props.token
-  }
   
    
     
@@ -36,10 +33,7 @@ class adddepartment extends Component{
           facname:a,
           nam:b,
            
-          },{
-            headers: {'auth-token': this.state.token}
-            }
-            ,{withCredentials:true})
+          },{withCredentials:true})
           .then(function (response) {
            success()
            console.log(response);

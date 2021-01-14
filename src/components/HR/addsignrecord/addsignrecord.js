@@ -23,9 +23,6 @@ const warning = () => {
     
   
 class addsignrecord extends Component{
-  state ={
-    token : this.props.token
-  }
   
    
     
@@ -46,10 +43,7 @@ class addsignrecord extends Component{
       staffid:a,
       rec:{time:b,signIn:c}
     
-    },{
-      headers: {'auth-token': this.state.token}
-      }
-      ,{withCredentials:true})
+    },{withCredentials:true})
           .then(function (response) {
            success()
            console.log(response);

@@ -11,31 +11,27 @@ class Profile extends Component {
 
 
     state ={
-        person : [],
-        officeLocation : null,
-        token : this.props.token
+        person : []
+        // name : 'Ali El Dabaa',
+        // member_id : '123',
+        // gender : 'Male',
+        // email : 'alihaha@gmail.com',
+        // officeLocation : 'C3.215',
+        // role: 'CEO & Founder, HR Baba',
+        // dayoff : 'Friday',
+        // faculty : null,
+        // department : null
+        // courses
+        // schedule
     }
 
     componentDidMount() {
-
-        axios.get('http://localhost:5000/viewProfile', {
-            headers: {
-                'auth-token': this.state.token
-            }
-          })
+        axios.get('http://localhost:5000/viewProfile')
           .then(res => {
             const person = res.data[0];
-            const loc = res.data[1];
-
             console.log(person)
-            console.log(loc)
-
-            this.setState({ 
-                person : person,
-                officeLocation : loc
-            });
+            this.setState({ person });
           })
-          console.log(this.state.token)
       }
 
 
@@ -61,10 +57,10 @@ class Profile extends Component {
 
                 <div className = 'cardwide'>
                 <h1>{this.state.person.name}</h1>
-                <p className="title">{this.state.person.role}</p>
+                <p class="title">{this.state.person.role}</p>
                 <p>Gender : {this.state.person.gender}</p>
                 <p>Email : {this.state.person.email}</p>
-                <p>Office Location : {this.state.officeLocation}</p>
+                <p>Office Location : {this.state.person.officeLocation}</p>
                 <p>Day Off : {this.state.person.dayoff}</p>
                 
                 {department}
@@ -78,7 +74,7 @@ class Profile extends Component {
                 <br></br>
 
                 <a href={ 'mailto:' + this.state.person.email }>
-                <button type="button" className="btn btn-outline-dark">Send Email</button>
+                <button type="button" class="btn btn-outline-dark">Send Email</button>
                 </a>
                 <br></br>
                 <br></br>
@@ -96,7 +92,7 @@ class Profile extends Component {
             <div className='Under' >
 
             <NavLink activeClassName='UpdateProfile' to ='updateprofile'>
-            <button type="button" className="btn btn-primary">Update Profile</button>
+            <button type="button" class="btn btn-primary">Update Profile</button>
             </NavLink>
 
             </div>
