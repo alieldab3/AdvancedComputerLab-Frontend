@@ -1,3 +1,11 @@
 .main{
     padding-top: 50px;
 }
+.cardupdate{
+    padding-top: 40px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 60px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 600px;
+  }
