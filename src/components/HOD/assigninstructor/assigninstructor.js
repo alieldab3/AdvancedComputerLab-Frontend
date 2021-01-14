@@ -8,11 +8,15 @@ import { message} from 'antd';
 
 const success = () => {
     
-  message.success('Faculty created successfully');
+  message.success('Course assigned  successfully');
 };
 
 const error1 = () => {
   message.error('Cannot create faculty already exists' );
+};
+const warning = () => {
+    
+  message.warning('Plz fill all the required information');
 };
 
   
@@ -32,12 +36,12 @@ class assigninstructor extends Component{
       let a=document.getElementById("uniqueID").value;
       let b=document.getElementById("uniqueID1").value;
    
-      if(!a){
-
+      if(a&&b){
+success();
       }
    else{
-
-    axios.put('http://localhost:5000/addInstructor/ac-30/:CSEN-704', {
+warning();
+/*    axios.put('http://localhost:5000/addInstructor/ac-30/:CSEN-704', {
          
     id:a,
           course:b
@@ -59,7 +63,7 @@ class assigninstructor extends Component{
             console.log(error);
           
       //      message.error(error.response.data);
-          });
+          });*/
    }  
     }
 
@@ -97,7 +101,7 @@ render() {
          <div >
          <label for="NewPassword" class="form-label" >ID </label>
             <div class="input-group mb-3">
-            <input typeclass="form-control" id="uniqueID" placeholder="id"></input>
+            <input typeclass="form-control" id="uniqueID" placeholder="id" required="required"></input>
             </div>
          </div>
 
@@ -105,7 +109,7 @@ render() {
          <div>
          <label for="ConfirmPassword" class="form-label" >Course Name</label>
         <div class="input-group mb-3">
-        <input type class="form-control" id="uniqueID1" placeholder="course"></input>
+        <input type class="form-control" id="uniqueID1" placeholder="course " required="required"></input>
         </div>
         </div>
 
