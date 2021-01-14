@@ -17,8 +17,10 @@ const error1 = () => {
 };
   
 class addcourse extends Component{
+  state ={
+    token : this.props.token
+  }
   
-   
     
 
 
@@ -34,7 +36,10 @@ class addcourse extends Component{
         depname:a,
         nam:b,
         id:c  
-          },{withCredentials:true})
+          },{
+            headers: {'auth-token': this.state.token}
+            }
+           ,{withCredentials:true})
           .then(function (response) {
            success()
            console.log(response);

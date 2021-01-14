@@ -18,7 +18,11 @@ const error1 = () => {
 };
 
 class updatefaculty extends Component{
+  state ={
+    token : this.props.token
+  }
   
+   
    
     
 
@@ -30,7 +34,9 @@ class updatefaculty extends Component{
     {e.preventDefault()};
 
     axios.get('http://localhost:5000/updateFaculty', {
-        params:{
+      headers: {'auth-token': this.state.token},
+              
+    params:{
           nam:a,
           newname:b
         }        
@@ -65,7 +71,7 @@ render() {
     return(
 
 <div className="login">
-	<h1>Add new Faculty</h1>
+	<h1>Update Faculty</h1>
     <form method="form">
     	<input type="text" id="uniqueID" className="hi" name="u" placeholder="Faculty Old Name" required="required" />
         <input type="text" id="uniqueID1" className="hi" name="u" placeholder="Faculty New Name" required="required" />

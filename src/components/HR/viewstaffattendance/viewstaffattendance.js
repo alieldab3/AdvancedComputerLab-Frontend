@@ -28,7 +28,7 @@ let data1 = [];
 
 const success = () => {
     
-    message.success('staff member deleted successfully from the system');
+    message.success('id submitted successfullu plz press view attendance button');
   };
 
 const warning = () => {
@@ -36,22 +36,30 @@ const warning = () => {
     message.warning('Plz fill all the required information');
   };
   
-  const error1 = () => {
-    message.error('Member doesnot exist');
-  };
+  
+const success1 = () => {
     
-    
+    message.success('table shown successfully');
+};
+const error1 = () => {
+  message.error('plz enter valid data');
+};
+
+  
     class viewstaffattendance extends React.Component{
       constructor(props) {
         super(props)
 
         this.state = {
-            arr: []
+            arr: [],
+            token : this.props.token
+    
         }
     }
+     
 
 change =(e)=>{
-
+success1();
 this.setState({
   arr:data1
 })
@@ -65,7 +73,9 @@ e.preventDefault();
       let a=document.getElementById("uniqueID").value;
       if(a){
     axios.get('http://localhost:5000/viewattandence', {
-        params:{
+      headers: {'auth-token': this.state.token},
+               
+    params:{
       id:a
         }
     },{withCredentials:true})
