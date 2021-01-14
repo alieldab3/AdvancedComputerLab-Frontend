@@ -76,7 +76,7 @@ class updateProfile extends Component {
 
         let Message ;
 
-        if (this.state.person.department !=null) {
+        if (this.state.person.faculty !=null) {
             faculty = (
                 <div class="mb-3">
                 <label for="FormControlFaculty" class="form-label">Faculty</label>
@@ -85,7 +85,7 @@ class updateProfile extends Component {
             )
         }
 
-        if (this.state.person.faculty !=null) {
+        if (this.state.person.department !=null) {
              department= (
                 <div class="mb-3">
                 <label for="FormControlDepartment" class="form-label">Department</label>
@@ -139,7 +139,7 @@ class updateProfile extends Component {
         <label for="FormControlGender" class="form-label">Gender</label>
         <select class="form-select" id="FormControlGender" aria-label="Select Gender">
         <option selected>{this.state.person.gender}</option>
-        <option value="1">{otherGender}</option>
+        <option value={otherGender}>{otherGender}</option>
         </select>
         </div>
         </div>
@@ -170,7 +170,7 @@ class updateProfile extends Component {
 
         <div class="mb-3">
         <label for="FormControlDayOff" class="form-label">Day off</label>
-        <input type="text" class="form-control" id="FormControlDayOff" placeholder="Friday" defaultValue={this.state.person.dayoff}></input>
+        <input type="text" class="form-control" id="FormControlDayOff" placeholder="Friday" defaultValue={this.state.person.dayoff} disabled></input>
         </div>
         </div>
         </div>
