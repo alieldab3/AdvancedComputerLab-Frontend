@@ -64,11 +64,9 @@ render() {
   <div className="form">
   <form method="form">
    <input type="text"  id="uniqueID" className="hi" placeholder="the location you wish to delete"required="required" />
-   <div className="lol2">
-     
+      
       <button type="submit"  className="btn btn-primary btn-block btn-large" onClick={this.handleClick}  >delete location</button>
-      </div>
-    
+       
     </form>
      
   </div>

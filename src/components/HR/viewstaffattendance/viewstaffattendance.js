@@ -28,7 +28,7 @@ let data1 = [];
 
 const success = () => {
     
-    message.success('id submitted successfullu plz press view attendance button');
+    message.success('staff member deleted successfully from the system');
   };
 
 const warning = () => {
@@ -36,16 +36,11 @@ const warning = () => {
     message.warning('Plz fill all the required information');
   };
   
-  
-const success1 = () => {
+  const error1 = () => {
+    message.error('Member doesnot exist');
+  };
     
-    message.success('table shown successfully');
-};
-const error1 = () => {
-  message.error('plz enter valid data');
-};
-
-  
+    
     class viewstaffattendance extends React.Component{
       constructor(props) {
         super(props)
@@ -56,7 +51,7 @@ const error1 = () => {
     }
 
 change =(e)=>{
-success1();
+
 this.setState({
   arr:data1
 })

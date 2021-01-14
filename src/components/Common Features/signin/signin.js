@@ -30,11 +30,10 @@ class signin extends Component {
         let selDay ;
         if (stateDay) {
             selDay = stateDay.toISOString();
-            console.log(selDay)
              if (this.state.signedIn!=true) {
                 axios.post('http://localhost:5000/signIn',
                 {
-                    dateIn : selDay
+                    time : selDay
                 },{withCredentials:true})
                 .then((response)=>{
                     this.setState({signedIn : true})

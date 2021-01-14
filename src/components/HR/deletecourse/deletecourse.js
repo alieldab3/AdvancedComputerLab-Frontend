@@ -68,7 +68,7 @@ render() {
     <div>
     <input type="text" id="uniqueID" className="hi" name="u" placeholder="Course code" required="required" />      
     </div>
-    <button type="submit"   className="hi"onClick={this.handleClick} >Delete Course</button>
+    <button type="submit"   className="btn btn-primary btn-block btn-large"onClick={this.handleClick} >Delete Course</button>
     </form>
      
  
