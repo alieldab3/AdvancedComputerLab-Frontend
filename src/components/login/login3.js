@@ -5,14 +5,14 @@ import axios from 'axios';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import './login.css';
 import Image from '../Header/header2.jpg';
-import Profile from '../Profile/Profile';
 
 class Login3 extends Component {
 
     state={
         isLogged : null,
         token : null,
-        user:null
+        user:null,
+        loginFailed : null,
     }
 
 
@@ -40,7 +40,8 @@ class Login3 extends Component {
 
         })
         .catch((error)=>{
-            this.setState({isLogged : false})
+            this.setState({isLogged : false,
+                loginFailed: true})
              console.log(error);
         });
 
@@ -51,16 +52,24 @@ class Login3 extends Component {
     }
 
     render(){
+        let Message;
+
+         if (this.state.loginFailed == true) {
+            Message =( 
+            <div class="alert alert-primary" role="alert">
+            This was an error! Please, Try again Later.
+            </div>)
+        }
+
+
         return(
             <div>
-            {/* <Profile data={this.state.token}/> */}
-
             <div className="container">
                 <div class="row">
 
                     <div class="col">
                         <div className = 'card8'>
-                            <img src={Image} alt='GUC' width='100%' ></img>
+                             <img src={Image} alt='GUC' width='100%' ></img>
                         </div>
                     </div>
 
@@ -75,7 +84,7 @@ class Login3 extends Component {
                                 <LockOutlinedIcon />
                                 <br></br>
 
-                                <h4>Log In</h4>
+                                <h4>Log Innnn</h4>
                                 <br></br>
                             </div>
 
@@ -112,7 +121,11 @@ class Login3 extends Component {
 
                             <div>
                                 <p>{'©'}{new Date().getFullYear()}{' GUC Software Systems'}{'.'}</p>
+                                {Message}
+
                             </div>
+
+
 
                         </div>
                     </div>

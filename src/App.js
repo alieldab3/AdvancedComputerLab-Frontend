@@ -81,8 +81,12 @@ import Viewmymissingdays from './components/Common Features/viewmymissingdays/vi
 import Viewmyhours from './components/Common Features/viewmyhours/viewmyhours';
 
 //All Academic Members Components//
-
-
+import viewSchedule from './components/Common Features/viewSchedule/viewSchedule';
+import sendReplacement from './components/Common Features/sendReplacement/sendReplacement';
+import sendSlotLinking from './components/Common Features/sendSlotLinking/sendSlotLinking';
+import ChangeDayOff from './components/Common Features/ChangeDayOff/ChangeDayOff';
+import SubmitLeave from './components/Common Features/SubmitLeave/SubmitLeave';
+import ViewRequests from './components/Common Features/ViewRequests/ViewRequests';
 
 
 class App extends Component {
@@ -90,7 +94,8 @@ class App extends Component {
     state={
       isLogged : false,
       token : null,
-      user:null
+      user:null,
+      loginFailed : null,
   }
 
 
@@ -105,20 +110,25 @@ class App extends Component {
           password : loginPassword,
       },{withCredentials:true})
       .then(res=>{
-        this.setState({isLogged : true})
+        this.setState({isLogged : true,
+            token : res.data.token,
+            user : res.data.user})
 
-        const token = res.data.token;
-        const user = res.data.user;
+        // const token = res.data.token;
+        // const user = res.data.user;
 
 
-        this.setState({ 
-          token : token,
-          user : user
-        });
+        // this.setState({ 
+        //   token : token,
+        //   user : user
+        // });
 
       })
       .catch((error)=>{
-          this.setState({isLogged : false})
+          this.setState({
+            isLogged : false,
+            loginFailed:true
+    })
           console.log(error);
       });
 
@@ -129,6 +139,13 @@ class App extends Component {
 
   isLogged = (e) =>{
     if ( this.state.isLogged == false) {
+        let Message;
+
+        if (this.state.loginFailed == true) {
+           Message =( <div class="alert alert-primary" role="alert">
+           This was an error! Please, Try again Later.
+           </div>)
+       }
         return(
 
 
@@ -191,6 +208,7 @@ class App extends Component {
 
                             <div>
                                 <p>{'©'}{new Date().getFullYear()}{' GUC Software Systems'}{'.'}</p>
+                                {Message}
                             </div>
 
                         </div>
@@ -217,7 +235,7 @@ class App extends Component {
 
               <div className='content'> 
 
-                <Sidebar />
+                <Sidebar token={this.state.token}/>
                   <Switch>
 
                       {/* <Route exact path='/logout' /> {this.setState({isLogged:false,token:null,user:null}) } </Route> */}
@@ -290,10 +308,13 @@ class App extends Component {
                           <Route exact path='/viewmymissingdays' render={(props) => (<Viewmymissingdays {...props} token={this.state.token} user={this.state.user} />)} />
                           <Route exact path='/viewmyhours' render={(props) => (<Viewmyhours {...props} token={this.state.token} user={this.state.user} />)} />
                           {/* All Academic Members Components */}
-
+                          <Route exact path='/viewSchedule' component={viewSchedule} />
+                          <Route exact path='/sendReplacement' component={sendReplacement} />
+                          <Route exact path='/sendSlotLinking' component={sendSlotLinking} />
+                          <Route exact path='/ChangeDayOff' component={ChangeDayOff} />
+                          <Route exact path='/SubmitLeave' component={SubmitLeave} />
+                          <Route exact path='/ViewRequests' component={ViewRequests} />
                           
-
-
                   </Switch>
               </div>
 
