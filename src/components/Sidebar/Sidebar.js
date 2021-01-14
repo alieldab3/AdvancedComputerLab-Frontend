@@ -1,28 +1,41 @@
 import React, {Component, Fragment} from 'react';
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
-import { Link, NavLink} from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
-// import ReactDOM from 'react-dom';
+import axios from 'axios';
  import './Sidebar.css'
  import 'react-pro-sidebar/dist/css/styles.css';
 
-const typeAll = ['HR Member','Head of Department','Course Instructor','Course Coordinator']
+// const typeAll = ['HR','HOD','Course Instructor','Course Coordinator']
 
 
 class Sidebar extends Component {
     
     state ={
-        type : typeAll[0]
-        // openOthers : false
+        person : [],
+        token : this.props.token,
+        type : null
     }
 
-    // Handle=(e) =>{
-    //     this.setState({
-    //         type : 'AcadmeicMember'
-    //         // openOthers : (this.state.openOthers == true ? (false) : (true))
-    //     })
-    // }
+    componentDidMount() {
+
+        axios.get('http://localhost:5000/viewProfile', {
+            headers: {
+                'auth-token': this.state.token
+            }
+          })
+          .then(res => {
+            this.setState({ 
+                person : res.data[0],
+            });
+            this.setState({ 
+                type : this.state.person.role,
+            });
+          })
+      }
+
+
 
     handleType =(e) =>{
 
@@ -58,7 +71,7 @@ class Sidebar extends Component {
 
 
 
-        if(this.state.type =='HR Member'){
+        if(this.state.type =='HR'){
             return (
                 <SidebarContent >{
         
@@ -125,7 +138,7 @@ class Sidebar extends Component {
         }
    
 
-    else if(this.state.type =='Head of Department'){
+    else if(this.state.type =='HOD'){
         return (
             <SidebarContent >{
             

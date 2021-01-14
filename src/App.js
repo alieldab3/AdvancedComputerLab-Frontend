@@ -94,7 +94,8 @@ class App extends Component {
     state={
       isLogged : false,
       token : null,
-      user:null
+      user:null,
+      loginFailed : null,
   }
 
 
@@ -109,20 +110,25 @@ class App extends Component {
           password : loginPassword,
       },{withCredentials:true})
       .then(res=>{
-        this.setState({isLogged : true})
+        this.setState({isLogged : true,
+            token : res.data.token,
+            user : res.data.user})
 
-        const token = res.data.token;
-        const user = res.data.user;
+        // const token = res.data.token;
+        // const user = res.data.user;
 
 
-        this.setState({ 
-          token : token,
-          user : user
-        });
+        // this.setState({ 
+        //   token : token,
+        //   user : user
+        // });
 
       })
       .catch((error)=>{
-          this.setState({isLogged : false})
+          this.setState({
+            isLogged : false,
+            loginFailed:true
+    })
           console.log(error);
       });
 
@@ -133,6 +139,13 @@ class App extends Component {
 
   isLogged = (e) =>{
     if ( this.state.isLogged == false) {
+        let Message;
+
+        if (this.state.loginFailed == true) {
+           Message =( <div class="alert alert-primary" role="alert">
+           This was an error! Please, Try again Later.
+           </div>)
+       }
         return(
 
 
@@ -195,6 +208,7 @@ class App extends Component {
 
                             <div>
                                 <p>{'©'}{new Date().getFullYear()}{' GUC Software Systems'}{'.'}</p>
+                                {Message}
                             </div>
 
                         </div>
@@ -221,7 +235,7 @@ class App extends Component {
 
               <div className='content'> 
 
-                <Sidebar />
+                <Sidebar token={this.state.token}/>
                   <Switch>
 
                       {/* <Route exact path='/logout' /> {this.setState({isLogged:false,token:null,user:null}) } </Route> */}

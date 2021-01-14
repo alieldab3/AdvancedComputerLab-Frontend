@@ -5,7 +5,6 @@ import axios from 'axios';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import './login.css';
 import Image from '../Header/header2.jpg';
-import Profile from '../Profile/Profile';
 
 class Login3 extends Component {
 
@@ -65,15 +64,13 @@ class Login3 extends Component {
 
         return(
             <div>
-            {/* <Profile data={this.state.token}/> */}
-
             <div className="container">
                 <div class="row">
 
                     <div class="col">
-                        {/* <div className = 'card8'>
-                            <img src={Image} alt='GUC' width='100%' ></img>
-                        </div> */}
+                        <div className = 'card8'>
+                             <img src={Image} alt='GUC' width='100%' ></img>
+                        </div>
                     </div>
 
                     <div class="col">
