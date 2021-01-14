@@ -20,7 +20,11 @@ class updatecourse extends Component{
   
    
     
-
+  state ={
+    token : this.props.token
+  }
+  
+   
 
     callAPI(e) {
       let a=document.getElementById("uniqueID").value;
@@ -30,6 +34,8 @@ class updatecourse extends Component{
       if(a&&b&&c){
       e.preventDefault();
     axios.get('http://localhost:5000/updateCourse', {
+      headers: {'auth-token': this.state.token},
+           
     params:{
         oldid:a,
         newid:b,
