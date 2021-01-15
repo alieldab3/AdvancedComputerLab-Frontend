@@ -6,6 +6,7 @@ import './ViewRequests.css';
 
 class ViewRequests extends Component{
     state ={
+        token : this.props.token,
         AllRequests : [],
         type:"0",
         R_state:"0"
@@ -18,29 +19,161 @@ class ViewRequests extends Component{
             R_state:statevalue
         });
     }
-
+    
     componentDidMount() {
-        axios.get('http://localhost:5000/:')
+        console.log(this.state.token);
+        axios.get('http://localhost:5000/Academics/ViewRequests/:',{
+            headers: {
+                'auth-token': this.state.token
+            }
+          })
           .then(res => {
             const AllRequests = res.data;
             this.setState({ AllRequests  :  AllRequests});
         })
       }
+    
+      componentDidMountAgain()
+      {
+        axios.get('http://localhost:5000/Academics/ViewRequests/:',{
+            headers: {
+                'auth-token': this.state.token
+            }
+          })
+          .then(res => {
+            const AllRequests = res.data;
+            this.setState({ AllRequests  :  AllRequests});
+        })
+      }
+    handleCancelation(rid)
+    { 
+        /* 
+        axios.delete('http://localhost:5000/Academics/DeleteRequest',{
+                request_id:rid
+            },{
+                headers: {
+                    'auth-token': this.state.token
+                }
+              },{withCredentials:true})
+            .then((response)=>{
+                this.setState({message : "Request deleted Sucessfully"})
+            })
+            .catch((error)=>{
+                this.setState({message : "deletion failed"})
+                console.log(error);
+            });*/     
+    }
 
     render(){
-        let RenderedR = []
+        let RenderLeaves = []
+        let RenderSlotLinking = [];
+        let RenderChangeDayOff = [];
+
         for(let elem of this.state.AllRequests)
         {
-            RenderedR.push(
+            if(this.state.R_state.localeCompare("0")==0 || this.state.R_state.localeCompare(elem.state)==0)
+            {
+            let cancelEn = (elem.state.localeCompare("Pending")==0 || elem.state.localeCompare("Accepted")==0)?true:false;
+            if(elem.type.localeCompare("Slot-linking")==0)
+            {
+                RenderSlotLinking.push(
+                    <tr class = "fathy_row">
+                    <th scope="row">{elem.rid}</th>
+                    <td>{elem.type}</td>
+                    <td>{elem.slot}</td>
+                    <td>{elem.state}</td>
+                    <td><button type="button" disabled = {!cancelEn} onClick={this.handleCancelation(elem.rid)} class="btn btn-danger">Cancel</button></td>
+                    </tr>
+                );
+            }
+            else if(elem.type.localeCompare("dayOffChange")==0)
+            {
+                RenderChangeDayOff.push(
+                    <tr class = "fathy_row">
+                    <th scope="row">{elem.rid}</th>
+                    <td>{elem.type}</td>
+                    <td>{elem.newDayoff}</td>
+                    <td>{elem.state}</td>
+                    <td><button type="button" disabled = {!cancelEn} onClick={this.handleCancelation(elem.rid)} class="btn btn-danger">Cancel</button></td>
+                    </tr>
+                );
+            }
+            else {
+                if(this.state.type.localeCompare(elem.type) == 0 || this.state.type.localeCompare("0") == 0)
+                {
+                RenderLeaves.push(
                 <tr class = "fathy_row">
                 <th scope="row">{elem.rid}</th>
                 <td>{elem.type}</td>
                 <td>{elem.RequestedDay}</td>
-                <td><button type="button" onClick={this.handleCancelation(elem.rid)} class="btn btn-danger">Cancel</button></td>
+                <td>{elem.duration}</td>
+                <td>{elem.state}</td>
+                <td><button type="button" disabled = {!cancelEn} onClick={this.handleCancelation(elem.rid)} class="btn btn-danger">Cancel</button></td>
                 </tr>
-            );
+                );
+                }
+                }
+            }
         }
-
+        let Slot_Linking_Table = (
+            <div>
+            <table class="table table-striped">
+            <thead>
+                <tr class = "fathy_row">
+                <th scope="col">Id</th>
+                <th scope="col">Request Type   </th>
+                <th scope="col">Requested slot </th>
+                <th scope="col">Request State  </th>
+                <th scope="col">Cancel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {RenderSlotLinking}
+            </tbody>
+            </table>
+            <br></br><br></br><br></br>
+            </div>
+        );
+        let ChangeDayOff_Table = (
+            <div>
+            <table class="table table-striped">
+            <thead>
+                <tr class = "fathy_row">
+                <th scope="col">Id</th>
+                <th scope="col">Request Type   </th>
+                <th scope="col">New Day-off </th>
+                <th scope="col">Request State  </th>
+                <th scope="col">Cancel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {RenderChangeDayOff}
+            </tbody>
+            </table>
+            <br></br><br></br><br></br>
+            </div>
+        );
+        
+        let Leaves_Table = (
+            <div>
+            <table class="table table-striped">
+            <thead>
+                <tr class = "fathy_row">
+                <th scope="col">Id</th>
+                <th scope="col">Request Type  </th>
+                <th scope="col">Requested Day </th>
+                <th scope="col">Duration </th>
+                <th scope="col">Request State </th>
+                <th scope="col">Cancel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {RenderLeaves}
+            </tbody>
+            </table>
+            <br></br><br></br><br></br>
+            </div>
+        );
         return(
             <div class = "main">
             
@@ -67,26 +200,18 @@ class ViewRequests extends Component{
                 <option value="Cancelled">Cancelled</option>
                 </select>
             </div>
-
+            
             <div class="col">
                 <div className='Under' >
                 <button type="button" class="btn btn-primary"onClick={() => this.FilterRequest()}>View Requests</button>
                 </div>
             </div>
         </div>
-            <table class="table table-striped">
-            <thead>
-                <tr class = "fathy_row">
-                <th scope="col">Id</th>
-                <th scope="col">Request Type</th>
-                <th scope="col">Requested Day </th>
-                <th scope="col">Cancel</th>
-                </tr>
-            </thead>
-            <tbody>
-                {RenderedR}
-            </tbody>
-            </table>
+            {(this.state.type.localeCompare("0") == 0 || this.state.type.localeCompare("Slot-linking") == 0)?Slot_Linking_Table:""}
+            {(this.state.type.localeCompare("0") == 0 || this.state.type.localeCompare("dayOffChange") == 0)?ChangeDayOff_Table:""}
+            {(!(this.state.type.localeCompare("dayOffChange") == 0 
+            || this.state.type.localeCompare("Slot-linking") == 0))?
+            Leaves_Table:""}
             </div>
         )}
     

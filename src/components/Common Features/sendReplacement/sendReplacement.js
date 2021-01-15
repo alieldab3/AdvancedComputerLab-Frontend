@@ -7,6 +7,7 @@ import axios from 'axios';
 
 class sendReplacement extends Component{
     state ={
+        token : this.props.token,
         selectedDay:null,
         message:""
     }
@@ -22,7 +23,11 @@ class sendReplacement extends Component{
         axios.post('http://localhost:5000/Academics/SendReplacementRequest',{
                 requested_day:requested_day,
 			    senderComment:comment
-            },{withCredentials:true})
+            },{
+                headers: {
+                    'auth-token': this.state.token
+                }
+              },{withCredentials:true})
             .then((response)=>{
                 this.setState({message : "Request Sent Sucessfully"})
             })
