@@ -34,7 +34,7 @@ class signout extends Component {
              if (this.state.signedOut!=true) {
                 axios.post('http://localhost:5000/signOut',
                 {
-                    time : selDay
+                    dateOut : selDay
                 }, {
                     headers: {
                         'auth-token': this.state.token
