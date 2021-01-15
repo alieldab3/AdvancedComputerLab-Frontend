@@ -30,6 +30,7 @@ class viewmymissingdays extends Component{
                 }
               })
             .then(res => {
+                console.log(res.data.missingDays)
               this.setState({ myMissingDays : res.data.missingDays});
             })
             .catch((error)=>{
