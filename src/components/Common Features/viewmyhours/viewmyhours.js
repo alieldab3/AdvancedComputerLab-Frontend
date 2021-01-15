@@ -42,10 +42,14 @@ class viewmyhours extends Component{
         else if(MissingHoursSelectValue!=null){
             this.setState({viewMonth : true})
 
-            axios.get('http://localhost:5000/ViewMissingDays/'+MissingHoursSelectValue, {
+            axios.get('http://localhost:5000/viewAllMissingHours/:month" component={UserPage}', {
                 headers: {
                     'auth-token': this.state.token
-                }
+                },
+              
+                params:{
+                        month:MissingHoursSelectValue
+                    }
                
               })
             .then(res => {
