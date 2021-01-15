@@ -60,7 +60,7 @@ class SubmitLeave extends Component{
 
             <div class="mb-3">
                 <label for="leaveDuration" class="form-label">Enter The Duration in Days : </label>
-                <input type="email" class="form-control" id="leaveDuration"></input>
+                <input type="Number" class="form-control" id="leaveDuration"></input>
             </div>
             <br></br>
             <label for="leaveType" class="form-label">Choose The Leave Type : </label>

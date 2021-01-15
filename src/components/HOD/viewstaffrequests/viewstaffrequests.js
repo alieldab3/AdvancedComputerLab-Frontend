@@ -1,29 +1,16 @@
-
 import React , { Component } from 'react';
 import { BrowserRouter , Route } from 'react-router-dom'
-import axios from 'axios';
 import './viewstaffrequests.css';
+import axios from 'axios';
 
-
-class viewstaffrequests extends Component{
+class viewstaffrequests extends Component {
     state ={
         token : this.props.token,
-        AllRequests : [],
-        type:"0",
-        R_state:"0"
+        message:"",
+        AllRequests : []
     }
-    FilterRequest(){
-        let typeValue = document.getElementById("FilterType").value; 
-        let statevalue = document.getElementById("FilterState").value;
-        this.setState({
-            type:typeValue,
-            R_state:statevalue
-        });
-    }
-    
     componentDidMount() {
-        console.log(this.state.token);
-        axios.get('http://localhost:5000/Academics/ViewRequests/:',{
+        axios.get('http://localhost:5000/viewRequests',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -33,61 +20,49 @@ class viewstaffrequests extends Component{
             this.setState({ AllRequests  :  AllRequests});
         })
       }
-    
-      componentDidMountAgain()
-      {
-        axios.get('http://localhost:5000/Academics/ViewRequests/:',{
-            headers: {
-                'auth-token': this.state.token
-            }
-          })
-          .then(res => {
-            const AllRequests = res.data;
-            this.setState({ AllRequests  :  AllRequests});
-        })
-      }
-    handleCancelation(rid)
-    { 
-        /* 
-        axios.delete('http://localhost:5000/Academics/DeleteRequest',{
-                request_id:rid
-            },{
+      AcceptRequest(rid)
+        {
+            let url = 'http://localhost:5000/acceptRequest/'+rid;
+            axios.put(url,{
                 headers: {
                     'auth-token': this.state.token
-                }
+                },
               },{withCredentials:true})
             .then((response)=>{
-                this.setState({message : "Request deleted Sucessfully"})
+                this.setState({message : "Accepted Sucessfully"})
+                this.componentDidMountAgain();
             })
             .catch((error)=>{
-                this.setState({message : "deletion failed"})
+                this.setState({message : "Acceptance failed"})
                 console.log(error);
-            });*/     
-    }
+            });
+        }
+        RejectRequest(rid)
+        {
+            let url = 'http://localhost:5000/rejectRequest/'+rid;
+            axios.put(url,{
+                headers: {
+                    'auth-token': this.state.token
+                },
+              },{withCredentials:true})
+            .then((response)=>{
+                this.setState({message : "Rejected Sucessfully"})
+                this.componentDidMountAgain();
+            })
+            .catch((error)=>{
+                this.setState({message : "Rejection failed"})
+                console.log(error);
+            });
+        }
 
-    render(){
+        render(){
         let RenderLeaves = []
-        let RenderSlotLinking = [];
         let RenderChangeDayOff = [];
 
         for(let elem of this.state.AllRequests)
         {
-            if(this.state.R_state.localeCompare("0")==0 || this.state.R_state.localeCompare(elem.state)==0)
-            {
-            let cancelEn = (elem.state.localeCompare("Pending")==0 || elem.state.localeCompare("Accepted")==0)?true:false;
-            if(elem.type.localeCompare("Slot-linking")==0)
-            {
-                RenderSlotLinking.push(
-                    <tr class = "fathy_row">
-                    <th scope="row">{elem.rid}</th>
-                    <td>{elem.type}</td>
-                    <td>{elem.slot}</td>
-                    <td>{elem.state}</td>
-                    <td><button type="button" disabled = {!cancelEn} onClick={this.handleCancelation(elem.rid)} class="btn btn-danger">Cancel</button></td>
-                    </tr>
-                );
-            }
-            else if(elem.type.localeCompare("dayOffChange")==0)
+            
+            if(elem.type.localeCompare("dayOffChange")==0)
             {
                 RenderChangeDayOff.push(
                     <tr class = "fathy_row">
@@ -95,46 +70,30 @@ class viewstaffrequests extends Component{
                     <td>{elem.type}</td>
                     <td>{elem.newDayoff}</td>
                     <td>{elem.state}</td>
-                    <td><button type="button" disabled = {!cancelEn} onClick={this.handleCancelation(elem.rid)} class="btn btn-danger">Cancel</button></td>
+                    <td>{elem.sender}</td>
+                    <td>{elem.senderComment}</td>
+                    <td><button type="button"  id = {"Accept"+elem.id} onClick={(e)=>this.AcceptRequest(elem.rid)} class="btn btn-success">Accept</button></td>
+                    <td><button type="button"  id = {"Reject"+elem.id} onClick={(e)=>this.RejectRequest(elem.rid)} class="btn btn-danger">Reject</button></td>
                     </tr>
                 );
             }
             else {
-                if(this.state.type.localeCompare(elem.type) == 0 || this.state.type.localeCompare("0") == 0)
-                {
                 RenderLeaves.push(
-                <tr class = "fathy_row">
-                <th scope="row">{elem.rid}</th>
-                <td>{elem.type}</td>
-                <td>{elem.RequestedDay}</td>
-                <td>{elem.duration}</td>
-                <td>{elem.state}</td>
-                <td><button type="button" disabled = {!cancelEn} onClick={this.handleCancelation(elem.rid)} class="btn btn-danger">Cancel</button></td>
-                </tr>
+                    <tr class = "fathy_row">
+                    <th scope="row">{elem.rid}</th>
+                    <td>{elem.type}</td>
+                    <td>{elem.RequestedDay}</td>
+                    <td>{elem.duration}</td>
+                    <td>{elem.state}</td>
+                    <td>{elem.sender}</td>
+                    <td>{elem.senderComment}</td>
+                    <td><button type="button"  id = {"Accept"+elem.id} onClick={(e)=>this.AcceptRequest(elem.rid)} class="btn btn-success">Accept</button></td>
+                    <td><button type="button"  id = {"Reject"+elem.id} onClick={(e)=>this.RejectRequest(elem.rid)} class="btn btn-danger">Reject</button></td>
+                    </tr>
                 );
                 }
-                }
-            }
+            
         }
-        let Slot_Linking_Table = (
-            <div>
-            <table class="table table-striped">
-            <thead>
-                <tr class = "fathy_row">
-                <th scope="col">Id</th>
-                <th scope="col">Request Type   </th>
-                <th scope="col">Requested slot </th>
-                <th scope="col">Request State  </th>
-                <th scope="col">Cancel</th>
-                </tr>
-            </thead>
-            <tbody>
-                {RenderSlotLinking}
-            </tbody>
-            </table>
-            <br></br><br></br><br></br>
-            </div>
-        );
         let ChangeDayOff_Table = (
             <div>
             <table class="table table-striped">
@@ -142,9 +101,12 @@ class viewstaffrequests extends Component{
                 <tr class = "fathy_row">
                 <th scope="col">Id</th>
                 <th scope="col">Request Type   </th>
-                <th scope="col">New Day-off </th>
+                <th scope="col">New DayOff </th>
                 <th scope="col">Request State  </th>
-                <th scope="col">Cancel</th>
+                <th scope="col">Sender          </th>
+                <th scope="col">Sender Comment </th>
+                <th scope="col">Accept</th>
+                <th scope="col">Reject</th>
                 </tr>
             </thead>
             <tbody>
@@ -161,11 +123,14 @@ class viewstaffrequests extends Component{
             <thead>
                 <tr class = "fathy_row">
                 <th scope="col">Id</th>
-                <th scope="col">Request Type  </th>
+                <th scope="col">Request Type   </th>
                 <th scope="col">Requested Day </th>
-                <th scope="col">Duration </th>
-                <th scope="col">Request State </th>
-                <th scope="col">Cancel</th>
+                <th scope="col">duration </th>
+                <th scope="col">Request State  </th>
+                <th scope="col">Sender          </th>
+                <th scope="col">Sender Comment </th>
+                <th scope="col">Accept</th>
+            <th scope="col">Reject</th>
                 </tr>
             </thead>
             <tbody>
@@ -177,46 +142,15 @@ class viewstaffrequests extends Component{
         );
         return(
             <div class = "main">
-            
-            <div class="row">
-            <div class="col">
-                <select class="form-select" id="FilterType" aria-label="Select Record">
-                <option selected value="0">All My Requests</option>
-                <option value="Compensation">Compensation</option>
-                <option value="Replacement">Replacement</option>
-                <option value="Annual">Annual</option>
-                <option value="Slot-linking">Slot-linking</option>
-                <option value="dayOffChange">dayOffChange</option>
-                <option value="Sick">Sick</option>
-                <option value="Maternity">Maternity</option>
-                <option value="Accidental">Accidental</option>
-                </select>
-            </div>
-            <div class="col">
-                <select class="form-select" id="FilterState" aria-label="Select Record">
-                <option selected value="0">All My Requests</option>
-                <option value="Pending">Pending</option>
-                <option value="Accepted">Accepted</option>
-                <option value="Rejected">Rejected</option>
-                <option value="Cancelled">Cancelled</option>
-                </select>
-            </div>
-            
-            <div class="col">
-                <div className='Under' >
-                <button type="button" class="btn btn-primary"onClick={() => this.FilterRequest()}>View Requests</button>
-                </div>
-            </div>
+            {this.state.message}
+            <h3>ChangeDayOff Requests</h3><br></br><br></br>
+            {ChangeDayOff_Table}
+            <h3>Leave Requests</h3><br></br><br></br>
+            {Leaves_Table}
         </div>
-            {(this.state.type.localeCompare("0") == 0 || this.state.type.localeCompare("Slot-linking") == 0)?Slot_Linking_Table:""}
-            {(this.state.type.localeCompare("0") == 0 || this.state.type.localeCompare("dayOffChange") == 0)?ChangeDayOff_Table:""}
-            {(!(this.state.type.localeCompare("dayOffChange") == 0 
-            || this.state.type.localeCompare("Slot-linking") == 0))?
-            Leaves_Table:""}
-            </div>
         )}
-    
-}
+
+ }
 
 
 export default viewstaffrequests;

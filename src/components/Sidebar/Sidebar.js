@@ -47,9 +47,9 @@ class Sidebar extends Component {
                 <MenuItem><NavLink activeClassName='signout' to ="signout" > Sign out</NavLink></MenuItem>
             </SubMenu>
             <SubMenu title="My Records" > 
-            <MenuItem><NavLink activeClassName='viewmyattendance' to ="viewmyattendance" > View My Attendance</NavLink></MenuItem>
-            <MenuItem><NavLink activeClassName='viewmymissingdays' to ="viewmymissingdays" > View My Miss Days</NavLink></MenuItem>             
-            <MenuItem><NavLink activeClassName='viewmyhours' to ="viewmyhours" > View My Hours</NavLink></MenuItem>
+            <MenuItem><NavLink activeClassName='viewmyattendance' to ="viewmyattendance" > My Attendance</NavLink></MenuItem>
+            <MenuItem><NavLink activeClassName='viewmymissingdays' to ="viewmymissingdays" > My Missing Days</NavLink></MenuItem>             
+            <MenuItem><NavLink activeClassName='viewmyhours' to ="viewmyhours" > My Missing Hours</NavLink></MenuItem>
             </SubMenu>
             </Fragment>
         )

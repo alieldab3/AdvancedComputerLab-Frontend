@@ -30,6 +30,7 @@ class viewmymissingdays extends Component{
                 }
               })
             .then(res => {
+                console.log(res.data.missingDays)
               this.setState({ myMissingDays : res.data.missingDays});
             })
             .catch((error)=>{
@@ -76,8 +77,10 @@ class viewmymissingdays extends Component{
         return(
             <div className="mainP">
                 <div className="container">
-                <div className = 'cardupdate'>
+                <div className = 'sign'>
                         <form class="form-floating">
+                        <h5>View My Missing Days</h5>
+                        <br></br>
                             <div class="row">
                                 <div class="col">
                                     <select class="form-select" id="FormControlMyMissingDays" aria-label="Select Month">

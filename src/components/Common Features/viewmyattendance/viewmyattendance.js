@@ -51,6 +51,7 @@ class viewmyattendance extends Component{
               })
             .then(res => {
               const attendanceRecords = res.data;
+              console.log(res.data)
               this.setState({ attendanceRecords });
             })
         }
@@ -63,19 +64,53 @@ class viewmyattendance extends Component{
 
         if (isViewMonth == false) {
             for (let i = 0; i < attendanceRecords.length; i++) {
-                RecordDiv[i] = (<div className="mb-3">
-                <label for={i+1} class="form-label">Attendance Record {i+1}</label>
-                <input type="text" class="form-control" id={i+1} placeholder="My Name" value={'time: '+attendanceRecords[i].time + '  signIn: ' + attendanceRecords[i].signIn} disabled></input>
-                </div> )
+                RecordDiv[i] = (
+            <div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                            <label for={ 'FormControlTime:' + i } class="form-label">Time</label>
+                            <input type="text" class="form-control" id={ 'FormControlTime:' + i } placeholder="" value={attendanceRecords[i].time} disabled></input>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="mb-3">
+                            <label for={ 'FormControlType:' + i } class="form-label">Type</label>
+                            <input type="text" class="form-control" id={ 'FormControlType:' + i } placeholder="" value={ (attendanceRecords[i].signIn == true) ? ("Sign In") : ("Sign Out")} disabled></input>
+                            </div>
+                        </div>
+                    </div>
+
+                
+                </div>
+                )
             }
         }
 
         else if (isViewMonth == true) {
             for (let i = 0; i < attendanceRecords.length; i++) {
-                RecordDiv[i] = (<div className="mb-3">
-                <label for={i+1} class="form-label">Attendance Record {i+1}</label>
-                <input type="text" class="form-control" id={i+1} placeholder="My Name" value={'time: '+attendanceRecords[i].time + '  signIn: ' + attendanceRecords[i].signIn} disabled></input>
-                </div> )
+                RecordDiv[i] = (
+                    <div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                    <label for={ 'FormControlTime:' + i } class="form-label">Time</label>
+                                    <input type="text" class="form-control" id={ 'FormControlTime:' + i } placeholder="" value={attendanceRecords[i].time} disabled></input>
+                                    </div>
+                                </div>
+        
+                                <div class="col">
+                                    <div class="mb-3">
+                                    <label for={ 'FormControlType:' + i } class="form-label">Type</label>
+                                    <input type="text" class="form-control" id={ 'FormControlType:' + i } placeholder="" value={ (attendanceRecords[i].signIn == true) ? ("Sign In") : ("Sign Out")} disabled></input>
+                                    </div>
+                                </div>
+                            </div>
+        
+                        
+                        </div>
+                        )
             }
         }
 
@@ -85,7 +120,8 @@ class viewmyattendance extends Component{
         <div className="container">
         <div className = 'cardupdate'>
         <form className="form-floating">
-
+        <h5>View My Attendance Records</h5>
+                        <br></br>
         <div class="row">
             <div class="col">
                 <select class="form-select" id="FormControlRecords" aria-label="Select Record">
@@ -116,7 +152,7 @@ class viewmyattendance extends Component{
         <br></br>
 
         <div >
-            <p>{attendanceRecords.length}</p>
+            <p>Number of Records : {attendanceRecords.length}</p>
             {RecordDiv}
         </div>
 

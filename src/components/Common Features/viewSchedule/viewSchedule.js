@@ -1,10 +1,12 @@
 import React , { Component } from 'react';
 import { BrowserRouter , Route } from 'react-router-dom'
 import './viewSchedule.css';
+import axios from 'axios';
 
 
 class viewSchedule extends Component{
     state ={
+        message:"",
         Saturday:{
             First:"",
             Second:"",
@@ -79,12 +81,557 @@ class viewSchedule extends Component{
 
 
     componentDidMount() {
-        
+        axios.get('http://localhost:5000/Academics/viewSchedule',{
+            headers: {
+                'auth-token': this.state.token
+            }
+          })
+          .then(res => {
+            let schedule = res.data;
+            for(let elem of schedule)
+            {
+                this.setState({message : ("Schedule Retrived")});
+                let slot = ""+elem.sid+"\n"+elem.type +"\nLocation: " + elem.location;
+                let d = elem.day;
+                let t = elem.timing;
+                if(d.localeCompare("Saturday") == 0)
+                {
+                    if(t.localeCompare("First") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Saturday: {                   // object that we want to update
+                                ...prevState.Saturday,    // keep all other key-value pairs
+                                First: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Second") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Saturday: {                   // object that we want to update
+                                ...prevState.Saturday,    // keep all other key-value pairs
+                                Second: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Third") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Saturday: {                   // object that we want to update
+                                ...prevState.Saturday,    // keep all other key-value pairs
+                                Third: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fourth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Saturday: {                   // object that we want to update
+                                ...prevState.Saturday,    // keep all other key-value pairs
+                                Fourth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fifth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Saturday: {                   // object that we want to update
+                                ...prevState.Saturday,    // keep all other key-value pairs
+                                Fifth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Sixth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Saturday: {                   // object that we want to update
+                                ...prevState.Saturday,    // keep all other key-value pairs
+                                Sixth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Seventh") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Saturday: {                   // object that we want to update
+                                ...prevState.Saturday,    // keep all other key-value pairs
+                                Seventh: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Eighth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Saturday: {                   // object that we want to update
+                                ...prevState.Saturday,    // keep all other key-value pairs
+                                Eighth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                }
+                else if(d.localeCompare("Sunday") == 0)
+                {
+                    if(t.localeCompare("First") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Sunday: {                   // object that we want to update
+                                ...prevState.Saturday,    // keep all other key-value pairs
+                                First: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Second") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Sunday: {                   // object that we want to update
+                                ...prevState.Saturday,    // keep all other key-value pairs
+                                Second: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Third") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Sunday: {                   // object that we want to update
+                                ...prevState.Saturday,    // keep all other key-value pairs
+                                Third: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fourth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Sunday: {                   // object that we want to update
+                                ...prevState.Sunday,    // keep all other key-value pairs
+                                Fourth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fifth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Sunday: {                   // object that we want to update
+                                ...prevState.Sunday,    // keep all other key-value pairs
+                                Fifth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Sixth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Sunday: {                   // object that we want to update
+                                ...prevState.Sunday,    // keep all other key-value pairs
+                                Sixth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Seventh") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Sunday: {                   // object that we want to update
+                                ...prevState.Sunday,    // keep all other key-value pairs
+                                Seventh: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Eighth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Sunday: {                   // object that we want to update
+                                ...prevState.Sunday,    // keep all other key-value pairs
+                                Eighth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                }
+                else if(d.localeCompare("Monday") == 0)
+                {
+                    if(t.localeCompare("First") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Monday: {                   // object that we want to update
+                                ...prevState.Monday,    // keep all other key-value pairs
+                                First: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Second") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Monday: {                   // object that we want to update
+                                ...prevState.Monday,    // keep all other key-value pairs
+                                Second: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Third") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Monday: {                   // object that we want to update
+                                ...prevState.Monday,    // keep all other key-value pairs
+                                Third: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fourth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Monday: {                   // object that we want to update
+                                ...prevState.Monday,    // keep all other key-value pairs
+                                Fourth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fifth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Monday: {                   // object that we want to update
+                                ...prevState.Monday,    // keep all other key-value pairs
+                                Fifth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Sixth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Monday: {                   // object that we want to update
+                                ...prevState.Monday,    // keep all other key-value pairs
+                                Sixth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Seventh") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Monday: {                   // object that we want to update
+                                ...prevState.Monday,    // keep all other key-value pairs
+                                Seventh: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Eighth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Monday: {                   // object that we want to update
+                                ...prevState.Monday,    // keep all other key-value pairs
+                                Eighth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                }
+                else if(d.localeCompare("Tuesday") == 0)
+                {
+                    if(t.localeCompare("First") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Tuesday: {                   // object that we want to update
+                                ...prevState.Tuesday,    // keep all other key-value pairs
+                                First: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Second") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Tuesday: {                   // object that we want to update
+                                ...prevState.Tuesday,    // keep all other key-value pairs
+                                Second: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Third") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Tuesday: {                   // object that we want to update
+                                ...prevState.Tuesday,    // keep all other key-value pairs
+                                Third: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fourth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Tuesday: {                   // object that we want to update
+                                ...prevState.Tuesday,    // keep all other key-value pairs
+                                Fourth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fifth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Tuesday: {                   // object that we want to update
+                                ...prevState.Tuesday,    // keep all other key-value pairs
+                                Fifth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Sixth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Tuesday: {                   // object that we want to update
+                                ...prevState.Tuesday,    // keep all other key-value pairs
+                                Sixth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Seventh") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Tuesday: {                   // object that we want to update
+                                ...prevState.Tuesday,    // keep all other key-value pairs
+                                Seventh: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Eighth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Tuesday: {                   // object that we want to update
+                                ...prevState.Tuesday,    // keep all other key-value pairs
+                                Eighth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                }
+                else if(d.localeCompare("Wednesday") == 0)
+                {
+                    if(t.localeCompare("First") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Wednesday: {                   // object that we want to update
+                                ...prevState.Wednesday,    // keep all other key-value pairs
+                                First: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Second") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Wednesday: {                   // object that we want to update
+                                ...prevState.Wednesday,    // keep all other key-value pairs
+                                Second: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Third") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Wednesday: {                   // object that we want to update
+                                ...prevState.Wednesday,    // keep all other key-value pairs
+                                Third: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fourth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Wednesday: {                   // object that we want to update
+                                ...prevState.Wednesday,    // keep all other key-value pairs
+                                Fourth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fifth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Wednesday: {                   // object that we want to update
+                                ...prevState.Wednesday,    // keep all other key-value pairs
+                                Fifth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Sixth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Wednesday: {                   // object that we want to update
+                                ...prevState.Wednesday,    // keep all other key-value pairs
+                                Sixth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Seventh") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Wednesday: {                   // object that we want to update
+                                ...prevState.Wednesday,    // keep all other key-value pairs
+                                Seventh: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Eighth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Wednesday: {                   // object that we want to update
+                                ...prevState.Wednesday,    // keep all other key-value pairs
+                                Eighth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                }
+                else if(d.localeCompare("Thursday") == 0)
+                {
+                    if(t.localeCompare("First") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Thursday: {                   // object that we want to update
+                                ...prevState.Thursday,    // keep all other key-value pairs
+                                First: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Second") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Thursday: {                   // object that we want to update
+                                ...prevState.Thursday,    // keep all other key-value pairs
+                                Second: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Third") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Thursday: {                   // object that we want to update
+                                ...prevState.Thursday,    // keep all other key-value pairs
+                                Third: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fourth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Thursday: {                   // object that we want to update
+                                ...prevState.Thursday,    // keep all other key-value pairs
+                                Fourth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fifth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Thursday: {                   // object that we want to update
+                                ...prevState.Thursday,    // keep all other key-value pairs
+                                Fifth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Sixth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Thursday: {                   // object that we want to update
+                                ...prevState.Thursday,    // keep all other key-value pairs
+                                Sixth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Seventh") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Thursday: {                   // object that we want to update
+                                ...prevState.Thursday,    // keep all other key-value pairs
+                                Seventh: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Eighth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Thursday: {                   // object that we want to update
+                                ...prevState.Thursday,    // keep all other key-value pairs
+                                Eighth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                }
+                else if(d.localeCompare("Friday") == 0)
+                {
+                    if(t.localeCompare("First") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Friday: {                   // object that we want to update
+                                ...prevState.Friday,    // keep all other key-value pairs
+                                First: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Second") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Friday: {                   // object that we want to update
+                                ...prevState.Friday,    // keep all other key-value pairs
+                                Second: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Third") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Friday: {                   // object that we want to update
+                                ...prevState.Friday,    // keep all other key-value pairs
+                                Third: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fourth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Friday: {                   // object that we want to update
+                                ...prevState.Friday,    // keep all other key-value pairs
+                                Fourth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Fifth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Friday: {                   // object that we want to update
+                                ...prevState.Friday,    // keep all other key-value pairs
+                                Fifth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Sixth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Friday: {                   // object that we want to update
+                                ...prevState.Friday,    // keep all other key-value pairs
+                                Sixth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Seventh") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Friday: {                   // object that we want to update
+                                ...prevState.Friday,    // keep all other key-value pairs
+                                Seventh: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                    else if(t.localeCompare("Eighth") == 0)
+                    {
+                        this.setState(prevState => ({
+                            Friday: {                   // object that we want to update
+                                ...prevState.Friday,    // keep all other key-value pairs
+                                Eighth: slot       // update the value of specific key
+                            }
+                        }))
+                    }
+                }
+            }
+
+          })
+          .catch((error)=>{
+            this.setState({message : ("Request failed \n" + error)});
+            console.log(error);
+        });
       }
 
     render(){
         return(
             <div className="main">
+                {this.state.message}<br></br><br></br>
                 <table class="table table-striped">
                 <thead>
                     <tr class = "fathy_Row">

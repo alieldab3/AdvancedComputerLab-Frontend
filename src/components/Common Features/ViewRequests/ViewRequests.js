@@ -12,6 +12,7 @@ class ViewRequests extends Component{
         R_state:"0"
     }
     FilterRequest(){
+        console.log("View Request");
         let typeValue = document.getElementById("FilterType").value; 
         let statevalue = document.getElementById("FilterState").value;
         this.setState({
@@ -47,21 +48,24 @@ class ViewRequests extends Component{
       }
     handleCancelation(rid)
     { 
-        /* 
+        console.log(typeof rid);
+        console.log(this.state.token);
         axios.delete('http://localhost:5000/Academics/DeleteRequest',{
-                request_id:rid
-            },{
                 headers: {
                     'auth-token': this.state.token
+                },
+                data:{   
+                        request_id:rid
                 }
               },{withCredentials:true})
             .then((response)=>{
                 this.setState({message : "Request deleted Sucessfully"})
+                this.componentDidMountAgain();
             })
             .catch((error)=>{
                 this.setState({message : "deletion failed"})
                 console.log(error);
-            });*/     
+            });    
     }
 
     render(){
@@ -82,7 +86,7 @@ class ViewRequests extends Component{
                     <td>{elem.type}</td>
                     <td>{elem.slot}</td>
                     <td>{elem.state}</td>
-                    <td><button type="button" disabled = {!cancelEn} onClick={this.handleCancelation(elem.rid)} class="btn btn-danger">Cancel</button></td>
+                    <td><button type="button"  id = {"Cancel"+elem.id} onClick={(e)=>this.handleCancelation(elem.rid)} class="btn btn-danger"disabled = {!cancelEn}>Cancel</button></td>
                     </tr>
                 );
             }
@@ -94,7 +98,7 @@ class ViewRequests extends Component{
                     <td>{elem.type}</td>
                     <td>{elem.newDayoff}</td>
                     <td>{elem.state}</td>
-                    <td><button type="button" disabled = {!cancelEn} onClick={this.handleCancelation(elem.rid)} class="btn btn-danger">Cancel</button></td>
+                    <td><button type="button" id = {"Cancel"+elem.id} onClick={(e)=>this.handleCancelation(elem.rid)} class="btn btn-danger"disabled = {!cancelEn}>Cancel</button></td>
                     </tr>
                 );
             }
@@ -108,7 +112,7 @@ class ViewRequests extends Component{
                 <td>{elem.RequestedDay}</td>
                 <td>{elem.duration}</td>
                 <td>{elem.state}</td>
-                <td><button type="button" disabled = {!cancelEn} onClick={this.handleCancelation(elem.rid)} class="btn btn-danger">Cancel</button></td>
+                <td><button type="button" id = {"Cancel"+elem.id}  onClick={(e)=>this.handleCancelation(elem.rid)} class="btn btn-danger" disabled = {!cancelEn}>Cancel</button></td>
                 </tr>
                 );
                 }
@@ -204,6 +208,11 @@ class ViewRequests extends Component{
             <div class="col">
                 <div className='Under' >
                 <button type="button" class="btn btn-primary"onClick={() => this.FilterRequest()}>View Requests</button>
+                </div>
+            </div>
+            <div class="col">
+                <div className='Under' >
+                <h2> {this.state.message}</h2>
                 </div>
             </div>
         </div>

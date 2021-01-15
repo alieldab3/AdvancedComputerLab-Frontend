@@ -69,7 +69,9 @@ class updateProfile extends Component {
 
     render(){
         let otherGender;
-        this.state.person.gender=='Male' ? (otherGender = 'Female') : (otherGender = 'Male') ;
+        if(this.state.person.gender!=null){
+            (this.state.person.gender.toLowerCase()=='male') ? (otherGender = 'Female') : (otherGender = 'Male') ;
+        }
 
         let department;
         let faculty;
@@ -113,7 +115,7 @@ class updateProfile extends Component {
         <div className="container">
 
 
-        <div className = 'cardupdate'>
+        <div className = 'sign'>
 
         <form class="form-floating">
             {/* class="form-control is-invalid" */}
