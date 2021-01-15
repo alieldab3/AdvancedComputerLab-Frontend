@@ -7,7 +7,7 @@ import axios from 'axios';
  import './Sidebar.css'
  import 'react-pro-sidebar/dist/css/styles.css';
 
-// const typeAll = ['HR','HOD','Course Instructor','Course Coordinator']
+// const typeAll = ['HR','HOD','Course Instructor','Course Coordinator','Academic Member']
 
 
 class Sidebar extends Component {
@@ -251,6 +251,27 @@ class Sidebar extends Component {
         )
     }
 
+    else if(this.state.type ==null){
+        return (
+            <SidebarContent >{
+            
+            <Menu iconShape="round" >
+
+                <SubMenu defaultOpen='true' title="Dashboard" >
+                 
+                    <MenuItem active='true'><NavLink activeClassName='Homepage' exact to ="/" > Home Page</NavLink></MenuItem>
+                    {commonStaffFeatures}
+                    </SubMenu>
+
+                    <SubMenu defaultOpen='true' title="Services" >
+                    {commonACFeatures}
+                    </SubMenu>
+                
+            </Menu>
+            }</SidebarContent>
+        )
+    }
+
 }
 
 
@@ -263,7 +284,7 @@ class Sidebar extends Component {
         <br></br>
 
         <SidebarHeader className='tex'>
-            {this.state.type}'s Home
+            {this.state.type!=null?(this.state.type):('Academic Member')}'s Home
             <br></br>
         </SidebarHeader>
      
