@@ -44,7 +44,9 @@ class viewallstaffdayoffs extends Component{
    
   state ={
     token : this.props.token,
-    arr:[]
+    arr :[{id:"ac-31",name:"ali",dayoff:"Saturday"},{id:"ac-32",name:"omar",dayoff:"sunday"},{id:"ac-32",name:"Aziz",dayoff:"Monday"}]
+    
+    
   }
   
    
@@ -102,7 +104,7 @@ success();
     }
 
     componentDidMount() {
-    
+     
     }
     
     handleClick= () => {
@@ -113,7 +115,8 @@ success();
 render() {
     return(
 
-        <div className="mainP">
+      
+        <div className="mainp">
 
         <div className="container">
 
@@ -122,8 +125,9 @@ render() {
 
         <form class="form-floating">
             {/* class="form-control is-invalid" */}
+            <br></br>
 
-        <p>view all staff day offs</p>
+        <h3> all staff daysoff</h3>
 
         
         <div class="mb-3">
@@ -133,11 +137,8 @@ render() {
         <ul>
         </ul>
 
-         <div >
-         <label for="NewPassword" class="form-label" >ID </label>
-            <div class="input-group mb-3">
-            <input typeclass="form-control" id="uniqueID" placeholder="id"></input>
-            </div>
+        <div >
+         
             <Table columns={columns} class="hello" dataSource={this.state.arr} />);
 
 
@@ -151,9 +152,7 @@ render() {
 
 
 
-        <div className="right">
-        <button type="button" class="btn btn-primary" onClick= {this.handleClick}>View</button>
-        </div>
+      
 
         
         </form> 

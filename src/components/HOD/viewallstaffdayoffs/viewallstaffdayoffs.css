@@ -1,5 +1,5 @@
-.mainP Table {
-    transform: translate(280%, -90%);
+.mainP {
+    transform: translate(0%, -20%);
     top: 5%;
     width: 30%; 
     overflow-y: scroll;
