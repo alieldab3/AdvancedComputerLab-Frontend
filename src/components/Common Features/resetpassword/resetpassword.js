@@ -104,9 +104,6 @@ class resetpassword extends Component{
         <br></br>
 
 
-        <p>
-        After saving, you might need to log in again. 
-        You'll be notified when your password has been changed successfully.</p>
 
         
         <ul>
@@ -132,14 +129,19 @@ class resetpassword extends Component{
         </div>
         </div>
 
+        
+              <div className="right">
+              <button type="button" class="btn btn-primary" onClick={() => this.handleReset()}>Reset Password</button>
+              </div>
 
+          <br></br>
 
-
-        <div className="right">
-        <button type="button" class="btn btn-primary" onClick={() => this.handleReset()}>Reset Password</button>
-        </div>
+        <div>
+          <br></br>
 
         {Message}
+        </div>
+
 
         </form> 
         
