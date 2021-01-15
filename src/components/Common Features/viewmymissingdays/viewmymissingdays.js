@@ -1,4 +1,4 @@
-import React , { Component } from 'react';
+import React , { Component, Fragment } from 'react';
 import { BrowserRouter , Route } from 'react-router-dom'
 import './viewmymissingdays.css';
 import axios from 'axios';
@@ -11,25 +11,17 @@ class viewmymissingdays extends Component{
         user : this.props.user,
         myMissingDays : 0,
         viewMonth : null,
+        isFailed : null
     }
 
     ViewMissingDays(){
         let MissingDaysSelectValue = document.getElementById("FormControlMyMissingDays").value;
 
-        // if(recordSelectValue=="All"){
-        //     this.setState({viewMonth : false})
-        //     axios.get('http://localhost:5000/ViewAttendance/:', {
-        //         headers: {
-        //             'auth-token': this.state.token
-        //         }
-        //       })
-        //     .then(res => {
-        //       const attendanceRecords = res.data;
-        //       this.setState({ attendanceRecords });
-        //     })
-        // }
-        // else 
-        if(MissingDaysSelectValue!=null){
+        if(MissingDaysSelectValue==''){
+            this.setState({viewMonth : false,
+                myMissingDays : 0})
+        }
+        else if(MissingDaysSelectValue!=null){
             this.setState({viewMonth : true})
 
             axios.get('http://localhost:5000/ViewMissingDays/'+MissingDaysSelectValue, {
@@ -38,29 +30,48 @@ class viewmymissingdays extends Component{
                 }
               })
             .then(res => {
-              const myMissingDays = res.data.missingDays;
-              this.setState({ myMissingDays });
+              this.setState({ myMissingDays : res.data.missingDays});
             })
+            .catch((error)=>{
+                this.setState({isFailed : true})
+                 console.log(error);
+            });
         }
       }
 
     
 
     render(){
-        let isViewMonth = this.state.viewMonth
-        // let MissingDaysSelectValue = document.getElementById("FormControlMyMissingDays").value;
-        let myMissingDays = this.state.myMissingDays
-        let RecordDiv = null;
+        let RecordDiv ;
+        let Message;
 
-        if (isViewMonth == true) {
-        // if (MissingDaysSelectValue != null) {
-
+        if (this.state.viewMonth == true && this.state.isFailed != true ) {
                 RecordDiv = (
+                    <Fragment>
                     <div class="mb-3">
                     <label for="FormControlName" class="form-label">Name</label>
                     <input type="text" class="form-control" id="FormControlName" placeholder="My Name" value={this.state.user.name} disabled></input>
                     </div>
+
+                    <div class="mb-3">
+                    <label for="FormControlEmail" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="FormControlEmail" placeholder="name@guc.edu.eg" defaultValue={this.state.user.email} disabled></input>
+                    </div>
+
+                    <div class="mb-3">
+                    <label for="FormControlMissingDays" class="form-label">Missing Days</label>
+                    <input type="text" class="form-control" id="FormControlMissingDays" placeholder="" value={ this.state.myMissingDays} disabled></input>
+                    </div>
+
+                    </Fragment>
                 )
+        }
+
+        
+        if (this.state.isFailed == true) {
+            Message =( <div class="alert alert-primary" role="alert">
+            This was an error! Please, Try again Later.
+            </div>)
         }
         return(
             <div className="mainP">
@@ -70,7 +81,7 @@ class viewmymissingdays extends Component{
                             <div class="row">
                                 <div class="col">
                                     <select class="form-select" id="FormControlMyMissingDays" aria-label="Select Month">
-                                        <option selected >Select Month</option>
+                                        <option selected value='' >Select Month</option>
                                         <option value="1">January</option>
                                         <option value="2">February</option>
                                         <option value="3">March</option>
@@ -96,8 +107,9 @@ class viewmymissingdays extends Component{
                             <br></br>
 
                             <div >
-                                <p>{myMissingDays}</p>
                                 {RecordDiv}
+                                {Message}
+
                             </div>
 
                         </form>
