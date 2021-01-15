@@ -81,9 +81,9 @@ import Viewmymissingdays from './components/Common Features/viewmymissingdays/vi
 import Viewmyhours from './components/Common Features/viewmyhours/viewmyhours';
 
 //All Academic Members Components//
-import viewSchedule from './components/Common Features/viewSchedule/viewSchedule';
-import sendReplacement from './components/Common Features/sendReplacement/sendReplacement';
-import sendSlotLinking from './components/Common Features/sendSlotLinking/sendSlotLinking';
+import ViewSchedule from './components/Common Features/viewSchedule/viewSchedule';
+import SendReplacement from './components/Common Features/sendReplacement/sendReplacement';
+import SendSlotLinking from './components/Common Features/sendSlotLinking/sendSlotLinking';
 import ChangeDayOff from './components/Common Features/ChangeDayOff/ChangeDayOff';
 import SubmitLeave from './components/Common Features/SubmitLeave/SubmitLeave';
 import ViewRequests from './components/Common Features/ViewRequests/ViewRequests';
@@ -207,7 +207,7 @@ class App extends Component {
                             <br></br>
 
                             <div>
-                                <p>{'©'}{new Date().getFullYear()}{' GUC Software Systems'}{'.'}</p>
+                                <p>{'©'}{new Date().getFullYear()}{' GUC Software Systems'}</p>
                                 {Message}
                             </div>
 
@@ -308,12 +308,12 @@ class App extends Component {
                           <Route exact path='/viewmymissingdays' render={(props) => (<Viewmymissingdays {...props} token={this.state.token} user={this.state.user} />)} />
                           <Route exact path='/viewmyhours' render={(props) => (<Viewmyhours {...props} token={this.state.token} user={this.state.user} />)} />
                           {/* All Academic Members Components */}
-                          <Route exact path='/viewSchedule' component={viewSchedule} />
-                          <Route exact path='/sendReplacement' component={sendReplacement} />
-                          <Route exact path='/sendSlotLinking' component={sendSlotLinking} />
-                          <Route exact path='/ChangeDayOff' component={ChangeDayOff} />
-                          <Route exact path='/SubmitLeave' component={SubmitLeave} />
-                          <Route exact path='/ViewRequests' component={ViewRequests} />
+                          <Route exact path='/viewSchedule' render={(props) => (<ViewSchedule {...props} token={this.state.token} user={this.state.user} />)} />
+                          <Route exact path='/sendReplacement' render={(props) => (<SendReplacement {...props} token={this.state.token} user={this.state.user} />)} />
+                          <Route exact path='/sendSlotLinking' render={(props) => (<SendSlotLinking {...props} token={this.state.token} user={this.state.user} />)} />
+                          <Route exact path='/ChangeDayOff' render={(props) => (<ChangeDayOff {...props} token={this.state.token} user={this.state.user} />)} />
+                          <Route exact path='/SubmitLeave' render={(props) => (<SubmitLeave {...props} token={this.state.token} user={this.state.user} />)} />
+                          <Route exact path='/ViewRequests' render={(props) => (<ViewRequests {...props} token={this.state.token} user={this.state.user} />)} />
                           
                   </Switch>
               </div>
