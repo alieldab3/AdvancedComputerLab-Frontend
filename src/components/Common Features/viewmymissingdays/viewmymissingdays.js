@@ -48,12 +48,12 @@ class viewmymissingdays extends Component{
 
     render(){
         let isViewMonth = this.state.viewMonth
-        let MissingDaysSelectValue = document.getElementById("FormControlMyMissingDays").value;
+        // let MissingDaysSelectValue = document.getElementById("FormControlMyMissingDays").value;
         let myMissingDays = this.state.myMissingDays
         let RecordDiv = null;
 
-        // if (isViewMonth == true) {
-        if (MissingDaysSelectValue != null) {
+        if (isViewMonth == true) {
+        // if (MissingDaysSelectValue != null) {
 
                 RecordDiv = (
                     <div class="mb-3">
