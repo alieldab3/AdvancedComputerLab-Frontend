@@ -87,7 +87,7 @@ class viewmymissingdays extends Component{
                                         <option value="3">March</option>
                                         <option value="4">April</option>
                                         <option value="5">May</option>
-                                        <option vaSlue="6">June</option>
+                                        <option value="6">June</option>
                                         <option value="7">July</option>
                                         <option value="8">August</option>
                                         <option value="9">September</option>
