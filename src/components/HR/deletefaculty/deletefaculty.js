@@ -10,11 +10,11 @@ import { message, Button ,space} from 'antd';
 
 const success = () => {
     
-  message.success('Faculty updated successfully');
+  message.success('Faculty delete successfully');
 };
 
 const error1 = () => {
-  message.error('Cannot update faculty this faculty donot exist' );
+  message.error('Cannot delete faculty this faculty donot exist' );
 };
 
 class deletefaculty extends Component{

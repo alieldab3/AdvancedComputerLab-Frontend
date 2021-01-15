@@ -70,7 +70,7 @@ render() {
     return(
 
 <div className="login">
-	<h1>Add new Faculty</h1>
+	<h1>Add new Department</h1>
     <form method="form">
     	<input type="text" id="uniqueID" className="hi" name="u" placeholder="Faculty Name" required="required" />
         <input type="text" id="uniqueID1" className="hi" name="u" placeholder="Department Name" required="required" />
