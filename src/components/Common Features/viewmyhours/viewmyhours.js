@@ -1,28 +1,153 @@
-import React , { Component } from 'react';
+import React , { Component, Fragment } from 'react';
 import { BrowserRouter , Route } from 'react-router-dom'
 import './viewmyhours.css';
+import axios from 'axios';
 
-const viewmyhours =() =>{
-    return(
-        <div className="main">
-            <h2>viewmyhours</h2>
-            <p>This is viewmyhours</p>
-        </div>
-    )
+
+class viewmyhours extends Component{
+
+    state = {
+        token : this.props.token,
+        user : this.props.user,
+        person : null,
+        myMissingHours :0,
+        viewMonth : null,
+        isFailed : null
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:5000/viewProfile',{
+            headers: {
+                'auth-token': this.state.token
+            }
+          })
+          .then(res => {
+            const person = res.data[0];
+
+            this.setState({ 
+                person : person,
+            });
+                  })
+      }
+
+    ViewMissingHours(){
+        let MissingHoursSelectValue = document.getElementById("FormControlMyMissingHours").value;
+
+        if(MissingHoursSelectValue==''){
+            this.setState({viewMonth : false,
+                myMissingHours : 0})
+        }
+        else if(MissingHoursSelectValue!=null){
+            this.setState({viewMonth : true})
+
+            axios.get('http://localhost:5000/viewAllMissingHours/:month', {
+                headers: {
+                    'auth-token': this.state.token
+                },
+                params:{
+                    month:MissingHoursSelectValue
+                }
+               
+              })
+            .then(res => {
+            for (let i = 0; i < res.data.length; i++) {
+                if(res.data[i].id==this.state.person.member_id){
+                    this.setState({myMissingHours : res.data[i].Days})
+                    break;
+                }
+                else{
+                    this.setState({myMissingHours : 29})
+                }
+            }
+            })
+            .catch((error)=>{
+                this.setState({isFailed : true})
+                 console.log(error);
+            });
+        }
+      }
+
+    
+
+    render(){
+        let RecordDiv ;
+        let Message;
+
+        if (this.state.viewMonth == true && this.state.isFailed != true ) {
+                RecordDiv = (
+                    <Fragment>
+
+                    <div class="alert alert-primary" role="alert">Please Wait. This may take a few Seconds..</div>
+                    <div class="mb-3">
+                    <label for="FormControlName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="FormControlName" placeholder="My Name" value={this.state.user.name} disabled></input>
+                    </div>
+
+                    <div class="mb-3">
+                    <label for="FormControlEmail" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="FormControlEmail" placeholder="name@guc.edu.eg" defaultValue={this.state.user.email} disabled></input>
+                    </div>
+
+                    <div class="mb-3">
+                    <label for="FormControlMyMissingHours" class="form-label">Missing Hours</label>
+                    <input type="text" class="form-control" id="FormControlMyMissingHours" placeholder="" value={ this.state.myMissingHours} disabled></input>
+                    </div>
+                    </Fragment>
+                )
+        }
+
+        
+        if (this.state.isFailed == true) {
+            Message =( <div class="alert alert-primary" role="alert">
+            This was an error! Please, Try again Later.
+            </div>)
+        }
+        return(
+            <div className="mainP">
+                <div className="container">
+                <div className = 'cardupdate'>
+                        <form class="form-floating">
+                            <div class="row">
+                                <div class="col">
+                                    <select class="form-select" id="FormControlMyMissingHours" aria-label="Select Month">
+                                        <option selected value='' >Select Month</option>
+                                        <option value="1">January</option>
+                                        <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6">June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                </div>
+
+                                <div class="col">
+                                    <div className='Under' >
+                                    <button type="button" class="btn btn-primary"onClick={() => this.ViewMissingHours()}>View Missing Hours</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br></br>
+
+                            <div >
+                                {RecordDiv}
+                                {Message}
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
-
-// class viewschedule extends Component {
-//   render () {
-//     return (
-//       <BrowserRouter>
-//       <Sidebar />
-//       {/* <Route exact path='/' component={Index} />
-//       <Route path='/contact' component={Contact} /> */}
-//     </BrowserRouter>
-
-//    );
-//   }
-// }
 
 
 export default viewmyhours;

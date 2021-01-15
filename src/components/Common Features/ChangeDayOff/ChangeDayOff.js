@@ -6,14 +6,21 @@ import axios from 'axios';
 
  class ChangeDayOff extends Component {
      state = {
+        token : this.props.token,
          OldDay_Off:"",
          comment:"",
-         message:"bala"
+         message:""
      }
 
      componentDidMount() {
-        axios.get('http://localhost:5000/viewProfile')
+        console.log(this.state.token);
+        axios.get('http://localhost:5000/viewProfile',{
+            headers: {
+                'auth-token': this.state.token
+            }
+          })
           .then(res => {
+              console.log("View Profile");
             const dayOff = res.data[0].dayoff;
             this.setState({ OldDay_Off:dayOff });
           });
@@ -21,10 +28,17 @@ import axios from 'axios';
       HandleSubmit(){
         let newDay = document.getElementById("NewDayOff").value;
         let comment = document.getElementById("SenderComment").value;
+        console.log(newDay);
+        console.log(newDay.localeCompare("Select New DayOff"));
+        if(newDay.localeCompare("Select New DayOff") == 0)
+            {
+                this.setState({message : "Please Pick A day"});
+                return; 
+            }
         console.log("Request is sending");
         if(newDay.localeCompare(this.state.OldDay_Off) == 0)
             {
-                this.state.message = "This is Already Your Dayoff";
+                this.setState({message : "This is Already Your Dayoff"})
                 console.log("Request not sent");
             }
         else{
@@ -32,7 +46,11 @@ import axios from 'axios';
             axios.post('http://localhost:5000/Academics/ChangeDayoffRequest',{
                 day:newDay,
 			    senderComment:comment
-            },{withCredentials:true})
+            },{
+                headers: {
+                    'auth-token': this.state.token
+                }
+              },{withCredentials:true})
             .then((response)=>{
                 this.setState({message : "Request Sent Sucessfully"})
             })
@@ -44,6 +62,7 @@ import axios from 'axios';
       }
 
    render () {
+       console.log(this.state.message);
      return (
         <div class="main">
         <div class="cardupdate">

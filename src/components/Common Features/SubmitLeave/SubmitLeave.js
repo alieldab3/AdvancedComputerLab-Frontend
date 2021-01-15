@@ -7,6 +7,7 @@ import axios from 'axios';
 
 class SubmitLeave extends Component{
     state ={
+        token : this.props.token,
         selectedDay:null,
         message:"",
         leaveDuration:1
@@ -28,7 +29,11 @@ class SubmitLeave extends Component{
             type:leaveType,
             requested_day:requested_day,
             duration:leaveDuration
-        },{withCredentials:true})
+        },{
+            headers: {
+                'auth-token': this.state.token
+            }
+          },{withCredentials:true})
             .then((response)=>{
                 this.setState({message : "Leave Request Sent Sucessfully"})
             })

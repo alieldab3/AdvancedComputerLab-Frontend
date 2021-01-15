@@ -5,12 +5,17 @@ import axios from 'axios';
 
 class sendSlotLinking extends Component{
     state ={
+        token : this.props.token,
         message:"",
         availableSlots:[]
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/AllCourseSlots')
+        axios.get('http://localhost:5000/AllCourseSlots',{
+            headers: {
+                'auth-token': this.state.token
+            }
+          })
           .then(res => {
             this.setState({ availableSlots:res.data });
           });
@@ -24,7 +29,11 @@ class sendSlotLinking extends Component{
         axios.post('http://localhost:5000/Academics/SendSlotLinkingRequest',{
                 slot_id:slot_id,
 			    senderComment:comment
-            },{withCredentials:true})
+            },{
+                headers: {
+                    'auth-token': this.state.token
+                }
+              },{withCredentials:true})
             .then((response)=>{
                 this.setState({message : "Request Sent Sucessfully"})
             })
