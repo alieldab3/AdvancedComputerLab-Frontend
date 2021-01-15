@@ -74,25 +74,42 @@ class signin extends Component {
 
     return(
         
-        <div className="main">
+     
+     <div className="mainP">
+        <div className="container">
 
+
+        <div className = 'sign'>
 
             <div> 
-            {/* {selectedDay && <p>Day: {selectedDay.toLocaleDateString()}</p>} */}
-            {selectedDay && <h2>Now Click below to Scan your ID</h2>}
 
-            {!selectedDay && <h2>First Choose a Day</h2>}
+            <h5>Sign In</h5>
+            <br></br>
+
+            {/* {selectedDay && <p>Day: {selectedDay.toLocaleDateString()}</p>} */}
+            {selectedDay && <h5>Now Click below to Scan your ID</h5>}
+
+            {!selectedDay && <h5>First Choose a Day</h5>}
             <DayPickerInput  onDayChange={this.handleDayChange.bind(this)} />
+
+
+            <div >
+            <br></br>
+
+            <img src={signmachine} width='80%'  onClick={() => this.handleSignIn()}></img>
+            </div>
+            {Message}
+
             </div>
             
 
 
-            <img src={signmachine} width='50%' className='sign' onClick={() => this.handleSignIn()}></img>
 
-            {Message}
+            </div>
+            </div>
+            </div>
 
             
-        </div>
     )
     }
 }

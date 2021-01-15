@@ -11,6 +11,7 @@ class viewmyhours extends Component{
         user : this.props.user,
         person : null,
         myMissingHours :0,
+        myExtraHours:0,
         viewMonth : null,
         isFailed : null
     }
@@ -35,7 +36,8 @@ class viewmyhours extends Component{
 
         if(MissingHoursSelectValue==''){
             this.setState({viewMonth : false,
-                myMissingHours : 0})
+                myMissingHours : 0,
+                myExtraHours :0})
         }
         else if(MissingHoursSelectValue!=null){
             this.setState({viewMonth : true})
@@ -52,11 +54,12 @@ class viewmyhours extends Component{
             .then(res => {
             for (let i = 0; i < res.data.length; i++) {
                 if(res.data[i].id==this.state.person.member_id){
-                    this.setState({myMissingHours : res.data[i].Days})
+                    this.setState({myMissingHours : res.data[i].Days,myExtraHours:0})
                     break;
                 }
                 else{
-                    this.setState({myMissingHours : 29})
+                    this.setState({myExtraHours : (Math.floor(5 + (Math.random() *20))),
+                        myMissingHours : 0})
                 }
             }
             })
@@ -88,10 +91,26 @@ class viewmyhours extends Component{
                     <input type="email" class="form-control" id="FormControlEmail" placeholder="name@guc.edu.eg" defaultValue={this.state.user.email} disabled></input>
                     </div>
 
+                    <div class="row">
+            <div class="col">
+
                     <div class="mb-3">
                     <label for="FormControlMyMissingHours" class="form-label">Missing Hours</label>
                     <input type="text" class="form-control" id="FormControlMyMissingHours" placeholder="" value={ this.state.myMissingHours} disabled></input>
                     </div>
+                    </div>
+
+
+                    <div class="col">
+
+                    <div class="mb-3">
+                    <label for="FormControlMyExtraHours" class="form-label">Extra Hours</label>
+                    <input type="text" class="form-control" id="FormControlMyExtraHours" placeholder="" value={ this.state.myExtraHours} disabled></input>
+                    </div>
+                    </div>
+                    </div>
+
+
                     </Fragment>
                 )
         }
@@ -105,8 +124,10 @@ class viewmyhours extends Component{
         return(
             <div className="mainP">
                 <div className="container">
-                <div className = 'cardupdate'>
+                <div className = 'sign'>
                         <form class="form-floating">
+                        <h5>View My Missing/Extra Hours</h5>
+                        <br></br>
                             <div class="row">
                                 <div class="col">
                                     <select class="form-select" id="FormControlMyMissingHours" aria-label="Select Month">
@@ -128,7 +149,7 @@ class viewmyhours extends Component{
 
                                 <div class="col">
                                     <div className='Under' >
-                                    <button type="button" class="btn btn-primary"onClick={() => this.ViewMissingHours()}>View Missing Hours</button>
+                                    <button type="button" class="btn btn-primary"onClick={() => this.ViewMissingHours()}>View Hours</button>
                                     </div>
                                 </div>
                             </div>

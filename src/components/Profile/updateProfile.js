@@ -113,7 +113,7 @@ class updateProfile extends Component {
         <div className="container">
 
 
-        <div className = 'cardupdate'>
+        <div className = 'sign'>
 
         <form class="form-floating">
             {/* class="form-control is-invalid" */}

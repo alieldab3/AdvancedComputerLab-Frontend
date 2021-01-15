@@ -73,25 +73,38 @@ class signout extends Component {
 
     return(
         
-        <div className="main">
+        <div className="mainP">
+        <div className="container">
 
+
+        <div className = 'sign'>
 
             <div> 
+            <h5>Sign Out</h5>
+            <br></br>
             {/* {selectedDay && <p>Day: {selectedDay.toLocaleDateString()}</p>} */}
-            {selectedDay && <h2>Now Click below to Scan your ID</h2>}
+            {selectedDay && <h5>Now Click below to Scan your ID</h5>}
 
-            {!selectedDay && <h2>First Choose a Day</h2>}
+            {!selectedDay && <h5>First Choose a Day</h5>}
             <DayPickerInput  onDayChange={this.handleDayChange.bind(this)} />
+            
+
+            <div >
+            <br></br>
+            <img src={signmachine} width='80%' onClick={() => this.handleSignOut()}></img>
+            </div>
+            {Message}
             </div>
             
 
 
-            <img src={signmachine} width='50%' className='sign' onClick={() => this.handleSignOut()}></img>
 
-            {Message}
+            </div>
+            </div>
+            </div>
 
-            
-        </div>
+
+
     )
     }
 }
