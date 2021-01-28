@@ -37,7 +37,7 @@ class updatelocation extends Component{
     if(a&&b&&c&&d){
         e.preventDefault();
     
-        axios.get('http://localhost:5000/updateLocation', {
+        axios.get('https://advancedcomputerlab-backend.herokuapp.com/updateLocation', {
           
             headers: {'auth-token': this.state.token},
             

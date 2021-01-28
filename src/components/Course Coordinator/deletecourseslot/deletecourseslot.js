@@ -9,7 +9,7 @@ class deletecourseslot extends Component{
         AllSlots:[]
     }
     componentDidMountAgain(){
-        axios.get('http://localhost:5000/coordinator/AllCourseSlots',{
+        axios.get('https://advancedcomputerlab-backend.herokuapp.com/coordinator/AllCourseSlots',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -21,7 +21,7 @@ class deletecourseslot extends Component{
           });
     }
     componentDidMount() {
-        axios.get('http://localhost:5000/coordinator/AllCourseSlots',{
+        axios.get('https://advancedcomputerlab-backend.herokuapp.com/coordinator/AllCourseSlots',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -40,7 +40,7 @@ class deletecourseslot extends Component{
             this.setState({message:"Please Select slot"});
             return;
         }
-        axios.delete('http://localhost:5000/coordinator/deleteSlot',{
+        axios.delete('https://advancedcomputerlab-backend.herokuapp.com/coordinator/deleteSlot',{
                 headers: {
                     'auth-token': this.state.token
                 },

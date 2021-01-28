@@ -38,7 +38,7 @@ class deletestaffmember extends Component{
     callAPI() {
       let a=document.getElementById("uniqueID").value;
       if(a){
-    axios.delete('http://localhost:5000/delMem', {
+    axios.delete('https://advancedcomputerlab-backend.herokuapp.com/delMem', {
       headers: {'auth-token': this.state.token},
            
         params:{

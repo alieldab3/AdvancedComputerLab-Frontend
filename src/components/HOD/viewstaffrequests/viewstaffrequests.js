@@ -10,7 +10,7 @@ class viewstaffrequests extends Component {
         AllRequests : []
     }
     componentDidMount() {
-        axios.get('http://localhost:5000/viewRequests',{
+        axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewRequests',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -22,7 +22,7 @@ class viewstaffrequests extends Component {
       }
       AcceptRequest(rid)
         {
-            let url = 'http://localhost:5000/acceptRequest/'+rid;
+            let url = 'https://advancedcomputerlab-backend.herokuapp.com/acceptRequest/'+rid;
             axios.put(url,{
                 headers: {
                     'auth-token': this.state.token
@@ -39,7 +39,7 @@ class viewstaffrequests extends Component {
         }
         RejectRequest(rid)
         {
-            let url = 'http://localhost:5000/rejectRequest/'+rid;
+            let url = 'https://advancedcomputerlab-backend.herokuapp.com/rejectRequest/'+rid;
             axios.put(url,{
                 headers: {
                     'auth-token': this.state.token

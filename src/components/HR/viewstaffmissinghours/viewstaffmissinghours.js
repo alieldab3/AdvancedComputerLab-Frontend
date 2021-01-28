@@ -70,7 +70,7 @@ e.preventDefault();
       data1=[];
       let a=document.getElementById("uniqueID").value;
       if(a){
-    axios.get('http://localhost:5000/viewAllMissingHours/:month" component={UserPage}', {
+    axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewAllMissingHours/:month" component={UserPage}', {
       headers: {'auth-token': this.state.token},
               
     params:{

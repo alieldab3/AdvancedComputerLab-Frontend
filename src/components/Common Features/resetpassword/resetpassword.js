@@ -15,7 +15,7 @@ class resetpassword extends Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/viewProfile', {
+        axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewProfile', {
           headers: {
               'auth-token': this.state.token
           }
@@ -40,7 +40,7 @@ class resetpassword extends Component{
 
 
         console.log(InputNewPassword+" "+InputConfirmPassword)
-        axios.put('http://localhost:5000/resetPassword',
+        axios.put('https://advancedcomputerlab-backend.herokuapp.com/resetPassword',
         {
             newPassword : InputNewPassword,
             passwordCheck : InputConfirmPassword

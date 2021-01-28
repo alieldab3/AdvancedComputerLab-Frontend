@@ -17,7 +17,7 @@ class viewmyhours extends Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/viewProfile',{
+        axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewProfile',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -42,7 +42,7 @@ class viewmyhours extends Component{
         else if(MissingHoursSelectValue!=null){
             this.setState({viewMonth : true})
 
-            axios.get('http://localhost:5000/viewAllMissingHours/:month" component={UserPage}', {
+            axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewAllMissingHours/:month" component={UserPage}', {
                 headers: {
                     'auth-token': this.state.token
                 },

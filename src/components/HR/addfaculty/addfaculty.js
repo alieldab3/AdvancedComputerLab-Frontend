@@ -36,7 +36,7 @@ class addfaculty extends Component{
    else{
     e.preventDefault();
 
-    axios.post('http://localhost:5000/addFaculty', {
+    axios.post('https://advancedcomputerlab-backend.herokuapp.com/addFaculty', {
           nam:a,
           department:[]
            

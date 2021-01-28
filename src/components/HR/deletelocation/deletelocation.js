@@ -30,7 +30,7 @@ class deletelocation extends Component{
       if(a){
         e.preventDefault();
     
-        axios.delete('http://localhost:5000/delLocation', {
+        axios.delete('https://advancedcomputerlab-backend.herokuapp.com/delLocation', {
           headers: {'auth-token': this.state.token},
            
         params:{

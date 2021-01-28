@@ -15,7 +15,7 @@ class signout extends Component {
     }
 
     // componentDidMount() {
-    //     axios.get('http://localhost:5000/viewProfile')
+    //     axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewProfile')
     //       .then(res => {
     //         const person = res.data[0];
     //         this.setState({ person });
@@ -32,7 +32,7 @@ class signout extends Component {
         if (stateDay) {
             selDay = stateDay.toISOString();
              if (this.state.signedOut!=true) {
-                axios.post('http://localhost:5000/signOut',
+                axios.post('https://advancedcomputerlab-backend.herokuapp.com/signOut',
                 {
                     dateOut : selDay
                 }, {

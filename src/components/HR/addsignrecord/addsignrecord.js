@@ -42,7 +42,7 @@ class addsignrecord extends Component{
       else
       c=false;
       if(a&&b){
-    axios.post('http://localhost:5000/addsignup', {
+    axios.post('https://advancedcomputerlab-backend.herokuapp.com/addsignup', {
       staffid:a,
       rec:{time:b,signIn:c}
     

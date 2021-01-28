@@ -18,7 +18,7 @@ class Profile extends Component {
 
     componentDidMount() {
 
-        axios.get('http://localhost:5000/viewProfile', {
+        axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewProfile', {
             headers: {
                 'auth-token': this.state.token
             }

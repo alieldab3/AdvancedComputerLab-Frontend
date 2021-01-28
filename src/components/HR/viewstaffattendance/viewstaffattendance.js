@@ -72,7 +72,7 @@ e.preventDefault();
       console.log(data1)
       let a=document.getElementById("uniqueID").value;
       if(a){
-    axios.get('http://localhost:5000/viewattandence', {
+    axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewattandence', {
       headers: {'auth-token': this.state.token},
                
     params:{

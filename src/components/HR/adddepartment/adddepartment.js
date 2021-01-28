@@ -32,7 +32,7 @@ class adddepartment extends Component{
       if(a&&b){
       e.preventDefault();
       console.log(a+" "+b);
-    axios.post('http://localhost:5000/addDepart', {
+    axios.post('https://advancedcomputerlab-backend.herokuapp.com/addDepart', {
           facname:a,
           nam:b,
            

@@ -21,7 +21,7 @@ class Login3 extends Component {
         let loginPassword = document.getElementById("loginPassword").value;
 
         console.log(loginemail+" "+loginPassword)
-        axios.post('http://localhost:5000/login',
+        axios.post('https://advancedcomputerlab-backend.herokuapp.com/login',
         {
             email : loginemail,
             password : loginPassword,

@@ -46,7 +46,7 @@ class addstaffmember extends Component{
       let h=document.getElementById("uniqueID7").value;
       
       if(a&&b&&c&&d&&e&&f&&g&&h){
-    axios.post('http://localhost:5000/registerMem', {
+    axios.post('https://advancedcomputerlab-backend.herokuapp.com/registerMem', {
          gender:f,name:a,email:h,salary:b,
         officeLocation:{name:c},role:g,dayoff:e,department:d
     

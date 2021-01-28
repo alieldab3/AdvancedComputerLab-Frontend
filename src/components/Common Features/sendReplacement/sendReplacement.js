@@ -20,7 +20,7 @@ class sendReplacement extends Component{
         let requested_day = this.state.selectedDay;
         let comment = document.getElementById("SenderComment").value;
 
-        axios.post('http://localhost:5000/Academics/SendReplacementRequest',{
+        axios.post('https://advancedcomputerlab-backend.herokuapp.com/Academics/SendReplacementRequest',{
                 requested_day:requested_day,
 			    senderComment:comment
             },{
