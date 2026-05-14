@@ -104,7 +104,7 @@ class App extends Component {
       let loginPassword = document.getElementById("loginPassword").value;
 
       console.log(loginemail+" "+loginPassword)
-      axios.post('https://advancedcomputerlab-backend.herokuapp.com/login',
+      axios.post('http://localhost:5000/login',
       {
           email : loginemail,
           password : loginPassword,
@@ -125,12 +125,14 @@ class App extends Component {
 
       })
       .catch((error)=>{
-          this.setState({
-            isLogged : false,
-            loginFailed:true
-    })
-          console.log(error);
-      });
+    console.log("Status:", error.response?.status);
+    console.log("Data:", error.response?.data);
+
+    this.setState({
+        isLogged:false,
+        loginFailed:true
+    });
+});
 
       console.log("Logging In ....")
       console.log(this.state.token)
@@ -236,7 +238,8 @@ class App extends Component {
               <div className='content'> 
 
                 <Sidebar token={this.state.token}/>
-                  <Switch>
+                  <div className='routes-container'>
+                    <Switch>
 
                       {/* <Route exact path='/logout' /> {this.setState({isLogged:false,token:null,user:null}) } </Route> */}
                       {/* <Route exact path='/login' component={Login} /> */}
@@ -315,7 +318,8 @@ class App extends Component {
                           <Route exact path='/SubmitLeave' render={(props) => (<SubmitLeave {...props} token={this.state.token} user={this.state.user} />)} />
                           <Route exact path='/ViewRequests' render={(props) => (<ViewRequests {...props} token={this.state.token} user={this.state.user} />)} />
                           
-                  </Switch>
+                    </Switch>
+                  </div>
               </div>
 
           </div>

@@ -18,7 +18,7 @@ class Profile extends Component {
 
     componentDidMount() {
 
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewProfile', {
+        axios.get('http://localhost:5000/viewProfile', {
             headers: {
                 'auth-token': this.state.token
             }
@@ -108,3 +108,4 @@ class Profile extends Component {
 
 
 export default Profile;
+

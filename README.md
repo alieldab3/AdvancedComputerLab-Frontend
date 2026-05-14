@@ -1,71 +1,138 @@
-# Getting Started with Create React App
+﻿# Advanced Computer Lab - Staff Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive React-based staff management system for educational institutions. This application provides role-based access control for HR administrators, Heads of Department, Course Coordinators, Course Instructors, and general staff members to manage academic operations effectively.
 
-## Available Scripts
+## 🎯 Features
 
-In the project directory, you can run:
+### 👥 Role-Based Access Control
+- **HR Members**: Manage staff, departments, faculties, courses, locations, salaries, and attendance records
+- **Head of Department (HOD)**: Assign instructors, manage teaching assignments, view staff day-offs and requests
+- **Course Coordinator**: Manage course slots, control requests
+- **Course Instructors**: Assign course coordinators, manage slot assignments
+- **All Staff**: Submit leave requests, view schedules, track attendance, manage day-offs, update profiles
 
-### `npm start`
+### 📋 Core Functionalities
+- Staff management (add, update, delete)
+- Course and department management
+- Attendance tracking with missing days/hours reports
+- Leave request submission and management
+- Schedule management with slot linking
+- Staff coverage views
+- Course assignments and coordinator assignment
+- Day-off management
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 📋 Prerequisites
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Node.js** (v14.0.0 or higher)
+- **npm** (v6.0.0 or higher)
 
-### `npm test`
+Verify installations:
+`ash
+node --version
+npm --version
+`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Getting Started
 
-### `npm run build`
+### 1. Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`ash
+git clone https://github.com/yourusername/AdvancedComputerLab-Frontend.git
+cd AdvancedComputerLab-Frontend
+npm install
+`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Environment Configuration
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Create .env.local from the example:
+`ash
+cp .env.example .env.local
+`
 
-### `npm run eject`
+Configure your environment variables:
+`env
+REACT_APP_API_BASE_URL=http://localhost:8080/api
+PORT=3000
+`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 3. Start Development Server
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`ash
+npm start
+`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Opens at [http://localhost:3000](http://localhost:3000) with hot-reload enabled.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📦 Available Scripts
 
-## Learn More
+- 
+pm start - Development mode with hot-reload
+- 
+pm run build - Production build
+- 
+pm test - Run tests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📁 Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`
+src/
+├── components/
+│   ├── Common Features/          (Shared for all roles)
+│   ├── HR/                       (HR administrator)
+│   ├── HOD/                      (Head of Department)
+│   ├── Course Coordinator/
+│   ├── Course Instructor/
+│   ├── Header/
+│   ├── Sidebar/
+│   ├── Profile/
+│   └── login/
+├── App.js
+└── index.js
+`
 
-### Code Splitting
+## 🛠️ Technology Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **React** 17 | **Router** v5 | **Axios**
+- **Material-UI** v4 | **Ant Design** v4 | **Bootstrap** v3
+- **Styled Components** v5
 
-### Analyzing the Bundle Size
+## 🔗 API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Configure the backend API endpoint in .env.local:
 
-### Making a Progressive Web App
+`env
+REACT_APP_API_BASE_URL=http://your-api-endpoint/api
+`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🐛 Troubleshooting
 
-### Advanced Configuration
+### Port 3000 already in use?
+`ash
+npm start -- --port 3001
+`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Dependencies issues?
+`ash
+rm -rf node_modules package-lock.json
+npm install
+`
 
-### Deployment
+## 🚀 Production Build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+`ash
+npm run build
+`
 
-### `npm run build` fails to minify
+Creates optimized build in uild/ folder ready for deployment.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# AdvancedComputerLab_FrontEnd" 
+## 📄 License
+
+Part of the Advanced Computer Lab course.
+
+## 👨‍💻 Contributing
+
+Feel free to fork, create issues, and submit pull requests for improvements!
+
+---
+
+**Happy Coding!** 🚀

@@ -9,7 +9,7 @@ class updatecourseslot extends Component{
         AllSlots:[]
     }
     componentDidMountAgain(){
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/coordinator/AllCourseSlots',{
+        axios.get('http://localhost:5000/coordinator/AllCourseSlots',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -21,7 +21,7 @@ class updatecourseslot extends Component{
           });
     }
     componentDidMount() {
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/coordinator/AllCourseSlots',{
+        axios.get('http://localhost:5000/coordinator/AllCourseSlots',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -47,7 +47,7 @@ class updatecourseslot extends Component{
               return;
           }
           
-          axios.put('https://advancedcomputerlab-backend.herokuapp.com/coordinator/updateSlot',{
+          axios.put('http://localhost:5000/coordinator/updateSlot',{
                 sid:sid,
                 day:day.localeCompare("Select")?day:undefined,
                 timing:timing.localeCompare("Select")?timing:undefined,
@@ -144,3 +144,4 @@ class updatecourseslot extends Component{
         )}
 }
 export default updatecourseslot;
+

@@ -40,7 +40,7 @@ class updatesalary extends Component{
       let b=document.getElementById("uniqueID1").value;
       
       if(a&&b){
-    axios.get('https://advancedcomputerlab-backend.herokuapp.com/updateSalary', {
+    axios.get('http://localhost:5000/updateSalary', {
       headers: {'auth-token': this.state.token},
            
         params:{
@@ -134,3 +134,4 @@ render() {
 }
 
 export default updatesalary;
+

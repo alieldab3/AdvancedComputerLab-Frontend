@@ -77,7 +77,7 @@ class viewstaffdayoff extends Component {
           arr:data
         })
   
-  /*    axios.put('https://advancedcomputerlab-backend.herokuapp.com/addInstructor/ac-30/:CSEN-704', {
+  /*    axios.put('http://localhost:5000/addInstructor/ac-30/:CSEN-704', {
            
       id:a,
             course:b
@@ -175,3 +175,4 @@ class viewstaffdayoff extends Component {
 }
 
 export default viewstaffdayoff;
+

@@ -77,7 +77,7 @@ class viewcoursestaff extends Component {
           arr:data
         })
   
-  /*    axios.put('https://advancedcomputerlab-backend.herokuapp.com/addInstructor/ac-30/:CSEN-704', {
+  /*    axios.put('http://localhost:5000/addInstructor/ac-30/:CSEN-704', {
            
       id:a,
             course:b
@@ -175,3 +175,4 @@ class viewcoursestaff extends Component {
 }
 
 export default viewcoursestaff;
+

@@ -33,7 +33,7 @@ class deletedepartment extends Component{
            console.log(a);
   e.preventDefault();
 
-    axios.delete('https://advancedcomputerlab-backend.herokuapp.com/delDepart', {
+    axios.delete('http://localhost:5000/delDepart', {
       headers: {'auth-token': this.state.token},
                
     params:{
@@ -95,3 +95,4 @@ render() {
 
 
 export default deletedepartment;
+

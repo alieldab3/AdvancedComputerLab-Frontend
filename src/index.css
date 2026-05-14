@@ -1,11 +1,15 @@
-body {
+html, body {
   margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
 code {
@@ -13,20 +17,7 @@ code {
     monospace;
 }
 
-/* .container {
-  width: 85%;
-  margin: auto
+#root {
+  height: 100%;
+  width: 100%;
 }
-
-
-.anchor {
-  display: block;
-  color: #222;
-  text-decoration: none;
-  padding: 10px 15px;
-  font-weight: bold;
-}
-
-.anchor:hover {
-  color: #eb5424
-} */

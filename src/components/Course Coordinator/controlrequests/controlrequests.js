@@ -8,7 +8,7 @@ import axios from 'axios';
         AllRequests : []
     }
     componentDidMount() {
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/coordinator/viewSlotLinking',{
+        axios.get('http://localhost:5000/coordinator/viewSlotLinking',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -20,7 +20,7 @@ import axios from 'axios';
       }
       AcceptRequest(rid)
         {
-        axios.put('https://advancedcomputerlab-backend.herokuapp.com/coordinator/acceptSlotLinking',{   
+        axios.put('http://localhost:5000/coordinator/acceptSlotLinking',{   
             request_id:rid
             },{
                 headers: {
@@ -39,7 +39,7 @@ import axios from 'axios';
         }
         RejectRequest(rid)
         {
-        axios.put('https://advancedcomputerlab-backend.herokuapp.com/coordinator/rejectSlotLinking',{   
+        axios.put('http://localhost:5000/coordinator/rejectSlotLinking',{   
             request_id:rid
             },{
                 headers: {
@@ -113,3 +113,4 @@ import axios from 'axios';
 
 
 export default controlrequests;
+

@@ -34,7 +34,7 @@ class deletefaculty extends Component{
            console.log(a);
     {e.preventDefault()};
 
-    axios.delete('https://advancedcomputerlab-backend.herokuapp.com/delFaculty', {
+    axios.delete('http://localhost:5000/delFaculty', {
       headers: {'auth-token': this.state.token},
               
     params:{
@@ -96,3 +96,4 @@ render() {
 
 
 export default deletefaculty;
+

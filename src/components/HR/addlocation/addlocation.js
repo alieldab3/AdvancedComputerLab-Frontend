@@ -32,7 +32,7 @@ class addlocation extends Component{
       e.preventDefault();
     
      
-      axios.post('https://advancedcomputerlab-backend.herokuapp.com/addLocation', {
+      axios.post('http://localhost:5000/addLocation', {
         
         
           nam:a,
@@ -110,3 +110,4 @@ render() {
 }
 
 export default addlocation;
+

@@ -14,7 +14,7 @@ import axios from 'axios';
 
      componentDidMount() {
         console.log(this.state.token);
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewProfile',{
+        axios.get('http://localhost:5000/viewProfile',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -43,7 +43,7 @@ import axios from 'axios';
             }
         else{
             console.log("Request is sent");
-            axios.post('https://advancedcomputerlab-backend.herokuapp.com/Academics/ChangeDayoffRequest',{
+            axios.post('http://localhost:5000/Academics/ChangeDayoffRequest',{
                 day:newDay,
 			    senderComment:comment
             },{
@@ -103,3 +103,4 @@ import axios from 'axios';
 
 
 export default ChangeDayOff;
+

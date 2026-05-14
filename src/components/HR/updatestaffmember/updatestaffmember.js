@@ -40,7 +40,7 @@ class updatestaffmember extends Component{
       let h=document.getElementById("uniqueID4").value;
       console.log(c+" "+e+" "+f+" "+g+" "+h)
       if(c&&e&&f&&g&&h){
-    axios.get('https://advancedcomputerlab-backend.herokuapp.com/updateMem', {
+    axios.get('http://localhost:5000/updateMem', {
       headers: {'auth-token': this.state.token},
            
         params:{
@@ -166,3 +166,4 @@ render() {
 
 
 export default updatestaffmember;
+

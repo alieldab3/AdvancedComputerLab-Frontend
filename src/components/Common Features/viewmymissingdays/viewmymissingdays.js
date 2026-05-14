@@ -24,7 +24,7 @@ class viewmymissingdays extends Component{
         else if(MissingDaysSelectValue!=null){
             this.setState({viewMonth : true})
 
-            axios.get('https://advancedcomputerlab-backend.herokuapp.com/ViewMissingDays/'+MissingDaysSelectValue, {
+            axios.get('http://localhost:5000/ViewMissingDays/'+MissingDaysSelectValue, {
                 headers: {
                     'auth-token': this.state.token
                 }
@@ -126,3 +126,4 @@ class viewmymissingdays extends Component{
 
 
 export default viewmymissingdays;
+

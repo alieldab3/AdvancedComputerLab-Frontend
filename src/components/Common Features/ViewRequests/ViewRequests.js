@@ -23,7 +23,7 @@ class ViewRequests extends Component{
     
     componentDidMount() {
         console.log(this.state.token);
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/Academics/ViewRequests/:',{
+        axios.get('http://localhost:5000/Academics/ViewRequests/:',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -36,7 +36,7 @@ class ViewRequests extends Component{
     
       componentDidMountAgain()
       {
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/Academics/ViewRequests/:',{
+        axios.get('http://localhost:5000/Academics/ViewRequests/:',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -50,7 +50,7 @@ class ViewRequests extends Component{
     { 
         console.log(typeof rid);
         console.log(this.state.token);
-        axios.delete('https://advancedcomputerlab-backend.herokuapp.com/Academics/DeleteRequest',{
+        axios.delete('http://localhost:5000/Academics/DeleteRequest',{
                 headers: {
                     'auth-token': this.state.token
                 },
@@ -228,3 +228,4 @@ class ViewRequests extends Component{
 
 
 export default ViewRequests;
+

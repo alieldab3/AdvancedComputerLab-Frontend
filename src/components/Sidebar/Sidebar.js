@@ -20,18 +20,23 @@ class Sidebar extends Component {
 
     componentDidMount() {
 
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewProfile', {
+        axios.get('http://localhost:5000/viewProfile', {
             headers: {
                 'auth-token': this.state.token
             }
           })
           .then(res => {
+            console.log("Full Profile Response:", res.data);
+            console.log("User Role:", res.data[0].role);
             this.setState({ 
                 person : res.data[0],
             });
             this.setState({ 
-                type : this.state.person.role,
+                type : res.data[0].role,
             });
+          })
+          .catch(err => {
+            console.error("Error fetching profile:", err);
           })
       }
 
@@ -71,7 +76,10 @@ class Sidebar extends Component {
 
 
 
-        if(this.state.type =='HR'){
+        const userType = (this.state.type || '').trim().toLowerCase();
+        console.log('Sidebar normalized role:', userType);
+
+        if(userType === 'hr'){
             return (
                 <SidebarContent >{
         
@@ -138,7 +146,7 @@ class Sidebar extends Component {
         }
    
 
-    else if(this.state.type =='HOD'){
+    else if(userType === 'hod'){
         return (
             <SidebarContent >{
             
@@ -180,7 +188,8 @@ class Sidebar extends Component {
     }
 
 
-    else if(this.state.type =='Course Instructor'){
+    else if(userType.includes('instructor')){
+        console.log('Sidebar branch: instructor menu');
         return (
             <SidebarContent >{
             
@@ -219,8 +228,7 @@ class Sidebar extends Component {
         )
     }
 
-
-    else if(this.state.type =='Course Coordinator'){
+    else if(userType === 'course coordinator'){
         return (
             <SidebarContent >{
             
@@ -281,11 +289,11 @@ class Sidebar extends Component {
     <div >
     <aside className = 'Sidebar'>
         <ProSidebar toggled='true' >
-        <br></br>
 
         <SidebarHeader className='tex'>
             {this.state.type!=null?(this.state.type):('Academic Member')}'s Home
             <br></br>
+            <small style={{fontSize: '0.7rem', opacity: 0.7}}>Role: {this.state.type}</small>
         </SidebarHeader>
      
 

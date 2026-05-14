@@ -72,7 +72,7 @@ e.preventDefault();
       console.log(data1)
       let a=document.getElementById("uniqueID").value;
       if(a){
-    axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewattandence', {
+    axios.get('http://localhost:5000/viewattandence', {
       headers: {'auth-token': this.state.token},
                
     params:{
@@ -177,3 +177,4 @@ render() {
 
 
 export default viewstaffattendance;
+

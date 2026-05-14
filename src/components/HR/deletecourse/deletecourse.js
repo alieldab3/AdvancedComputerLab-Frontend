@@ -31,7 +31,7 @@ class deletecourse extends Component{
       
       if(a){
       e.preventDefault();
-    axios.delete('https://advancedcomputerlab-backend.herokuapp.com/delCourse', {
+    axios.delete('http://localhost:5000/delCourse', {
       headers: {'auth-token': this.state.token},
            
     params:{
@@ -101,3 +101,4 @@ render() {
 
 
 export default deletecourse;
+

@@ -33,7 +33,7 @@ class updatecourse extends Component{
    
       if(a&&b&&c){
       e.preventDefault();
-    axios.get('https://advancedcomputerlab-backend.herokuapp.com/updateCourse', {
+    axios.get('http://localhost:5000/updateCourse', {
       headers: {'auth-token': this.state.token},
            
     params:{
@@ -116,3 +116,4 @@ render() {
 
 
 export default updatecourse;
+

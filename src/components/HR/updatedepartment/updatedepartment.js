@@ -30,7 +30,7 @@ class updatedepartment extends Component{
          if(a&&b){
       e.preventDefault();
             
-      axios.get('https://advancedcomputerlab-backend.herokuapp.com/updateDepart', {
+      axios.get('http://localhost:5000/updateDepart', {
         headers: {'auth-token': this.state.token},
              
       params:{
@@ -104,3 +104,4 @@ render() {
 
 
 export default updatedepartment;
+

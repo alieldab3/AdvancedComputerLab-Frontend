@@ -1,79 +1,143 @@
-.header{
-    height: 150px;
-    width: 100%;
+.header {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-md);
+  position: relative;
 }
 
-.img{
-    /* /* width: 100%; */
-    /* height:100px; */
- 
-    object-fit: cover;
-    object-position: 0 30%;
-    width: 100%;
-    height: 150px;
-
+.img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 150px;
 }
 
 .text-block {
-    position: absolute;
-    color: rgb(0, 0, 0);
-    top : 150px;
-    /* left : 0vh; */
-    width: 100% ;
-
-
+  position: relative;
+  color: var(--color-gray-900);
+  width: 100%;
+  z-index: 2;
+  padding: 0 var(--space-lg);
 }
 
-.head{
-    position: relative;
-    opacity: 0.5;
-
+.head {
+  position: relative;
+  opacity: 0.7;
+  flex: 1;
 }
-
 
 .img-block {
-    position: absolute;
-    color: rgb(0, 0, 0);
-    top : -20px;
-    opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
 }
 
 
 
 
 
-/* Style the navigation bar */
+/* Navigation Bar */
 .navbarC {
-    /* padding-right: 50px; */
-    width: 100%;
-    background-color: #1d1d1d;
-    overflow: auto;
+  width: 100%;
+  background-color: var(--color-gray-800);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.navbarC::-webkit-scrollbar {
+  height: 6px;
+}
+
+.navbarC::-webkit-scrollbar-track {
+  background: var(--color-gray-700);
+}
+
+.navbarC::-webkit-scrollbar-thumb {
+  background: var(--color-gray-500);
+  border-radius: var(--radius-full);
+}
+
+.navbarC::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400);
+}
+
+.navbarC a {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-md) var(--space-lg);
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  margin: 0;
+}
+
+.navbarC a:hover {
+  background-color: var(--color-primary);
+  border-bottom-color: var(--color-primary-light);
+}
+
+.navbarC a.active,
+.activeNav {
+  background-color: var(--color-primary);
+  border-bottom-color: var(--color-primary-light);
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    height: 120px;
   }
-  
-  /* Navbar links */
+
+  .img {
+    height: 120px;
+  }
+
+  .text-block {
+    padding: 0 var(--space-md);
+  }
+
   .navbarC a {
-    float: right;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 100px;
+  }
+
+  .img {
+    height: 100px;
+  }
+
+  .img-block {
+    display: none;
+  }
+
+  .navbarC {
+    justify-content: space-around;
+  }
+
+  .navbarC a {
+    padding: var(--space-sm);
+    flex: 1;
     text-align: center;
-    padding: 12px;
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
   }
-  
-  /* Navbar links on mouse-over */
-  .navbarC a:hover {
-    background-color: #555;
-  }
-  
-  /* Current/active navbar link */
-  .activeNav {
-    background-color: #4CAF50;
-  }
-  
-  /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
-  @media screen and (max-width: 500px) {
-    .navbarC a {
-      float: none;
-      display: block;
-    }
-  }
+}

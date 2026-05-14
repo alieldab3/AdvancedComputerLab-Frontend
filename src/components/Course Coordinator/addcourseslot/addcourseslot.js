@@ -13,7 +13,7 @@ class addcourseslot extends Component{
     }
     componentDidMount() {
         console.log(this.state.token);
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewProfile',{
+        axios.get('http://localhost:5000/viewProfile',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -36,7 +36,7 @@ class addcourseslot extends Component{
                 this.setState({message:"Please Fill The form "});
                 return;
             }
-        axios.post('https://advancedcomputerlab-backend.herokuapp.com/coordinator/AddSlot',{
+        axios.post('http://localhost:5000/coordinator/AddSlot',{
             course:this.state.course,//TODO
             day:day,
             timing:timing,
@@ -118,3 +118,4 @@ class addcourseslot extends Component{
 
 
 export default addcourseslot;
+

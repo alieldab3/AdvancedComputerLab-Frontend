@@ -81,7 +81,7 @@ class viewSchedule extends Component{
 
 
     componentDidMount() {
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/Academics/viewSchedule',{
+        axios.get('http://localhost:5000/Academics/viewSchedule',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -733,3 +733,4 @@ class viewSchedule extends Component{
 }
 
 export default viewSchedule;
+

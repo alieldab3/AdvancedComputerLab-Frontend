@@ -15,7 +15,7 @@ class viewmyattendance extends Component{
     }
 
     componentDidMount() {
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/ViewAttendance/:', {
+        axios.get('http://localhost:5000/ViewAttendance/:', {
             headers: {
                 'auth-token': this.state.token
             }
@@ -31,7 +31,7 @@ class viewmyattendance extends Component{
 
         if(recordSelectValue=="All"){
             this.setState({viewMonth : false})
-            axios.get('https://advancedcomputerlab-backend.herokuapp.com/ViewAttendance/:', {
+            axios.get('http://localhost:5000/ViewAttendance/:', {
                 headers: {
                     'auth-token': this.state.token
                 }
@@ -44,7 +44,7 @@ class viewmyattendance extends Component{
         else if(recordSelectValue!=null){
             this.setState({viewMonth : true})
 
-            axios.get('https://advancedcomputerlab-backend.herokuapp.com/ViewAttendance/'+recordSelectValue, {
+            axios.get('http://localhost:5000/ViewAttendance/'+recordSelectValue, {
                 headers: {
                     'auth-token': this.state.token
                 }
@@ -169,3 +169,4 @@ class viewmyattendance extends Component{
 
 
 export default viewmyattendance;
+

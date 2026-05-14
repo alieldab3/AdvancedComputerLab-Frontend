@@ -16,7 +16,7 @@ class updateProfile extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewProfile',{
+        axios.get('http://localhost:5000/viewProfile',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -41,7 +41,7 @@ class updateProfile extends Component {
          let newDayOff = document.getElementById("FormControlDayOff").value;
 
         console.log(newGender+" "+newEmail+" "+newOfficeLocation+" "+newDayOff)
-        axios.put('https://advancedcomputerlab-backend.herokuapp.com/updateProfile',
+        axios.put('http://localhost:5000/updateProfile',
         {
             email : newEmail,
             gender : newGender,
@@ -207,3 +207,4 @@ class updateProfile extends Component {
 }
 
 export default updateProfile;
+

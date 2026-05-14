@@ -33,7 +33,7 @@ class updatefaculty extends Component{
        if(a&&b){
     {e.preventDefault()};
 
-    axios.get('https://advancedcomputerlab-backend.herokuapp.com/updateFaculty', {
+    axios.get('http://localhost:5000/updateFaculty', {
       headers: {'auth-token': this.state.token},
               
     params:{
@@ -100,3 +100,4 @@ render() {
 
 
 export default updatefaculty;
+

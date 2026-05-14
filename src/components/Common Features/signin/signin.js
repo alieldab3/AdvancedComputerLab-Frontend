@@ -15,7 +15,7 @@ class signin extends Component {
     }
 
     // componentDidMount() {
-    //     axios.get('https://advancedcomputerlab-backend.herokuapp.com/viewProfile')
+    //     axios.get('http://localhost:5000/viewProfile')
     //       .then(res => {
     //         const person = res.data[0];
     //         this.setState({ person });
@@ -33,7 +33,7 @@ class signin extends Component {
             selDay = stateDay.toISOString();
             console.log(selDay)
              if (this.state.signedIn!=true) {
-                axios.post('https://advancedcomputerlab-backend.herokuapp.com/signIn',
+                axios.post('http://localhost:5000/signIn',
                 {
                     dateIn : selDay
                 }, {
@@ -117,3 +117,4 @@ class signin extends Component {
 
 
 export default signin;
+

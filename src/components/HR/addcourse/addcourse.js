@@ -32,7 +32,7 @@ class addcourse extends Component{
       if(a&&b&&c){
       e.preventDefault();
       console.log(a+" "+b);
-    axios.post('https://advancedcomputerlab-backend.herokuapp.com/addCourse', {
+    axios.post('http://localhost:5000/addCourse', {
         depname:a,
         nam:b,
         id:c  
@@ -114,3 +114,4 @@ render() {
 
 
 export default addcourse;
+

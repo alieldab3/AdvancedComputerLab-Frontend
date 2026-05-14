@@ -24,7 +24,7 @@ class SubmitLeave extends Component{
         let leaveType = document.getElementById("leaveType").value;
         let leaveDuration = document.getElementById("leaveDuration").value;
         this.setState({leaveDuration:leaveDuration});
-        axios.post('https://advancedcomputerlab-backend.herokuapp.com/Academics/SubmitLeaveRequest',{
+        axios.post('http://localhost:5000/Academics/SubmitLeaveRequest',{
             reason:comment,
             type:leaveType,
             requested_day:requested_day,
@@ -90,3 +90,4 @@ class SubmitLeave extends Component{
 
 
 export default SubmitLeave;
+

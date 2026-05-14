@@ -11,7 +11,7 @@ class sendSlotLinking extends Component{
     }
 
     componentDidMount() {
-        axios.get('https://advancedcomputerlab-backend.herokuapp.com/AllCourseSlots',{
+        axios.get('http://localhost:5000/AllCourseSlots',{
             headers: {
                 'auth-token': this.state.token
             }
@@ -26,7 +26,7 @@ class sendSlotLinking extends Component{
         let slot_id =  document.getElementById("TheSlot").value;
         let comment = document.getElementById("SenderComment").value;
 
-        axios.post('https://advancedcomputerlab-backend.herokuapp.com/Academics/SendSlotLinkingRequest',{
+        axios.post('http://localhost:5000/Academics/SendSlotLinkingRequest',{
                 slot_id:slot_id,
 			    senderComment:comment
             },{
@@ -82,3 +82,4 @@ class sendSlotLinking extends Component{
         )}
 }
 export default sendSlotLinking;
+
